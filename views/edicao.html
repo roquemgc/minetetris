@@ -2,12 +2,36 @@
 <!DOCTYPE html>
 <html lang="pt">
     <head>
+    	<link href="img/favicon.ico" rel="icon" type="image/x-icon"/>
         <link rel="stylesheet" href="style/template.css"/>
         <link rel="stylesheet" href="style/edicao.css"/>
         <meta charset="utf-8"/>
         <title>MINETETRIS</title>
     </head>
     <body>
+
+    	<header>
+    		<h1>MINETETRIS</h1>
+    	</header>
+
+    	<main>
+    		
+    		<section>
+    			<h2>Editar Informacoes</h2>
+    			<form>
+    				<input type="text" name="nome_completo" placeholder="Nome Completo" />
+    				<label>Data de nascimento</label>
+    				<input type="date" name="data_nascimento" title="Data de nascimento" min="1900-01-01" max="2017-12-31" />
+    				<input type="text" name="cpf" placeholder="CPF"/>
+    				<input type="tel" name="telefone" placeholder="Telefone"/>
+    				<input type="email" name="email" placeholder="E-mail"/>
+    				<input type="text" name="username" placeholder="Username"/>
+    				<input type="password" name="senha" placeholder="Senha"/>
+    				<input id="btn_submit" type="submit" value="Salvar"/>
+    			</form>
+    		</section>
+
+    	</main>
 
     </body>
 </html>
