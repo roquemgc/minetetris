@@ -1,0 +1,80 @@
+@font-face {
+  font-family: minecraft;
+  src: url(../font/Minecraft.ttf);
+}
+
+body{
+	font-size: 1vw;
+	font-family: minecraft, Arial, sans-serif;
+	background-image: url("../img/background1.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+header > h1{
+	text-align: center;
+	font-size: 5vw;
+	color: rgb(182, 191, 182);
+	text-shadow: 0.5vw 0.5vw rgba(0,0,0,0.5);
+}
+
+main{
+	margin-bottom: 5%;
+}
+
+main > section > h2{
+	text-align: center;
+	font-size: 3vw;
+	color: black;
+	text-shadow: 0.5vw 0.5vw rgba(0,0,0,0.5);
+}
+
+main > section > form{
+	background-color: white;
+	margin: 0% auto;
+	display: grid;
+	grid-template-columns: 1fr;
+	width: 25%;
+	padding-top: 2%;
+	padding-bottom: 1%;
+	box-shadow: 0.5vw 0.5vw rgba(0,0,0,0.5);
+}
+
+main > section > form > label{
+	text-align: center;
+}
+
+main > section > form > input{
+	margin: 0% auto;
+	margin-bottom: 10%;
+	width: 80%;
+	height: 70%;
+	font-family: minecraft, Arial, sans-serif;
+}
+
+::-webkit-input-placeholder { /* Edge */
+  font-family: minecraft, Arial, sans-serif;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  font-family: minecraft, Arial, sans-serif;
+}
+
+::placeholder {
+  font-family: minecraft, Arial, sans-serif;
+}
+
+#btn_submit{
+	width: 50%;
+	cursor: pointer;
+	background-color: rgb(182, 191, 182);
+}
+
+#btn_submit:hover{
+	filter: brightness(112%);
+}
+
+.center{
+    text-align: center;
+}
