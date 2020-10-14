@@ -1,0 +1,37 @@
+header h1 a {
+    color: rgb(182, 191, 182);
+}
+
+main div {
+    padding: 10px 15px;
+
+    background-color: white;
+	box-shadow: 0.5vw 0.5vw rgba(0,0,0,0.5);
+}
+
+section h2 {
+    color: rgb(182, 191, 182);
+}
+
+#ranking-list div{
+    margin: 0 auto;
+    width: 80%;
+    max-height: 310px;
+    overflow: auto;
+}
+
+#ranking-list ul {
+    padding: 0;
+}
+
+#ranking-list ul li {
+    margin: 0;
+    display: block;
+
+    font-size: 25px;
+    border-bottom: 1px solid black;
+}
+
+#ranking-list ul li p{
+    text-align-last: justify;
+}
