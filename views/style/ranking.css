@@ -26,6 +26,7 @@ section h2 {
 
 #ranking-list ul li {
     margin: 0;
+    padding: 0 100px;
     display: block;
 
     font-size: 25px;
