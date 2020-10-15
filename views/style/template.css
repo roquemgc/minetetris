@@ -6,10 +6,11 @@
 body{
     font-size: 1vw;
     font-family: minecraft, Arial, sans-serif;
-    background-image: url("../img/background1.jpg");
+    background-image: url("../img/background.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: 1920px 1080px;
 }
   
 header > h1 {
