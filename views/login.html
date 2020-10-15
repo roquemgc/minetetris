@@ -2,11 +2,15 @@
 <!DOCTYPE html>
 <html lang="pt">
     <head>
-        <link href="img/favicon.ico" rel="icon" type="image/x-icon"/>
+        <link href="img/favicon.ico" rel="icon" type="image/x-icon"/> <!--icone da pagina-->
+        
+        <!--Importando as folhas de estilo-->
         <link rel="stylesheet" href="style/template.css"/>
         <link rel="stylesheet" href="style/login.css"/>
+        
+        <!--definindo que o navegador deve usar esse metodo para converter os caracteres digitados em codigo de maquina-->
         <meta charset="utf-8"/>
-        <title>MINETETRIS</title>
+        <title>MINETETRIS</title> <!--título da página-->
     </head>
     <body>
         
@@ -20,12 +24,13 @@
 
     	<main>
 
-    		<section>
-    			<h2>Pagina de Login</h2>
+    		<section> <!--tipo uma div, tem valor semantico diferente, precisa de titulo-->
+    			<h2>Pagina de Login</h2> <!--titulo da section-->
     			<form>
     				<input type="text" name="username" placeholder="Username"/>
                     <input type="password" name="senha" placeholder="Senha"/>
                     <input id="btn_submit" type="submit" value="Login"/>
+                    <!--type="submit" processa o formulario, value = oq vai aparecer pro usuario antes de ele digitar algo-->
                     <label>Não tem conta?</label>
                     <a href="cadastro.html" class="center">Criar Nova Conta</a>
     			</form>
