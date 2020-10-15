@@ -1,7 +1,7 @@
 @font-face {
     font-family: minecraft;
     src: url(../font/Minecraft.ttf);
-  }
+}
   
 body{
     font-size: 1vw;
@@ -10,7 +10,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-  }
+}
   
 header > h1 {
     margin-bottom: 10px;
