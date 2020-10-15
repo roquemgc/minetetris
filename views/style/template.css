@@ -19,7 +19,7 @@ figure{
     margin: 0px;
 }
 
-figure > img{
+figure > a > img{
     width: 50vw;
     margin: 0px;
     padding: 0px;
