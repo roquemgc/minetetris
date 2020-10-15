@@ -1,7 +1,7 @@
 main > section > form{
 	background-color: white;
 	margin: 0% auto;
-	display: grid;
+	display: grid; /*a div vira uma tabela*/
 	grid-template-columns: 1fr;
 	width: 25%;
 	padding-top: 2%;
@@ -25,6 +25,7 @@ main > section > form > input{
   font-family: minecraft, Arial, sans-serif;
 }
 
+/*Texto dentro do formulario: atributo placeholder do input, cada navegador e de um jeito por isso tem 3*/
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
   font-family: minecraft, Arial, sans-serif;
 }
@@ -33,13 +34,15 @@ main > section > form > input{
   font-family: minecraft, Arial, sans-serif;
 }
 
-#btn_submit{
+/* propriedades de estilo do botão para submeter*/
+main > section > form > input[type="submit"]{
 	width: 50%;
 	cursor: pointer;
 	background-color: rgb(182, 191, 182);
 }
 
-#btn_submit:hover{
+/* hover: quando passa o mouse por cima, oq acontece*/
+main > section > form > input[type="submit"]:hover{
 	filter: brightness(112%);
 }
 
