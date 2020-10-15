@@ -1,2 +1,2 @@
 # minetetris
-Tetris com temática em Minecraft feito em Javascript
+Tetris com temática de Minecraft feito em Javascript
