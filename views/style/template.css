@@ -12,13 +12,17 @@ body{
     background-attachment: fixed;
     background-size: 100vw 100vh;
 }
-  
-header > h1 {
-    margin-bottom: 10px;
+
+figure{
     text-align: center;
-    font-size: 5vw;
-    color: rgb(182, 191, 182);
-    text-shadow: 0.5vw 0.5vw rgba(0,0,0,0.5);
+    padding: 0px;
+    margin: 0px;
+}
+
+figure > img{
+    width: 50vw;
+    margin: 0px;
+    padding: 0px;
 }
 
 main{
