@@ -65,12 +65,12 @@ main > section > form > input{
   font-family: minecraft, Arial, sans-serif;
 }
 
-#btn_submit{
+main > section > form > input[type="submit"]{
 	width: 50%;
 	cursor: pointer;
 	background-color: rgb(182, 191, 182);
 }
 
-#btn_submit:hover{
+main > section > form > input[type="submit"]:hover{
 	filter: brightness(112%);
 }
