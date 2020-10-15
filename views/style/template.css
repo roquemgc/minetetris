@@ -12,14 +12,18 @@ body{
     background-attachment: fixed;
     background-size: 100vw 100vh;
 }
+  
+header > h1 {
+    margin-bottom: 10px;
+}
 
-figure{
+header > figure{
     text-align: center;
     padding: 0px;
     margin: 0px;
 }
 
-figure > a > img{
+header > figure > a > img{
     width: 50vw;
     margin: 0px;
     padding: 0px;
