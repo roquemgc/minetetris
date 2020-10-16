@@ -21,11 +21,11 @@ main > section > form > input{
 	font-family: minecraft, Arial, sans-serif;
 }
 
+/*Texto dentro do formulario: atributo placeholder do input, cada navegador e de um jeito por isso tem 3*/
 ::-webkit-input-placeholder { /* Edge */
   font-family: minecraft, Arial, sans-serif;
 }
 
-/*Texto dentro do formulario: atributo placeholder do input, cada navegador e de um jeito por isso tem 3*/
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
   font-family: minecraft, Arial, sans-serif;
 }
