@@ -20,31 +20,31 @@
             <section>
                 <h2>Cadastro</h2>
                 <form>
-                        <label for="nome_completo">Nome Completo:</label>
-                        <br/>
-                        <input type="text" id="nome_completo" placeholder="Insira seu nome completo"/>
-                        <label for="data_nascimento">Data de Nascimento:</label>
-                        <br/>
-                        <input type="date" id="data_nascimento" min="1900-01-01" max="2017-12-31"/>
-                        <label for="CPF">CPF:</label>
-                        <br/>
-                        <input type="text" id="CPF" maxlength="11" placeholder="Insira seu CPF"/>
-                        <label for="telefone">Telefone:</label>
-                        <br/>
-                        <input type="number" id="telefone" placeholder="Insira seu telefone">
-                        <label for="email">Email:</label>
-                        <br/>
-                        <input type="email" id="email" placeholder="Insira seu email">
-                        <label for="username">Username:</label>
-                        <br/>
-                        <input type="text" id="username" placeholder="Escolha um username">
-                        <label for="password">Senha:</label>
-                        <br/>
-                        <input type="password" id="senha" placeholder="Escolha uma senha">
-                        <label for="senha2">Confirme a senha:</label>
-                        <br/>
-                        <input type="password" id="senha2" placeholder="Confirme sua senha">
-                        <input id="btn_submit" type="submit" value="Criar Conta"/>
+                    <label for="nome_completo">Nome Completo:</label>
+                    <br/>
+                    <input type="text" id="nome_completo" placeholder="Insira seu nome completo" title="Nome Completo" minlength="3" required="true"/>
+                    <label for="data_nascimento">Data de Nascimento:</label>
+                    <br/>
+                    <input type="date" id="data_nascimento" title="Data de nascimento" min="1900-01-01" max="2017-12-31" required="true"/>
+                    <label for="CPF">CPF:</label>
+                    <br/>
+                    <input type="text" id="CPF" placeholder="Insira seu CPF" title="CPF: xxx.xxx.xxx-xx" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" maxlength="14" required="true" />
+                    <label for="telefone">Telefone:</label>
+                    <br/>
+                    <input type="number" id="telefone" placeholder="Insira seu telefone" title="Telefone: (xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" maxlength="14" required="true">
+                    <label for="email">Email:</label>
+                    <br/>
+                    <input type="email" id="email" placeholder="Insira seu email" title="E-mail" required="true">
+                    <label for="username">Username:</label>
+                    <br/>
+                    <input type="text" id="username" placeholder="Escolha um username" title="Username" minlength="3" required="true">
+                    <label for="senha">Senha:</label>
+                    <br/>
+                    <input type="password" id="senha" placeholder="Escolha uma senha" title="Senha" minlength="8" required="true">
+                    <label for="senha2">Confirme a senha:</label>
+                    <br/>
+                    <input type="password" id="senha2" placeholder="Confirme sua senha" title="Cofirme a Senha" minlength="8" required="true">
+                    <input id="btn_submit" type="submit" value="Criar Conta"/>
                 </form>
             </section>
         </main>

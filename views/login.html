@@ -27,8 +27,8 @@
     		<section> <!--tipo uma div, tem valor semantico diferente, precisa de titulo-->
     			<h2>Pagina de Login</h2> <!--titulo da section-->
     			<form>
-    				<input type="text" name="username" placeholder="Username"/>
-                    <input type="password" name="senha" placeholder="Senha"/>
+    				<input type="text" name="username" placeholder="Username" title="Username" minlength="3" required="true"/>
+                    <input type="password" name="senha" placeholder="Senha" title="Senha" minlength="8" required="true"/>
                     <input id="btn_submit" type="submit" value="Login"/>
                     <!--type="submit" processa o formulario, value = oq vai aparecer pro usuario antes de ele digitar algo-->
                     <label>Não tem conta?</label>
