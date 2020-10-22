@@ -1,2 +1,3 @@
 # minetetris
-Tetris com temática de Minecraft feito em Javascript
+Ao acessar o sistema, o usuário enxergará a tela de Login. Caso já possua conta, ele digitará seus dados cadastrados no sistema e será redirecionado ao Roulling Tetris. Entretanto, se ele não tiver uma conta no MineTetris, ele deverá clicar em "Criar Conta" e será redirecionado à tela de cadastro, onde preenche suas informações pessoais e envia, sendo levado à página do Roulling Tetris.
+Na página principal, a do tabuleiro do jogo, ele pode clicar para editar suas informações pessoais ou ver o ranking de sua pontuação e da pontuação global do jogo. Ao fim de cada partida, o usuário pode escolher se deseja ou não iniciar um novo jogo.
