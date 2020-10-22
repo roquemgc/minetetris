@@ -1,3 +1,5 @@
 # minetetris
 Ao acessar o sistema, o usuário enxergará a tela de Login (views/login.html). Caso já possua conta, ele digitará seus dados cadastrados no sistema e será redirecionado ao Rolling Tetris (views/rt.html). Entretanto, se ele não tiver uma conta no MineTetris, ele deverá clicar em "Criar Conta" e será redirecionado à tela de cadastro (views/cadastro.html), onde ele preenche suas informações pessoais e as envia, sendo levado à página do Rolling Tetris.
 Na página principal, a do tabuleiro do jogo, ele pode clicar para editar suas informações pessoais (views/edicao.html) ou ver o ranking (views/ranking.html) de sua pontuação e da pontuação global do jogo. Ao fim de cada partida, o usuário pode escolher se deseja ou não iniciar um novo jogo.
+
+Link do vídeo: https://drive.google.com/file/d/14yr7fLC2SFoS-_hHsfxG0kOr8w_n2Gu2/view?usp=sharing
