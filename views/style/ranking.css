@@ -1,23 +1,12 @@
-header h1 a {
-    color: rgb(182, 191, 182);
-}
-
-main div {
-    padding: 10px 15px;
-
-    background-color: white;
-	box-shadow: 0.5vw 0.5vw rgba(0,0,0,0.5);
-}
-
-section h2 {
-    color: rgb(182, 191, 182);
-}
-
-#ranking-list div{
+#ranking-list {
     margin: 0 auto;
+    padding: 10px 15px;
     width: 80%;
     max-height: 310px;
     overflow: auto;
+
+    background-color: white;
+	box-shadow: 0.5vw 0.5vw rgba(0,0,0,0.5);
 }
 
 #ranking-list ul {

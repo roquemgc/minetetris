@@ -1,0 +1,206 @@
+
+p.Menu{ 
+
+	color: #ffffff;
+	font-size: 1.5em;
+	text-align: center;
+
+}
+
+p.Dadosdojogo{ 
+
+	color: #ffffff;
+	font-size: 1.3em;
+	margin-left: 0.5em;
+	margin-top: 0.75em; 
+
+}
+
+h2{ 
+
+	text-align: center;
+	color: #ffffff;
+	font-size: 1.7em;	
+	
+
+
+}
+
+span.sublinhado{ 
+
+	text-decoration: underline;
+
+}
+
+span.italico{  
+    
+    font-style: italic;
+
+
+}
+
+span.negrito{  
+    
+    font-weight: bold;
+
+}
+
+
+#logogame img{ 
+
+	width: 40vw;
+ 
+}
+
+#gamerollingtetris{ 
+
+
+		background-image: url("../img/image.jpg");
+		background-repeat: repeat;
+		background-size: 100%;
+
+		margin: 0 auto;
+		width: 29%;
+		height: 34.5em;
+
+        border: 0.8em;
+        border-style: ridge;
+        border-color: #c5c5c5;
+
+}
+
+#Minimenu01{ 
+
+	background-image: url("../img/images3.jpg"); 
+	background-attachment: fixed;
+	background-size: 5vw 5vh;
+
+	width:23%;
+	height:13.5em;
+
+	position: absolute;
+	top: 27em;
+	left: 3em;
+	
+	border: 0.8em;
+	border-style: ridge;
+    border-color: #c5c5c5;
+
+	/*
+	border-radius: 0.8em;
+	border-radius: 20px;
+	*/
+
+}
+
+
+a:link, a:visited{ 
+
+	text-decoration: none;
+	color: #ffffff;
+
+}
+
+a:hover{ 
+
+	text-decoration: underline; 
+	color: #000000; 
+
+}
+
+a:active{ 
+
+	color: #cc0000;
+}
+
+#gamesrankingdoplayer{
+
+	background-image: url("../img/images3.jpg"); 
+	background-attachment: fixed;
+	background-size: 5vw 5vh;
+
+	width:23%;
+	height:13.5em;
+
+	text-align: center;
+
+	position: absolute;
+	top: 39.85em;
+	right: 3.5em;
+	
+	border: 0.8em;
+	border-style: ridge;
+    border-color: #c5c5c5;
+
+	/*
+	border-radius: 0.8em;
+	border-radius: 20px;
+	*/
+
+	resize: none;
+	overflow: auto;
+
+}
+
+caption{
+
+text-align: center;
+font-size: 1.7em;
+padding-bottom: 0.6em;
+
+
+}
+
+table{
+
+ 	color: white;
+ 	width: 21.5em;
+ 		
+ }
+
+td {
+
+    border: 1px solid white;
+    padding-top: 10px;
+ 
+
+}
+ 
+th {
+
+	padding-top: 10px;
+    border: 1px solid white;
+ 
+}
+
+
+#dadosdogamedoplayer{
+
+	background-image: url("../img/images3.jpg"); 
+	background-attachment: fixed;
+	background-size: 5vw 5vh;
+
+	width:23%;
+	height:17em;
+
+
+	position: absolute;
+	top: 18.8em;
+	right: 3.5em;
+
+	border: 0.8em;
+	border-style: ridge;
+    border-color: #c5c5c5;
+
+	/*
+	border-radius: 0.8em;
+	border-radius: 20px;
+	*/
+
+}
+
+span.Resultadosdadosdojogo{
+
+	color: #ffef00;
+	font-weight: bold;
+}
