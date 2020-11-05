@@ -55,7 +55,7 @@ span.negrito{
 #gamerollingtetris{ 
 
 
-		background-image: url("../img/image.jpg");
+		background-image: url("../lib/img/image.jpg");
 		background-repeat: repeat;
 		background-size: 100%;
 
@@ -71,7 +71,7 @@ span.negrito{
 
 #Minimenu01{ 
 
-	background-image: url("../img/images3.jpg"); 
+	background-image: url("../lib/img/images3.jpg"); 
 	background-attachment: fixed;
 	background-size: 5vw 5vh;
 
@@ -115,7 +115,7 @@ a:active{
 
 #gamesrankingdoplayer{
 
-	background-image: url("../img/images3.jpg"); 
+	background-image: url("../lib/img/images3.jpg"); 
 	background-attachment: fixed;
 	background-size: 5vw 5vh;
 
@@ -176,7 +176,7 @@ th {
 
 #dadosdogamedoplayer{
 
-	background-image: url("../img/images3.jpg"); 
+	background-image: url("../lib/img/images3.jpg"); 
 	background-attachment: fixed;
 	background-size: 5vw 5vh;
 
