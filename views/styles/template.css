@@ -1,12 +1,12 @@
 @font-face {
     font-family: minecraft;
-    src: url(../font/Minecraft.ttf);
+    src: url(../lib/font/Minecraft.ttf);
 }
   
 body{
     font-size: 1vw;
     font-family: minecraft, Arial, sans-serif;
-    background-image: url("../img/background.jpg");
+    background-image: url("../lib/img/background.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
