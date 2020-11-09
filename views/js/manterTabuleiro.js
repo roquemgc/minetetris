@@ -9,7 +9,7 @@ function verificarLarguraAltura(largura,altura){
 	}
 }
 
-function gerarTabuleiro(largura, altura){
+function gerarTabuleiro(largura,altura){
 	try{
 		verificarLarguraAltura(largura,altura);
 		var div_tabuleiro = document.getElementById("gamerollingtetris");
@@ -40,7 +40,80 @@ function gerarTabuleiro(largura, altura){
 			tabuleiro.appendChild(linha);
 		}
 		div_tabuleiro.appendChild(tabuleiro);
+		var peca = new Peca(3);
+		gerarPeca(peca);
 	}catch(e){
 		console.log(e);
+	}
+}
+
+function getCelula(linha,coluna){
+	var celula_id = "celula_" + linha + "_" + coluna;
+	var celula = document.getElementById(celula_id);
+	return celula;
+}
+
+function getLinhaCelula(celula){
+	var linha = (celula.id.split("_"))[1];
+	return linha;
+}
+
+function getColunaCelula(celula){
+	var coluna = (celula.id.split("_"))[2];
+	return coluna;
+}
+
+function gerarPecaI(peca,celula_inicial){
+	var linha_inicial = getLinhaCelula(celula_inicial);
+	var coluna_inicial = getColunaCelula(celula_inicial);
+	for(var i=linha_inicial; i<(linha_inicial+4); i++){
+		var celula_atual = getCelula(i,j);
+		celula_atual.style.backgroundColor = "black";
+	}
+}
+
+function gerarPecaQuadrado2x2(peca,celula_inicial){
+	var linha_inicial = getLinhaCelula(celula_inicial);
+	var coluna_inicial = getColunaCelula(celula_inicial);
+	for(var i=linha_inicial; i<(linha_inicial+2); i++){
+		for(var j=coluna_inicial; j<(coluna_inicial+2); j++){
+			var celula_atual = getCelula(i,j);
+			celula_atual.style.backgroundColor = "black";
+		}
+	}
+}
+
+function gerarPecaL(peca,celula_inicial){
+	var linha_inicial = getLinhaCelula(celula_inicial);
+	var coluna_inicial = getColunaCelula(celula_inicial);
+	var contador = 0;
+	for(var i=linha_inicial; i<(linha_inicial+3); i++){
+		var celula_atual = getCelula(i,coluna_inicial);
+		celula_atual.style.backgroundColor = "black";
+		if(contador == 2){
+			var j=coluna_inicial;
+			j++;
+			var nova_celula_atual = getCelula(i,j);
+			nova_celula_atual.style.backgroundColor = "black";
+		}
+		contador ++;
+	}
+}
+
+function gerarPeca(peca){
+	if(!(Peca.isPecaObj(peca))){
+		throw "'peca' não é um objeto da classe Peca";
+	}
+	var celula_inicial = getCelula(0,0);
+	if(peca.tipo==="i"){
+		gerarPecaI(peca,celula_inicial);
+	}else{
+		if(peca.tipo==="quadrado 2x2"){
+			gerarPecaQuadrado2x2(peca,celula_inicial);
+		}else{
+			if(peca.tipo==="L"){
+				gerarPecaL(peca,celula_inicial);
+			}
+		}
 	}
 }
