@@ -9,31 +9,15 @@ class Peca{
 	}
 
 	get tipo(){
-		var t = "";
-		switch(this._tipo){
-			case 1:
-				t = "i";
-				break;
-			case 2:
-				t = "quadrado 2x2";
-				break;
-			case 3:
-				t = "L";
-				break;
-			case 4:
-				t = "L invertido";
-				break;
-			case 5:
-				t = "triangulo";
-				break;
-			case 6:
-				t = "barco";
-				break;
-			case 7:
-				t = "quadrado 1x1";
-				break;
-		}
-		return t;
+		//tipo
+		//	1 = i
+		//	2 = quadrado 2x2
+		//	3 = L
+		// 	4 = L invertido
+		//	5 = triangulo
+		//	6 = barco
+		//	7 = especial
+		return this._tipo;
 	}
 
 	static isPecaObj(obj){
