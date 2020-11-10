@@ -52,12 +52,12 @@ function getCelula(linha,coluna){
 }
 
 function getLinhaCelula(celula){
-	var linha = (celula.id.split("_"))[1];
+	var linha = parseInt((celula.id.split("_"))[1]);
 	return linha;
 }
 
 function getColunaCelula(celula){
-	var coluna = (celula.id.split("_"))[2];
+	var coluna = parseInt((celula.id.split("_"))[2]);
 	return coluna;
 }
 
@@ -68,12 +68,12 @@ function getTabuleiro(){
 
 function getLarguraTabuleiro(){
 	var tabuleiro = getTabuleiro();
-	var largura = (tabuleiro.classList[0].split("x"))[0];
+	var largura = parseInt((tabuleiro.classList[0].split("x"))[0]);
 	return largura;
 }
 
 function getAlturaTabuleiro(){
 	var tabuleiro = getTabuleiro();
-	var altura = (tabuleiro.classList[0].split("x"))[1];
+	var altura = parseInt((tabuleiro.classList[0].split("x"))[1]);
 	return altura;
 }
