@@ -3,221 +3,137 @@
 <!DOCTYPE html>
 
 <html lang="pt">
-
     <head>
+        <meta charset="UTF-8"/>
+        <title>MINETETRIS - Rolling Tetris</title>
 
         <link href="../lib/img/favicon.ico" rel="icon" type="image/x-icon"/>
-
         <link rel="stylesheet" href="../styles/template.css"/>
-
         <link rel="stylesheet" href="../styles/rt.css"/>
 
         <script src="../js/models/Peca.js"></script>
-
         <script src="../js/manterTabuleiro.js"></script>
-
         <script src="../js/geradorPecas.js"></script>
-
         <script src="../js/game.js"></script>
 
-        <meta charset="UTF-8"/>
-
-        <title>MINETETRIS - Rolling Tetris</title>
-
     </head>
-
     <body onload="startGame();"> 
-
         <header>
-
-        <figure>
-
-             <a href="rt.html"><img src="../lib/img/minetetris.png" alt="Logo"></a>
-
-        </figure>
-
-        <figure id="logogame">
-
-            <img src="../lib/img/rollingtetris.png" alt="Texto personalizado (Rolling Tetris)">
-
-        </figure>
-
+            <figure>
+                <a href="rt.html"><img src="../lib/img/minetetris.png" alt="Logo"></a>
+            </figure>
+            <figure id="logogame">
+                <img src="../lib/img/rollingtetris.png" alt="Texto personalizado (Rolling Tetris)">
+            </figure>
         </header>
-
         <main> 
-
             <div id="gamerollingtetris"></div>
-
         </main>
-
         <section id="gamesrankingdoplayer">
-
             <h2>RANKING DE SUAS PARTIDAS JOGADAS</h2>
-
             <table>
-
                <!-- <caption><span class = "negrito">RANKING DE SUAS PARTIDAS JOGADAS</span></caption> -->
-
                 <thead>
-
                     <tr>
-
-                    <th><span class="negrito">#</span></th>
-
-                    <th><span class="negrito">NOME</span></th>
-
-                    <th><span class="negrito">PONTOS</span></th>
-
-                    <th><span class="negrito">DIFICULDADE</span></th>
-
-                    <th><span class="negrito">TEMPO</span></th>
-
+                        <th><span class="negrito">#</span></th>
+                        <th><span class="negrito">NOME</span></th>
+                        <th><span class="negrito">PONTOS</span></th>
+                        <th><span class="negrito">DIFICULDADE</span></th>
+                        <th><span class="negrito">TEMPO</span></th>
                     </tr>
-
                 </thead>
-
                 <tbody>
-
                     <tr>
-
                         <td>01</td>
                         <td>Alkz</td>
                         <td>758</td>
                         <td>Médio</td>
-                        <td>00:10:38</td>
-                       
+                        <td>00:10:38</td>                      
                     </tr>   
-
                     <tr>
-
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-
                     </tr>   
-
                     <tr>
-
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                       
+                        <td>&nbsp;</td>                  
                     </tr>   
-
                     <tr>
-
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                       
+                        <td>&nbsp;</td>                      
                     </tr>   
-
                     <tr>
-
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                       
+                        <td>&nbsp;</td>                      
                     </tr>   
-
                     <tr>
-
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-                       
                     </tr>   
-
                     <tr>
-
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-                       
                     </tr>   
-
                     <tr>
-
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-                       
                     </tr>   
-
                     <tr>
-
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-                       
                     </tr>   
-
                 </tbody>
-
                 <tfoot>
-
                     <tr>
-
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-                       
                     </tr>   
-
                 </tfoot>
-           
             </table>
-
         </section>
 
         <section id = "dadosdogamedoplayer">
-
             <h2>DADOS DO SEU JOGO</h2>
-
             <p class="Dadosdojogo"><span class="negrito">TEMPO DA PARTIDA: </span><span class = "Resultadosdadosdojogo">00:10:38</span></p>
-
             <p class="Dadosdojogo"><span class="negrito">NÍVEL DE DIFICULDADE: </span><span class = "Resultadosdadosdojogo">MÉDIO</span></p>
-
             <p class="Dadosdojogo"><span class="negrito">PONTUAÇÃO: </span><span class = "Resultadosdadosdojogo">758</span></p>
-
             <p class="Dadosdojogo"><span class="negrito">NÚMERO DE LINHAS ELIMIMINADAS: </span><span class = "Resultadosdadosdojogo">100</span></p>
-
         </section>
 
         <section id = "Minimenu01">
-
             <h2>MENU</h2>
-         
             <nav>
-
                 <p class="Menu"><a href="ranking.html"><span class="negrito">RANKING GLOBAL</span></a></p>
-
                 <p class="Menu"><a href="edicao.html"><span class="negrito">EDITAR DADOS PESSOAIS</span></a></p>
-
                 <p class="Menu"><a href="login.html"><span class="negrito">SAIR</span></a></p>
-            
             </nav>
-
         </section>
-        
     </body>
-
 </html>
