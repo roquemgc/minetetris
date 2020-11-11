@@ -39,10 +39,12 @@ function gerarTabuleiro(largura, altura){
 		}
 		tabuleiro.appendChild(linha);
 	}
-	// Constrói o tabuleiro na tela
-	div_tabuleiro.appendChild(tabuleiro);
 	// Esconde o botão inicial
 	document.getElementById("comecar-game").style.display = "none";
+	// Ajusta a opacidade do background do tabuleiro
+	document.getElementById("rt-background").style.opacity = 1
+	// Constrói o tabuleiro na tela
+	div_tabuleiro.appendChild(tabuleiro);
 }
 
 function getCelula(linha,coluna){

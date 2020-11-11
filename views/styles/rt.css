@@ -26,7 +26,7 @@ section {
 }
 
 #rolling-tetris { 
-    background-image: url("../lib/img/image.jpg");
+    /* background-image: url("../lib/img/image.jpg"); */
     background-size: 100%;
 
     margin: 0 auto;
@@ -34,17 +34,41 @@ section {
     height: 34.5em;
 
     display: flex;
+    position: relative;
+    overflow: hidden;
 
-    border: 0.8em ridge #c5c5c5;
+    border: 0.5em ridge #c5c5c5;
+}
+
+#rolling-tetris img {
+    height: auto;
+    width: 100%;
+    position: absolute;
+    opacity: 0.4;
 }
 
 
-#rolling-tetris button { 
-    height: 100px;
-    width: 250px;
+#rolling-tetris button#comecar-game {
+    height: 70px;
+    width: 300px;
     margin: auto auto;
+    padding: 10px 15px 0;
 
-    font-size: 30px;
+    z-index: 2;
+
+	color: #f2f2f2;
+    font-size: 40px;
+
+    border: 1px solid #98989a;
+    background-image: url('../lib/img/stone.jpg');
+}
+
+#rolling-tetris button#comecar-game:hover {
+    border: 2px solid #9d9d9d;
+}
+
+#rolling-tetris #tabuleiro {
+    z-index: 2;
 }
 
 #ranking-player {
