@@ -94,15 +94,18 @@ section {
     color: white;
 }
 
-#ranking-player td {
+#ranking-player tr th {
+    padding-top: 10px;
+    text-align: center;
+    border: 1px solid white;
+}
+
+#ranking-player tr td {
     border: 1px solid white;
     padding-top: 10px;
 }
  
-#ranking-player th {
-    padding-top: 10px;
-    border: 1px solid white;
-}
+
 
 
 #game-atual {

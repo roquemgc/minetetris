@@ -10,17 +10,21 @@ function verificarLarguraAltura(largura,altura){
 }
 
 function gerarTabuleiro(largura, altura){
-	verificarLarguraAltura(largura, altura);
 	var div_tabuleiro = document.getElementById("rolling-tetris");
 	var tabuleiro = document.createElement("div");
+
+	verificarLarguraAltura(largura, altura);
+
 	tabuleiro.id = "tabuleiro";
 	tabuleiro.classList.add(largura + "x" + altura);
 	tabuleiro.style.display = "grid";
 	tabuleiro.style.gridTemplateColumns = "auto";
+	
 	var grid_columns = "";
-	for(var j=0; j<largura; j++){
+	for(var j=0; j < largura; j++){
 		grid_columns += j == 0 ? "auto" : " auto";
 	}
+
 	var largura_celula = (div_tabuleiro.clientWidth / largura);
 	var altura_celula = (div_tabuleiro.clientHeight / altura);
 	for(var i = 0; i < altura; i++){
