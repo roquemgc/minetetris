@@ -1,11 +1,11 @@
 "use strict";
 
 function startGame(){
-	try{
-		gerarTabuleiro(10,20);
+	try {
 		var peca = new Peca(5);
 		gerarPeca(peca);
-	}catch(e){
+		
+	} catch(e){
 		console.log(e);
 	}
 }

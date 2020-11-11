@@ -1,206 +1,146 @@
-
-p.Menu{ 
-
-	color: #ffffff;
-	font-size: 1.5em;
-	text-align: center;
-
+h2 { 
+    text-align: center;
+    color: #262626;
+    font-size: 1.7em;		
 }
 
-p.Dadosdojogo{ 
+section {
+    width:23%;
+    position: absolute;
 
-	color: #ffffff;
-	font-size: 1.3em;
-	margin-left: 0.5em;
-	margin-top: 0.75em; 
-
+    border: 0.4em ridge #c5c5c5;
 }
 
-h2{ 
-
-	text-align: center;
-	color: #ffffff;
-	font-size: 1.7em;	
-	
-
-
+#start-container .modal-content .modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-span.sublinhado{ 
-
-	text-decoration: underline;
-
+#start-container .modal-content .modal-body button {
+    height: 100px;
+    width: 200px;
+    margin-top: 15px;
+    font-size: 30px;
 }
 
-span.italico{  
-    
-    font-style: italic;
+#rolling-tetris { 
+    background-image: url("../lib/img/image.jpg");
+    background-size: 100%;
 
+    margin: 0 auto;
+    width: 29%;
+    height: 34.5em;
 
-}
+    display: flex;
 
-span.negrito{  
-    
-    font-weight: bold;
-
+    border: 0.8em ridge #c5c5c5;
 }
 
 
-#logogame img{ 
+#rolling-tetris button { 
+    height: 100px;
+    width: 250px;
+    margin: auto auto;
 
-	width: 40vw;
- 
+    font-size: 30px;
 }
 
-#gamerollingtetris{ 
+#ranking-player {
+    background-image: url("../lib/img/images3.jpg"); 
+    background-attachment: fixed;
+    background-size: 5vw 5vh;
 
+    text-align: center;
 
-		background-image: url("../lib/img/image.jpg");
-		background-repeat: repeat;
-		background-size: 100%;
+    max-height: 12em;
+    top: 39.85em;
+    right: 3.5em;
+    padding: 5px 0;
 
-		margin: 0 auto;
-		width: 29%;
-		height: 34.5em;
-
-        border: 0.8em;
-        border-style: ridge;
-        border-color: #c5c5c5;
-
+    resize: none;
+    overflow: auto;
 }
 
-#Minimenu01{ 
+#ranking-player table {
+    width: 21.5em;
+    margin: 0 auto;
 
-	background-image: url("../lib/img/images3.jpg"); 
-	background-attachment: fixed;
-	background-size: 5vw 5vh;
-
-	width:23%;
-	height:13.5em;
-
-	position: absolute;
-	top: 27em;
-	left: 3em;
-	
-	border: 0.8em;
-	border-style: ridge;
-    border-color: #c5c5c5;
-
-	/*
-	border-radius: 0.8em;
-	border-radius: 20px;
-	*/
-
+    color: white;
 }
 
-
-a:link, a:visited{ 
-
-	text-decoration: none;
-	color: #ffffff;
-
-}
-
-a:hover{ 
-
-	text-decoration: underline; 
-	color: #000000; 
-
-}
-
-a:active{ 
-
-	color: #cc0000;
-}
-
-#gamesrankingdoplayer{
-
-	background-image: url("../lib/img/images3.jpg"); 
-	background-attachment: fixed;
-	background-size: 5vw 5vh;
-
-	width:23%;
-	height:13.5em;
-
-	text-align: center;
-
-	position: absolute;
-	top: 39.85em;
-	right: 3.5em;
-	
-	border: 0.8em;
-	border-style: ridge;
-    border-color: #c5c5c5;
-
-	/*
-	border-radius: 0.8em;
-	border-radius: 20px;
-	*/
-
-	resize: none;
-	overflow: auto;
-
-}
-
-caption{
-
-text-align: center;
-font-size: 1.7em;
-padding-bottom: 0.6em;
-
-
-}
-
-table{
-
- 	color: white;
- 	width: 21.5em;
- 		
- }
-
-td {
-
+#ranking-player td {
     border: 1px solid white;
     padding-top: 10px;
- 
-
 }
  
-th {
-
-	padding-top: 10px;
+#ranking-player th {
+    padding-top: 10px;
     border: 1px solid white;
- 
 }
 
 
-#dadosdogamedoplayer{
+#game-atual {
+    background-image: url("../lib/img/images3.jpg"); 
+    background-attachment: fixed;
+    background-size: 5vw 5vh;
 
-	background-image: url("../lib/img/images3.jpg"); 
-	background-attachment: fixed;
-	background-size: 5vw 5vh;
-
-	width:23%;
-	height:17em;
-
-
-	position: absolute;
-	top: 18.8em;
-	right: 3.5em;
-
-	border: 0.8em;
-	border-style: ridge;
-    border-color: #c5c5c5;
-
-	/*
-	border-radius: 0.8em;
-	border-radius: 20px;
-	*/
-
+    top: 18.8em;
+    right: 3.5em;
 }
 
-span.Resultadosdadosdojogo{
+#game-atual p.dado-do-jogo { 
+    color: #ffffff;
+    font-size: 1.3em;
+    margin-left: 0.5em;
+    margin-top: 0.75em; 
+}
 
-	color: #ffef00;
-	font-weight: bold;
+
+#game-atual p.dado-do-jogo { 
+    color: #ffffff;
+    font-size: 1.3em;
+    margin-left: 0.5em;
+    margin-top: 0.75em; 
+}
+
+#game-atual span.dados-do-jogo {
+    color: #ffef00;
+    font-weight: bold;
+}
+
+#game-atual span.dados-do-jogo {
+    color: #ffef00;
+    font-weight: bold;
+}
+
+#menu { 
+    background-image: url("../lib/img/images3.jpg"); 
+    background-attachment: fixed;
+    background-size: 5vw 5vh;
+
+    top: 27em;
+    left: 3em;
+}
+
+#menu .menu-item { 
+    color: #ffffff;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+
+#menu a:link, a:visited { 
+    text-decoration: none;
+    color: #ffffff;
+}
+
+#menu a:hover { 
+    text-decoration: underline; 
+    color: #000000; 
+}
+
+#menu a:active { 
+    color: #cc0000;
 }

@@ -18,7 +18,7 @@
     border-collapse: collapse;
 }
   
-#ranking-list table tr + tr {
+#ranking-list table tbody tr {
     border-bottom: 1px solid #595959;
 }
   

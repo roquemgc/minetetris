@@ -9,9 +9,9 @@ function verificarLarguraAltura(largura,altura){
 	}
 }
 
-function gerarTabuleiro(largura,altura){
-	verificarLarguraAltura(largura,altura);
-	var div_tabuleiro = document.getElementById("gamerollingtetris");
+function gerarTabuleiro(largura, altura){
+	verificarLarguraAltura(largura, altura);
+	var div_tabuleiro = document.getElementById("rolling-tetris");
 	var tabuleiro = document.createElement("div");
 	tabuleiro.id = "tabuleiro";
 	tabuleiro.classList.add(largura + "x" + altura);
@@ -19,17 +19,17 @@ function gerarTabuleiro(largura,altura){
 	tabuleiro.style.gridTemplateColumns = "auto";
 	var grid_columns = "";
 	for(var j=0; j<largura; j++){
-		grid_columns += j==0? "auto" : " auto";
+		grid_columns += j == 0 ? "auto" : " auto";
 	}
-	var largura_celula = (div_tabuleiro.clientWidth / largura) - 2;
-	var altura_celula = (div_tabuleiro.clientHeight / altura) - 2;
-	for(var i=0; i<altura; i++){
+	var largura_celula = (div_tabuleiro.clientWidth / largura);
+	var altura_celula = (div_tabuleiro.clientHeight / altura);
+	for(var i = 0; i < altura; i++){
 		var linha = document.createElement("div");
 		linha.id = "linha_" + i;
 		linha.style.display = "grid";
 		linha.style.gridTemplateColumns = grid_columns;
 		linha.style.gridTemplateRows = altura_celula;
-		for(var j=0; j<largura; j++){
+		for(var j = 0; j < largura; j++) {
 			var celula = document.createElement("div");
 			celula.id = "celula_" + i + "_" + j;
 			celula.style.width = largura_celula + "px";
@@ -39,7 +39,10 @@ function gerarTabuleiro(largura,altura){
 		}
 		tabuleiro.appendChild(linha);
 	}
+	// Constrói o tabuleiro na tela
 	div_tabuleiro.appendChild(tabuleiro);
+	// Esconde o botão inicial
+	document.getElementById("comecar-game").style.display = "none";
 }
 
 function getCelula(linha,coluna){
