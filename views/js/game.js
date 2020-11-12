@@ -10,12 +10,27 @@ function startGame(largura, altura){
 	}
 }
 
-// Detectar as teclas do usuário
-document.querySelector('body').addEventListener('keydown', function(event) {
-	console.log('teste');
-});
+// Define a função checarTecla para as teclas pressionadas no site
+document.onkeydown = checarTecla;
 
-	verificarColisao();
+function checarTecla(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+      console.log('cima')
+    }
+    else if (e.keyCode == '40') {
+			console.log('baixo')
+    }
+    else if (e.keyCode == '37') {
+      console.log('esquerda')
+    }
+    else if (e.keyCode == '39') {
+      console.log('direita')
+    }
+}
+
 
 function verificarColisao() {
 	
