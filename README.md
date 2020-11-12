@@ -1,4 +1,4 @@
-# minetetris
+# Minetetris
 Ao acessar o sistema, o usuário enxergará a tela de Login (views/login.html). Caso já possua conta, ele digitará seus dados cadastrados no sistema e será redirecionado ao Rolling Tetris (views/rt.html). 
 
 Caso ele não tenha uma conta no MineTetris, ele deverá clicar em "Criar Conta" e será redirecionado à tela de cadastro (views/cadastro.html). Onde suas informações pessoais serão preenchidas e enviadas, sendo levado à página do Rolling Tetris.
