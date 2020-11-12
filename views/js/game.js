@@ -3,12 +3,12 @@
 function startGame(largura, altura){
 	try {
 		var tabuleiro = getMatrizVaziaTabuleiro(largura,altura);
-    var peca = new Peca(tabuleiro,2);
+    	var peca = new Peca(tabuleiro,4);
     
 		addPecaNaMatrizTabuleiro(tabuleiro,peca,1);
-    printarTabuleiro(tabuleiro);
+   		printarTabuleiro(tabuleiro);
     
-    document.onkeydown = function(){checarTecla(tabuleiro,peca);};
+    	document.onkeydown = function(){checarTecla(tabuleiro,peca);};
     
 	} catch(error){
 		console.log(error);
