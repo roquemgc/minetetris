@@ -21,9 +21,20 @@ function getMatrizVaziaTabuleiro(largura,altura){
 	return tabuleiro;
 }
 
-function gerarTabuleiro(largura, altura){
+function posicaoTemPeca(matriz_tabuleiro,linha,coluna){
+	return matriz_tabuleiro[linha][coluna] != 0;
+}
+
+function printarTabuleiro(matriz_tabuleiro){
+
+	var altura = getAlturaTabuleiro(matriz_tabuleiro);
+	var largura = getLarguraTabuleiro(matriz_tabuleiro);
 	var div_tabuleiro = document.getElementById("rolling-tetris");
-	var tabuleiro = document.createElement("div");
+	var tabuleiro = document.getElementById('tabuleiro');
+	if(tabuleiro != null){
+		div_tabuleiro.removeChild(tabuleiro);	
+	}
+	tabuleiro = document.createElement("div");
 
 	tabuleiro.id = "tabuleiro";
 	tabuleiro.classList.add(largura + "x" + altura);
@@ -37,7 +48,7 @@ function gerarTabuleiro(largura, altura){
 
 	var largura_celula = (div_tabuleiro.clientWidth / largura);
 	var altura_celula = (div_tabuleiro.clientHeight / altura);
-	for(var i = 0; i < altura; i++){
+	for(var i = (altura-1); i >= 0; i--){
 		var linha = document.createElement("div");
 		linha.id = "linha_" + i;
 		linha.style.display = "grid";
@@ -49,6 +60,9 @@ function gerarTabuleiro(largura, altura){
 			celula.style.width = largura_celula + "px";
 			celula.style.height = altura_celula + "px";
 			celula.style.border = "1px solid black";
+			if(posicaoTemPeca(matriz_tabuleiro,i,j)){
+				setCelulaPecaBackground(celula);
+			}
 			linha.appendChild(celula);
 		}
 		tabuleiro.appendChild(linha);
@@ -85,14 +99,10 @@ function getTabuleiro(){
 	return tabuleiro;
 }
 
-function getLarguraTabuleiro(){
-	var tabuleiro = getTabuleiro();
-	var largura = parseInt((tabuleiro.classList[0].split("x"))[0]);
-	return largura;
+function getLarguraTabuleiro(matriz_tabuleiro){
+	return matriz_tabuleiro[0].length;
 }
 
-function getAlturaTabuleiro(){
-	var tabuleiro = getTabuleiro();
-	var altura = parseInt((tabuleiro.classList[0].split("x"))[1]);
-	return altura;
+function getAlturaTabuleiro(matriz_tabuleiro){
+	return matriz_tabuleiro.length;
 }
