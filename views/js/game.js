@@ -11,7 +11,7 @@ function startGame(largura, altura){
 	}
 }
 
-// Define a função checarTecla para as teclas pressionadas no site
+// Define a função checarTecla para quando houver teclas pressionadas
 document.onkeydown = checarTecla;
 
 function checarTecla(e) {
@@ -43,5 +43,5 @@ function verificarColisao() {
 function aumentarPontuacao(linhaRemovidas) {
   var elemPontuacao = document.getElementById("pontuacao")
   
-  elemPontuacao.innerText = parseInt(elemPontuacao.value) + (linhaRemovidas * 10) + (10 * linhaRemovidas -1)
+  elemPontuacao.innerText = parseInt(elemPontuacao.value) + ((linhaRemovidas * 10) + (10 * linhaRemovidas -1))
 }
