@@ -26,12 +26,9 @@ section {
 }
 
 #rolling-tetris { 
-    /* background-image: url("../lib/img/image.jpg"); */
-    background-size: 100%;
-
     margin: 0 auto;
-    width: 29%;
-    height: 34.5em;
+    width: 24%;
+    height: 40em;
 
     display: flex;
     position: relative;
@@ -50,7 +47,7 @@ section {
 
 #rolling-tetris button#comecar-game {
     height: 70px;
-    width: 300px;
+    width: 250px;
     margin: auto auto;
     padding: 10px 15px 0;
 
@@ -105,8 +102,6 @@ section {
     padding-top: 10px;
 }
  
-
-
 
 #game-atual {
     background-image: url("../lib/img/images3.jpg"); 

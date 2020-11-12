@@ -3,5 +3,5 @@
 function aumentarPontuacao(linhaRemovidas) {
   var elemPontuacao = document.getElementById("pontuacao")
   
-  elemPontuacao.innerText = parseInt(elemPontuacao) + linhaRemovidas * 100
+  elemPontuacao.innerText = parseInt(elemPontuacao.value) + (linhaRemovidas * 10) + (10 * linhaRemovidas -1)
 }
