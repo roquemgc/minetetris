@@ -6,7 +6,7 @@ class Peca{
 		}else{
 			throw "Tipo inválido de peça\nclass Peca - Peca.js";
 		}
-		set_celula_referencia();
+		this.set_celula_referencia();
 		this._direcao = 1;
 	}
 

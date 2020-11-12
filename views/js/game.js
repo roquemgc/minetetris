@@ -4,8 +4,7 @@ function startGame(largura,altura){
 	try {
 		gerarTabuleiro(largura,altura);
 		var peca = new Peca(5);
-		gerarPeca(peca);
-		
+		printarPeca(peca);
 	} catch(e){
 		console.log(e);
 	}
