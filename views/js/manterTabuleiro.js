@@ -26,7 +26,6 @@ function posicaoTemPeca(matriz_tabuleiro,linha,coluna){
 }
 
 function printarTabuleiro(matriz_tabuleiro){
-
 	var altura = getAlturaTabuleiro(matriz_tabuleiro);
 	var largura = getLarguraTabuleiro(matriz_tabuleiro);
 	var div_tabuleiro = document.getElementById("rolling-tetris");
@@ -105,4 +104,27 @@ function getLarguraTabuleiro(matriz_tabuleiro){
 
 function getAlturaTabuleiro(matriz_tabuleiro){
 	return matriz_tabuleiro.length;
+}
+
+function addPecaNaMatrizTabuleiro(matriz_tabuleiro,peca,tipo_presenca){
+	if(!(Peca.isPecaObj(peca))){
+		throw "'peca' não é um objeto da classe 'Peca'\nfunction 'addPecaNaMatrizTabuleiro' - manterTabuleiro.js";
+	}
+	if(tipo_presenca<1 || tipo_presenca>3){
+		throw "'tipo_presenca' inválido\nfunction 'addPecaNaMatrizTabuleiro' - manterTabuleiro.js";
+	}
+	for(var i = 0; i < peca.coordenadas_preenchidas.length; i++){
+		var coordenada = peca.coordenadas_preenchidas[i];
+		matriz_tabuleiro[coordenada[0]][coordenada[1]] = tipo_presenca;
+	}
+}
+
+function removePecaNaMatrizTabuleiro(matriz_tabuleiro,peca){
+	if(!(Peca.isPecaObj(peca))){
+		throw "'peca' não é um objeto da classe 'Peca'\nfunction 'removePecaNaMatrizTabuleiro' - manterTabuleiro.js";
+	}
+	for(var i = 0; i < peca.coordenadas_preenchidas.length; i++){
+		var coordenada = peca.coordenadas_preenchidas[i];
+		matriz_tabuleiro[coordenada[0]][coordenada[1]] = 0;
+	}	
 }

@@ -2,36 +2,60 @@
 
 function startGame(largura, altura){
 	try {
-    printarTabuleiro(largura, altura);
-    
-		var peca = new Peca(5);
-		printarPeca(peca);
+		var tabuleiro = getMatrizVaziaTabuleiro(largura,altura);
+		var peca = new Peca(tabuleiro,2);
+		addPecaNaMatrizTabuleiro(tabuleiro,peca,1);
+		printarTabuleiro(tabuleiro);
+		document.onkeydown = function(){checarTecla(tabuleiro,peca);};
 	} catch(e){
 		console.log(e);
 	}
 }
 
 // Define a função checarTecla para as teclas pressionadas no site
-document.onkeydown = checarTecla;
+//document.onkeydown = checarTecla;
 
-function checarTecla(e) {
+function checarTecla(tabuleiro,peca) {
+	if(!(Peca.isPecaObj(peca))){
+		throw "'peca' não é um objeto da classe 'Peca'\nfunction 'checarTecla' - game.js";
+	}
+    var e = e || window.event;
+    if(e.keyCode == '37' || e.keyCode == '38' || e.keyCode == '39' || e.keyCode == '40'){
+    	moverPeca(tabuleiro,peca,e.keyCode);
+    }
+}
 
-    e = e || window.event;
-    // 38 = seta pra cima
-    if (e.keyCode == '38') {
-      girarPeca();
+function moverPeca(tabuleiro,peca,keyCode){
+	if (keyCode == '38') {
+    	// Cima
+    	removePecaNaMatrizTabuleiro(tabuleiro,peca);
+    	peca.girar();
+    	addPecaNaMatrizTabuleiro(tabuleiro,peca,1);
+    	printarTabuleiro(tabuleiro);
     }
-    // 40 = seta pra baixo
-    else if (e.keyCode == '40') {
-			acelerarPeca();
+    else if (keyCode == '40') {
+    	// Baixo
+    	removePecaNaMatrizTabuleiro(tabuleiro,peca);
+    	peca.moverBaixo();
+    	addPecaNaMatrizTabuleiro(tabuleiro,peca,1);
+    	printarTabuleiro(tabuleiro);
     }
-    // 37 = seta pra esquerda
-    else if (e.keyCode == '37') {
-      moverPecaPraEsquerda();
+    else if (keyCode == '37') {
+      	// Esquerda
+		removePecaNaMatrizTabuleiro(tabuleiro,peca);
+		peca.moverEsquerda();
+		addPecaNaMatrizTabuleiro(tabuleiro,peca,1);
+		printarTabuleiro(tabuleiro);
     }
-    // 39 = seta pra direita
-    else if (e.keyCode == '39') {
-      moverpecaPecaPraDireita();
+    else if (keyCode == '39') {
+    	// Direita
+    	removePecaNaMatrizTabuleiro(tabuleiro,peca);
+    	peca.moverDireita();
+    	addPecaNaMatrizTabuleiro(tabuleiro,peca,1);
+    	printarTabuleiro(tabuleiro);
+    }
+    else{
+    	throw "'keyCode' inválido 'Peca'\nfunction 'moverPeca' - game.js";	
     }
 }
 
