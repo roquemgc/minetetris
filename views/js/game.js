@@ -1,7 +1,8 @@
 "use strict";
 
-function startGame(){
+function startGame(largura,altura){
 	try {
+		gerarTabuleiro(largura,altura);
 		var peca = new Peca(5);
 		gerarPeca(peca);
 		
