@@ -2,14 +2,20 @@
 
 function startGame(largura, altura){
 	try {
-		var tabuleiro = getMatrizVaziaTabuleiro(largura,altura);
-    var peca = new Peca(tabuleiro,2);
+    var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
+    // Gera um integer entre 1 e 5 = Math.floor(Math.random() * 6) + 1
+    var peca = new Peca(tabuleiro, 1);
     
-		addPecaNaMatrizTabuleiro(tabuleiro,peca,1);
+		addPecaNaMatrizTabuleiro(tabuleiro, peca, 1);
     printarTabuleiro(tabuleiro);
     
-    document.onkeydown = function(){checarTecla(tabuleiro,peca);};
-    
+    document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
+
+    // Chama a função peca.moverBaixo(), passando a peca e o tabuleiro
+    setInterval(() => {
+      moverPeca(tabuleiro, peca, 40);
+    }, 1000);	
+
 	} catch(error){
 		console.log(error);
 	}
@@ -26,7 +32,8 @@ function checarTecla(tabuleiro, peca) {
     }
 }
 
-function moverPeca(tabuleiro,peca,keyCode){
+
+function moverPeca(tabuleiro, peca, keyCode){
 	if (keyCode == '38') {
     	// Cima
     	removePecaNaMatrizTabuleiro(tabuleiro,peca);
@@ -58,11 +65,6 @@ function moverPeca(tabuleiro,peca,keyCode){
     else{
     	throw "'keyCode' inválido 'Peca'\nfunction 'moverPeca' - game.js";	
     }
-}
-
-function verificarColisao() {
-	
-	gerarPeca(peca);
 }
 
 function aumentarPontuacao(linhaRemovidas) {
