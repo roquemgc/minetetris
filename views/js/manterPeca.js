@@ -3,3 +3,11 @@
 function girarPeca() {
 
 }
+
+function moverPecaPraEsquerda() {
+
+}
+
+function moverpecaPecaPraDireita() {
+  
+}

@@ -2,7 +2,7 @@
 
 function startGame(largura, altura){
 	try {
-		gerarTabuleiro(largura, altura);
+		printarTabuleiro(largura, altura);
 		var peca = new Peca(5);
 		printarPeca(peca);
 	} catch(e){
@@ -35,4 +35,10 @@ function checarTecla(e) {
 function verificarColisao() {
 	
 	gerarPeca(peca);
+}
+
+function aumentarPontuacao(linhaRemovidas) {
+  var elemPontuacao = document.getElementById("pontuacao")
+  
+  elemPontuacao.innerText = parseInt(elemPontuacao.value) + (linhaRemovidas * 10) + (10 * linhaRemovidas -1)
 }
