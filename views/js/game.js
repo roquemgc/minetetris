@@ -3,25 +3,26 @@
 function startGame(largura, altura){
 	try {
 		var tabuleiro = getMatrizVaziaTabuleiro(largura,altura);
-		var peca = new Peca(tabuleiro,2);
+    var peca = new Peca(tabuleiro,2);
+    
 		addPecaNaMatrizTabuleiro(tabuleiro,peca,1);
-		printarTabuleiro(tabuleiro);
-		document.onkeydown = function(){checarTecla(tabuleiro,peca);};
-	} catch(e){
-		console.log(e);
+    printarTabuleiro(tabuleiro);
+    
+    document.onkeydown = function(){checarTecla(tabuleiro,peca);};
+    
+	} catch(error){
+		console.log(error);
 	}
 }
 
-// Define a função checarTecla para quando houver teclas pressionadas
-document.onkeydown = checarTecla;
-
-function checarTecla(tabuleiro,peca) {
+function checarTecla(tabuleiro, peca) {
 	if(!(Peca.isPecaObj(peca))){
 		throw "'peca' não é um objeto da classe 'Peca'\nfunction 'checarTecla' - game.js";
 	}
     var e = e || window.event;
     if(e.keyCode == '37' || e.keyCode == '38' || e.keyCode == '39' || e.keyCode == '40'){
-    	moverPeca(tabuleiro,peca,e.keyCode);
+      e.preventDefault();
+    	moverPeca(tabuleiro, peca, e.keyCode);
     }
 }
 
