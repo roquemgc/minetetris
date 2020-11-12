@@ -2,7 +2,8 @@
 
 function startGame(largura, altura){
 	try {
-		printarTabuleiro(largura, altura);
+    printarTabuleiro(largura, altura);
+    
 		var peca = new Peca(5);
 		printarPeca(peca);
 	} catch(e){
