@@ -183,6 +183,41 @@ class Peca{
 				}
 				break;
 
+			case 6:
+				if(this._direcao==1 || this._direcao==3){
+					for(var i=linha_inicial; i>(linha_inicial-2); i--){
+						for(var j=coluna_inicial; j<(coluna_inicial+3); j++){
+							if(!(this._direcao==1 && i==linha_inicial && j==coluna_inicial+1) &&
+								!(this._direcao==3 && i==linha_inicial-1 && j==coluna_inicial+1)){
+								var coordenada = Array();
+								coordenada.push(i);
+								coordenada.push(j);
+								this._coordenadas_preenchidas.push(coordenada);
+							}
+						}
+					}
+				}else{
+					for(var i=linha_inicial; i>(linha_inicial-3); i--){
+						for(var j=coluna_inicial; j<(coluna_inicial+2); j++){
+							if(!(this._direcao==2 && i==linha_inicial-1 && j==coluna_inicial+1) &&
+								!(this._direcao==4 && i==linha_inicial-1 && j==coluna_inicial)){
+								var coordenada = Array();
+								coordenada.push(i);
+								coordenada.push(j);
+								this._coordenadas_preenchidas.push(coordenada);
+							}
+						}
+					}
+				}
+				break;
+
+			case 7:
+				var coordenada = Array();
+				coordenada.push(linha_inicial);
+				coordenada.push(coluna_inicial);
+				this._coordenadas_preenchidas.push(coordenada);
+				break;
+
 		}
 	}
 
