@@ -6,8 +6,39 @@ class Peca{
 		}else{
 			throw "Tipo inválido de peça\nclass Peca - Peca.js";
 		}
-		this._celula_referencia = null;
+		this.set_celula_referencia();
 		this._direcao = 1;
+	}
+
+	set_celula_referencia(){
+		var coluna_aleatoria = Math.floor(Math.random() * getLarguraTabuleiro());
+		if(coluna_aleatoria == getLarguraTabuleiro()){
+			coluna_aleatoria --;
+		}
+		if(this._tipo == 2 || this._tipo == 3 || this._tipo == 5){
+			if(coluna_aleatoria == (getLarguraTabuleiro()-1)){
+				coluna_aleatoria = getLarguraTabuleiro()-2;
+			}else{
+				if(this._tipo == 5){
+					if(coluna_aleatoria == 0){
+						coluna_aleatoria = 1;
+					}
+				}
+			}
+		}else{
+			if(this._tipo == 4){
+				if(coluna_aleatoria == 0){
+					coluna_aleatoria = 1;
+				}
+			}else{
+				if(this._tipo = 6){
+					if(coluna_aleatoria >= (getLarguraTabuleiro()-2)){
+						coluna_aleatoria = getLarguraTabuleiro()-3;
+					}
+				}
+			}
+		}
+		this._celula_referencia = getCelula(0,coluna_aleatoria);
 	}
 
 	get tipo(){
@@ -20,10 +51,6 @@ class Peca{
 		//	6 = barco
 		//	7 = especial
 		return this._tipo;
-	}
-
-	set celula_referencia(celula){
-		this._celula_referencia = celula;
 	}
 
 	get celula_referencia(){
