@@ -3,7 +3,7 @@
 function startGame(largura, altura){
 	try {
 		var tabuleiro = getMatrizVaziaTabuleiro(largura,altura);
-    	var peca = new Peca(tabuleiro,4);
+    	var peca = new Peca(tabuleiro,5);
     
 		addPecaNaMatrizTabuleiro(tabuleiro,peca,1);
    		printarTabuleiro(tabuleiro);
