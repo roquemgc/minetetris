@@ -22,12 +22,19 @@ class Peca{
 		return this._tipo;
 	}
 
+	set celula_referencia(celula){
+		this._celula_referencia = celula;
+	}
+
 	get celula_referencia(){
 		return this._celula_referencia;
 	}
 
-	set celula_referencia(celula){
-		this._celula_referencia = celula;
+	mudaDirecao(){
+		this._direcao ++;
+		if(this._direcao > 4){
+			this._direcao = 1;
+		}
 	}
 
 	get direcao(){
@@ -47,10 +54,4 @@ class Peca{
 		return ret;
 	}
 
-	mudaDirecao(){
-		this._direcao ++;
-		if(this._direcao > 4){
-			this._direcao = 1;
-		}
-	}
 }
