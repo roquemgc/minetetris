@@ -2,6 +2,7 @@
 
 function startGame(largura, altura){
 	try {
+	tempo();
     var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
     // Gera um integer entre 1 e 5 = Math.floor(Math.random() * 6) + 1
     var peca = new Peca(tabuleiro, 1);
@@ -11,14 +12,32 @@ function startGame(largura, altura){
     
     document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
 
+	var velocidade = 1000;
     // Chama a função peca.moverBaixo(), passando a peca e o tabuleiro
     setInterval(() => {
       moverPeca(tabuleiro, peca, 40);
-    }, 1000);	
+    }, velocidade);	
 
 	} catch(error){
 		console.log(error);
 	}
+}
+
+function tempo(){
+        
+    const segundo = 1000;
+    const minuto = segundo * 60;
+    const hora = minuto * 60;
+    const inicio = Date.now();
+
+    setInterval(function(){
+        const agora = Date.now() - inicio;
+
+        var minutos = Math.floor((agora % hora) / minuto);
+        var segundos = Math.floor((agora % minuto) / segundo);
+
+    document.getElementById("tempo_partida").innerHTML = minutos + "m : " + segundos + "s";
+    }, 1000);
 }
 
 function checarTecla(tabuleiro, peca) {
