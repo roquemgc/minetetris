@@ -3,6 +3,8 @@
 function startGame(largura, altura){
 	try {
 	tempo();
+	var dif = 1;
+	document.getElementById("nivel_dificuldade").innerHTML = dif;
     var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
     // Gera um integer entre 1 e 5 = Math.floor(Math.random() * 6) + 1
     var peca = new Peca(tabuleiro, 1);
@@ -90,4 +92,14 @@ function aumentarPontuacao(linhaRemovidas) {
   var elemPontuacao = document.getElementById("pontuacao")
   
   elemPontuacao.innerText = parseInt(elemPontuacao.value) + ((linhaRemovidas * 10) + (10 * linhaRemovidas -1))
+	dificuldade();
+}
+
+function dificuldade() {
+	dif = elemPontuacao / 300;
+	velocidade = (-50) * dif;
+	if (velocidade < 10) {
+		velocidade = 10;
+	}
+	document.getElementById("nivel_dificuldade").innerHTML = dif;
 }
