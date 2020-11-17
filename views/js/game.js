@@ -2,23 +2,22 @@
 
 function startGame(largura, altura){
 	try {
-    var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
-    // Gera um integer entre 1 e 5 = Math.floor(Math.random() * 6) + 1
-    var peca = new Peca(tabuleiro, 1);
-    
-		addPecaNaMatrizTabuleiro(tabuleiro, peca, 1);
-    printarTabuleiro(tabuleiro);
-    
-    document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
+        var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
+        // Gera um integer entre 1 e 5 = Math.floor(Math.random() * 6) + 1
+        var peca = new Peca(tabuleiro, 1);
+        
+    	addPecaNaMatrizTabuleiro(tabuleiro, peca, 1);
+        printarTabuleiro(tabuleiro);
+        
+        document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
 
-		temporizador();
+    	temporizador();
 
-		var delayQueda = 1000;
-    // Chama a função peca.moverBaixo() em intervalos de 1000 milisegundos
-    setInterval(() => {
-      moverPeca(tabuleiro, peca, 40);
-    }, delayQueda);	
-
+    	var delayQueda = 1000;
+        // Chama a função peca.moverBaixo() em intervalos de 1000 milisegundos
+        setInterval(() => {
+            moverPeca(tabuleiro, peca, 40);
+        }, delayQueda);	
 	} catch(error){
 		console.log(error);
 	}
@@ -33,11 +32,9 @@ function temporizador(){
 
     setInterval(function(){
         const agora = Date.now() - inicio;
-
         var minutos = Math.floor((agora % hora) / minuto);
         var segundos = Math.floor((agora % minuto) / segundo);
-
-    document.getElementById("tempo_partida").innerHTML = minutos + "m : " + segundos + "s";
+        document.getElementById("tempo_partida").innerHTML = minutos + "m : " + segundos + "s";
     }, 1000);
 }
 

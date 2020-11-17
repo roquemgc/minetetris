@@ -249,20 +249,42 @@ class Peca{
 	moverDireita(){
 		var linha_inicial = this._coordenadas_preenchidas[0][0];
 		var coluna_inicial = this._coordenadas_preenchidas[0][1] + 1;
-		this.apagarCoordenadas();
-		this.preecherCoordenadas(linha_inicial,coluna_inicial);
+		var verificador = false;
+		switch(this._tipo){
+
+			case 1:
+				if(this._direcao == 1){
+					if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-1)){
+						verificador = true;
+					}
+				}else{
+					if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-4)){
+						verificador = true;
+					}
+				}
+		}
+		if(verificador){
+			this.apagarCoordenadas();
+			this.preecherCoordenadas(linha_inicial,coluna_inicial);
+		}
 	}
 
 	moverEsquerda(){
 		var linha_inicial = this._coordenadas_preenchidas[0][0];
 		var coluna_inicial = this._coordenadas_preenchidas[0][1] - 1;
-		this.apagarCoordenadas();
-		this.preecherCoordenadas(linha_inicial,coluna_inicial);
+		if(coluna_inicial >= 0){
+			this.apagarCoordenadas();
+			this.preecherCoordenadas(linha_inicial,coluna_inicial);
+		}
 	}
 
 	moverBaixo(){
 		var linha_inicial = this._coordenadas_preenchidas[0][0] - 1;
 		var coluna_inicial = this._coordenadas_preenchidas[0][1];
+		if(linha_inicial >= 0){
+			this.apagarCoordenadas();
+			this.preecherCoordenadas(linha_inicial,coluna_inicial);
+		}
 		this.apagarCoordenadas();
 		this.preecherCoordenadas(linha_inicial,coluna_inicial);
 	}
