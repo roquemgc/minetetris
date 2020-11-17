@@ -9,12 +9,12 @@ function verificarLarguraAltura(largura,altura){
 	}
 }
 
-function getMatrizVaziaTabuleiro(largura,altura){
+function getMatrizVaziaTabuleiro(largura, altura){
 	verificarLarguraAltura(largura, altura);
 	var tabuleiro = new Array(altura);
-	for(var i=0; i<altura; i++){
+	for(var i = 0; i < altura; i++){
 		tabuleiro[i] = new Array(largura);
-		for(var j=0; j<largura; j++){
+		for(var j = 0; j < largura; j++){
 			tabuleiro[i][j] = 0;
 		}
 	}

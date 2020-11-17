@@ -2,9 +2,6 @@
 
 function startGame(largura, altura){
 	try {
-	tempo();
-	var dif = 1;
-	document.getElementById("nivel_dificuldade").innerHTML = dif;
     var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
     // Gera um integer entre 1 e 5 = Math.floor(Math.random() * 6) + 1
     var peca = new Peca(tabuleiro, 1);
@@ -14,18 +11,20 @@ function startGame(largura, altura){
     
     document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
 
-	var velocidade = 1000;
-    // Chama a função peca.moverBaixo(), passando a peca e o tabuleiro
+		temporizador();
+
+		var delayQueda = 1000;
+    // Chama a função peca.moverBaixo() em intervalos de 1000 milisegundos
     setInterval(() => {
       moverPeca(tabuleiro, peca, 40);
-    }, velocidade);	
+    }, delayQueda);	
 
 	} catch(error){
 		console.log(error);
 	}
 }
 
-function tempo(){
+function temporizador(){
         
     const segundo = 1000;
     const minuto = segundo * 60;
@@ -92,14 +91,14 @@ function aumentarPontuacao(linhaRemovidas) {
   var elemPontuacao = document.getElementById("pontuacao")
   
   elemPontuacao.innerText = parseInt(elemPontuacao.value) + ((linhaRemovidas * 10) + (10 * linhaRemovidas -1))
-	dificuldade();
+	aumentarDificuldade();
 }
 
-function dificuldade() {
+function aumentarDificuldade() {
 	dif = elemPontuacao / 300;
-	velocidade = (-50) * dif;
-	if (velocidade < 10) {
-		velocidade = 10;
+	delayQueda = (-50) * dif;
+	if (delayQueda < 10) {
+		delayQueda = 10;
 	}
-	document.getElementById("nivel_dificuldade").innerHTML = dif;
+	document.getElementById("nivel-dificuldade").innerHTML = dif;
 }
