@@ -251,22 +251,139 @@ class Peca{
 		var coluna_inicial = this._coordenadas_preenchidas[0][1] + 1;
 		var verificador = false;
 		switch(this._tipo){
-
 			case 1:
-				if(this._direcao == 1){
-					if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-1)){
-						verificador = true;
-					}
-				}else{
-					if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-4)){
-						verificador = true;
-					}
-				}
+				verificador = this.podeMoverDireitaPeca1(coluna_inicial);
+				break;
+			case 2:
+				verificador = this.podeMoverDireitaPeca2(coluna_inicial);
+				break;
+			case 3:
+				verificador = this.podeMoverDireitaPeca3(coluna_inicial);
+				break;
+			case 4:
+				verificador = this.podeMoverDireitaPeca4(coluna_inicial);
+				break;
+			case 5:
+				verificador = this.podeMoverDireitaPeca5(coluna_inicial);
+				break;
+			case 6:
+				verificador = this.podeMoverDireitaPeca6(coluna_inicial);
+				break;
+			case 7:
+				verificador = this.podeMoverDireitaPeca7(coluna_inicial);
+				break;
+			default:
+				verificador = false;
+				break;
 		}
 		if(verificador){
 			this.apagarCoordenadas();
 			this.preecherCoordenadas(linha_inicial,coluna_inicial);
 		}
+	}
+
+	podeMoverDireitaPeca1(coluna_inicial){
+		var verificador = false;
+		if(this._direcao == 1 || this._direcao == 3){
+			if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-1)){
+				verificador = true;
+			}
+		}else{
+			if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-4)){
+				verificador = true;
+			}
+		}
+		return verificador;
+	}
+
+	podeMoverDireitaPeca2(coluna_inicial){
+		var verificador = false;
+		if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-2)){
+			verificador = true;
+		}
+		return verificador;
+	}
+
+	podeMoverDireitaPeca3(coluna_inicial){
+		var verificador = false;
+		if(this._direcao == 2 || this._direcao == 4){
+			if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-3)){
+				verificador = true;
+			}
+		}else{
+			if(this._direcao == 1){
+				if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-2)){
+					verificador = true;
+				}
+			}else{
+				if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-1)){
+					verificador = true;
+				}
+			}
+		}
+		return verificador;
+	}
+
+	podeMoverDireitaPeca4(coluna_inicial){
+		var verificador = false;
+		if(this._direcao == 2 || this._direcao == 4){
+			if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-3)){
+				verificador = true;
+			}
+		}else{
+			if(this._direcao == 1){
+				if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-1)){
+					verificador = true;
+				}
+			}else{
+				if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-2)){
+					verificador = true;
+				}
+			}
+		}
+		return verificador;
+	}
+
+	podeMoverDireitaPeca5(coluna_inicial){
+		var verificador = false;
+		if(this._direcao == 1 || this._direcao == 3){
+			if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-3)){
+				verificador = true;
+			}
+		}else{
+			if(this._direcao == 2){
+				if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-2)){
+					verificador = true;
+				}
+			}else{
+				if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-1)){
+					verificador = true;
+				}
+			}	
+		}
+		return verificador;
+	}
+
+	podeMoverDireitaPeca6(coluna_inicial){
+		var verificador = false;
+		if(this._direcao == 1 || this._direcao == 3){
+			if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-3)){
+				verificador = true;
+			}
+		}else{
+			if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-2)){
+				verificador = true;
+			}
+		}
+		return verificador;
+	}
+
+	podeMoverDireitaPeca7(coluna_inicial){
+		var verificador = false;
+		if(coluna_inicial <= (getLarguraTabuleiro(this._matriz_tabuleiro)-1)){
+			verificador = true;
+		}
+		return verificador;
 	}
 
 	moverEsquerda(){
