@@ -10,8 +10,7 @@ class Peca{
 		// Gera direcao aleatoria
 		this._direcao = Math.floor(Math.random() * 4) + 1;
 		this._coordenadas_preenchidas = new Array();
-		var coluna_aleatoria = this.gerarColunaAleatoria();
-		this.preecherCoordenadas((getAlturaTabuleiro(this._matriz_tabuleiro)-1),coluna_aleatoria);
+		this.preecherCoordenadas((getAlturaTabuleiro(this._matriz_tabuleiro)-1),this.gerarColunaAleatoria());
 	}
 
 	get matriz_tabuleiro(){
@@ -424,10 +423,6 @@ class Peca{
 			this.apagarCoordenadas();
 			this.preecherCoordenadas(linha_inicial,coluna_inicial);
 		}
-	}
-
-	podeMoverEsquerdaPeca3(){
-
 	}
 
 	moverBaixo(){
