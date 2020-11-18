@@ -89,6 +89,9 @@ class Peca{
 				this._coordenadas_preenchidas.push(coordenada);
 			}
 		}else{
+			if(coluna_inicial > (largura-4)){
+				coluna_inicial = largura - 4;
+			}
 			for(var j=coluna_inicial; j<(coluna_inicial+4); j++){
 				var coordenada = Array();
 				coordenada.push(linha_inicial);
@@ -115,6 +118,9 @@ class Peca{
 		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
 		if(this._direcao == 1 || this._direcao == 3){
+			if(this._direcao == 3 && coluna_inicial == 0){
+				coluna_inicial = 1;
+			}
 			for(var i=linha_inicial; i>(linha_inicial-3); i--){
 				var coordenada = Array();
 				coordenada.push(i);
@@ -129,6 +135,9 @@ class Peca{
 				}
 			}
 		}else{
+			if(coluna_inicial > (largura - 3)){
+				coluna_inicial = largura - 3;
+			}
 			for(var j=coluna_inicial; j<(coluna_inicial+3); j++){
 				coordenada = Array();
 				coordenada.push(linha_inicial);
@@ -149,6 +158,9 @@ class Peca{
 		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
 		if(this._direcao == 1 || this._direcao == 3){
+			if(this._direcao == 1 && coluna_inicial == 0){
+				coluna_inicial = 1;
+			}
 			for(var i=linha_inicial; i>(linha_inicial-3); i--){
 				var coordenada = Array();
 				coordenada.push(i);
@@ -163,6 +175,9 @@ class Peca{
 				}
 			}
 		}else{
+			if(coluna_inicial > (largura-3)){
+				coluna_inicial = largura - 3;
+			}
 			for(var j=coluna_inicial; j<(coluna_inicial+3); j++){
 				coordenada = Array();
 				coordenada.push(linha_inicial);
@@ -183,6 +198,9 @@ class Peca{
 		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
 		if(this._direcao == 1 || this._direcao == 3){
+			if(coluna_inicial > (largura-3)){
+				coluna_inicial = largura - 3;
+			}
 			if(this._direcao==1 && linha_inicial==(altura-1)){
 				linha_inicial--;
 			}
@@ -200,6 +218,9 @@ class Peca{
 				}
 			}
 		}else{
+			if(this._direcao == 4 && coluna_inicial == 0){
+				coluna_inicial = 1;
+			}
 			for(var i=linha_inicial; i<(linha_inicial+3); i++){
 				var coordenada = Array();
 				coordenada.push(i);
@@ -220,6 +241,9 @@ class Peca{
 		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
 		if(this._direcao==1 || this._direcao==3){
+			if(coluna_inicial > (largura-3)){
+				coluna_inicial = largura - 3;
+			}
 			for(var i=linha_inicial; i>(linha_inicial-2); i--){
 				for(var j=coluna_inicial; j<(coluna_inicial+3); j++){
 					if(!(this._direcao==1 && i==linha_inicial && j==coluna_inicial+1) &&

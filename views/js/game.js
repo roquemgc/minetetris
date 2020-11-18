@@ -4,7 +4,7 @@ function startGame(largura, altura){
 	try {
         var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
         // Gera um integer entre 1 e 5 = Math.floor(Math.random() * 6) + 1
-        var peca = new Peca(tabuleiro, 5);
+        var peca = new Peca(tabuleiro, 6);
         
     	addPecaNaMatrizTabuleiro(tabuleiro, peca, 1);
         printarTabuleiro(tabuleiro);
