@@ -4,7 +4,7 @@ function startGame(largura, altura){
 	try {
         var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
         // Gera um integer entre 1 e 5 = Math.floor(Math.random() * 6) + 1
-        var peca = new Peca(tabuleiro, 1);
+        var peca = gerarPecaAleatoria(tabuleiro);
         
     	addPecaNaMatrizTabuleiro(tabuleiro, peca, 1);
         printarTabuleiro(tabuleiro);
@@ -21,6 +21,11 @@ function startGame(largura, altura){
 	} catch(error){
 		console.log(error);
 	}
+}
+
+function gerarPecaAleatoria(tabuleiro){
+    var tipo_aleatorio = Math.floor(Math.random() * 7) + 1;
+    return new Peca(tabuleiro,tipo_aleatorio);
 }
 
 function temporizador(){

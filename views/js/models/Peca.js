@@ -7,7 +7,8 @@ class Peca{
 		}else{
 			throw "Tipo inválido de peça\nclass Peca - Peca.js";
 		}
-		this._direcao = 1;
+		// Gera direcao aleatoria
+		this._direcao = Math.floor(Math.random() * 4) + 1;
 		this._coordenadas_preenchidas = new Array();
 		var coluna_aleatoria = this.gerarColunaAleatoria();
 		this.preecherCoordenadas((getAlturaTabuleiro(this._matriz_tabuleiro)-1),coluna_aleatoria);
@@ -127,6 +128,9 @@ class Peca{
 				}
 			}
 		}else{
+			if(this._direcao == 4 && linha_inicial == (altura-1)){
+				linha_inicial = altura - 2;
+			}
 			if(coluna_inicial > (largura - 3)){
 				coluna_inicial = largura - 3;
 			}
@@ -155,6 +159,9 @@ class Peca{
 				}
 			}
 		}else{
+			if(this._direcao == 2 && linha_inicial == (altura-1)){
+				linha_inicial = altura - 2;	
+			}
 			if(coluna_inicial > (largura-3)){
 				coluna_inicial = largura - 3;
 			}
@@ -186,6 +193,9 @@ class Peca{
 				}
 			}
 		}else{
+			if(linha_inicial >= (altura-2)){
+				linha_inicial = altura - 3;
+			}
 			if(this._direcao == 4 && coluna_inicial == 0){
 				coluna_inicial = 1;
 			}
