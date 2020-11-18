@@ -424,10 +424,25 @@ class Peca{
 	moverEsquerda(){
 		var linha_inicial = this._coordenadas_preenchidas[0][0];
 		var coluna_inicial = this._coordenadas_preenchidas[0][1] - 1;
-		if(coluna_inicial >= 0){
+		var verificador = false;
+		if((this._tipo == 3 && this._direcao == 3) || (this._tipo == 4 && this._direcao == 1)
+			|| (this._tipo == 5 && this._direcao == 4)){
+			if(coluna_inicial >= 1){
+				verificador = true;
+			}
+		}else{
+			if(coluna_inicial >= 0){
+				verificador = true;
+			}
+		}
+		if(verificador){
 			this.apagarCoordenadas();
 			this.preecherCoordenadas(linha_inicial,coluna_inicial);
 		}
+	}
+
+	podeMoverEsquerdaPeca3(){
+
 	}
 
 	moverBaixo(){
