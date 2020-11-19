@@ -40,7 +40,5 @@ function acelerarPeca(tabuleiro,peca) {
 
 function pecaColidiu(peca){
 	var ret = peca.colidiu();
-	console.log(ret);
-	console.log("---");
 	return ret;
 }
