@@ -458,6 +458,12 @@ class Peca{
 				case 3:
 					ret = this.colidiuPeca3();
 					break;
+				case 4:
+					ret = this.colidiuPeca4();
+					break;
+				case 5:
+					ret = this.colidiuPeca5();
+					break;
 			}
 		}
 		return ret;
@@ -508,6 +514,52 @@ class Peca{
 			}else if(this._direcao == 3 && (i == 1 || i == 3)){
 				celula_final = this._coordenadas_preenchidas[i];
 			}else if(this._direcao == 4 && i < 3){
+				celula_final = this._coordenadas_preenchidas[i];
+			}
+			if(celula_final != null){
+				var prox_celula_valor = this._matriz_tabuleiro[celula_final[0]-1][celula_final[1]];
+				if(prox_celula_valor > 0){
+					ret = true;
+					break;
+				}
+			}
+		}
+		return ret;
+	}
+
+	colidiuPeca4(){
+		var ret = false;
+		for(var i=0; i<this._coordenadas_preenchidas.length; i++){
+			var celula_final = null;
+			if(this._direcao == 1 && i >= 2){
+				celula_final = this._coordenadas_preenchidas[i];	
+			}else if(this._direcao == 2 && i != 1){
+				celula_final = this._coordenadas_preenchidas[i];
+			}else if(this._direcao == 3 && (i == 1 || i == 3)){
+				celula_final = this._coordenadas_preenchidas[i];
+			}else if(this._direcao == 4 && i != 2){
+				celula_final = this._coordenadas_preenchidas[i];
+			}
+			if(celula_final != null){
+				var prox_celula_valor = this._matriz_tabuleiro[celula_final[0]-1][celula_final[1]];
+				if(prox_celula_valor > 0){
+					ret = true;
+					break;
+				}
+			}
+		}
+		return ret;
+	}
+
+	colidiuPeca5(){
+		var ret = false;
+		for(var i=0; i<this._coordenadas_preenchidas.length; i++){
+			var celula_final = null;
+			if(this._direcao == 1 && i != 2){
+				celula_final = this._coordenadas_preenchidas[i];	
+			}else if((this._direcao == 2 || this._direcao == 4) && (i == 0 || i == 2)){
+				celula_final = this._coordenadas_preenchidas[i];
+			}else if(this._direcao == 3 && i != 1){
 				celula_final = this._coordenadas_preenchidas[i];
 			}
 			if(celula_final != null){
