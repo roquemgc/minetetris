@@ -58,39 +58,78 @@ class Peca{
 		return ret;
 	}
 
+	copiarConjCoordenadas(conj_entrada){
+		var conj_saida = new Array();
+		if(conj_entrada.length > 0){
+			for(var i=0; i<conj_entrada.length; i++){
+				var celula = new Array();
+				for(var j=0; j<conj_entrada[i].length; j++){
+					celula.push(conj_entrada[i][j]);
+				}
+			}
+			conj_saida.push(celula);
+		}
+		return conj_saida
+	}
+
+	copiarConjCoordenadas(conj_entrada,conj_saida){
+		if(conj_entrada.length > 0){
+			for(var i=0; i<conj_entrada.length; i++){
+				var celula = new Array();
+				for(var j=0; j<conj_entrada[i].length; j++){
+					celula.push(conj_entrada[i][j]);
+				}
+			}
+			conj_saida.push(celula);
+		}
+	}
+
 	preecherCoordenadas(linha_inicial,coluna_inicial){
 		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
+		var coordenas_antigas = new Array();
+		this.copiarConjCoordenadas(this._coordenadas_preenchidas,coordenas_antigas);
+		this.apagarCoordenadas();
+		var ret = false;
 		switch(this._tipo){
 			case 1:
-				this.preecherCoordenadasPeca1(linha_inicial,coluna_inicial);
+				ret = this.preecherCoordenadasPeca1(linha_inicial,coluna_inicial);
 				break;
 			case 2:
-				this.preecherCoordenadasPeca2(linha_inicial,coluna_inicial);				
+				ret = this.preecherCoordenadasPeca2(linha_inicial,coluna_inicial);				
 				break;
 			case 3:
-				this.preecherCoordenadasPeca3(linha_inicial,coluna_inicial);
+				ret = this.preecherCoordenadasPeca3(linha_inicial,coluna_inicial);
 				break;
 			case 4:
-				this.preecherCoordenadasPeca4(linha_inicial,coluna_inicial);
+				ret = this.preecherCoordenadasPeca4(linha_inicial,coluna_inicial);
 				break;
 			case 5:
-				this.preecherCoordenadasPeca5(linha_inicial,coluna_inicial);
+				ret = this.preecherCoordenadasPeca5(linha_inicial,coluna_inicial);
 				break;
 			case 6:
-				this.preecherCoordenadasPeca6(linha_inicial,coluna_inicial);
+				ret = this.preecherCoordenadasPeca6(linha_inicial,coluna_inicial);
 				break;
 			case 7:
-				this.preecherCoordenadasPeca7(linha_inicial,coluna_inicial);
+				ret = this.preecherCoordenadasPeca7(linha_inicial,coluna_inicial);
 				break;
 		}
+		if(!ret){
+			this.copiarConjCoordenadas(coordenas_antigas,this._coordenadas_preenchidas);
+		}
+		return ret;
 	}
 
 	preecherCoordenadasPeca1(linha_inicial,coluna_inicial){
 		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
+		var ret = true;
 		if(this._direcao == 1 || this._direcao == 3){
 			for(var i=linha_inicial; i>=(linha_inicial-3); i--){
+				if(this._matriz_tabuleiro[i][coluna_inicial]!=0){
+					ret = false;
+					break;
+				}
 				this.addCoordenadaPreenchida(i,coluna_inicial);
 			}
 		}else{
@@ -98,9 +137,14 @@ class Peca{
 				coluna_inicial = largura - 4;
 			}
 			for(var j=coluna_inicial; j<(coluna_inicial+4); j++){
+				if(this._matriz_tabuleiro[linha_inicial][j]!=0){
+					ret = false;
+					break;
+				}
 				this.addCoordenadaPreenchida(linha_inicial,j);
 			}
 		}
+		return ret;
 	}
 
 	preecherCoordenadasPeca2(linha_inicial,coluna_inicial){
@@ -111,19 +155,29 @@ class Peca{
 				this.addCoordenadaPreenchida(i,j);
 			}
 		}
+		return true;
 	}
 
 	preecherCoordenadasPeca3(linha_inicial,coluna_inicial){
 		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
+		var ret = true;
 		if(this._direcao == 1 || this._direcao == 3){
 			if(this._direcao == 3 && coluna_inicial == 0){
 				coluna_inicial = 1;
 			}
 			for(var i=linha_inicial; i>(linha_inicial-3); i--){
+				if(this._matriz_tabuleiro[i][coluna_inicial]!=0){
+					ret = false;
+					break;
+				}
 				this.addCoordenadaPreenchida(i,coluna_inicial);
 				if((i==linha_inicial&&this._direcao==3) || (i==(linha_inicial-2)&&this._direcao==1)){
 					var j = (this._direcao==3)? coluna_inicial-1 : coluna_inicial+1;
+					if(this._matriz_tabuleiro[i][j]!=0){
+						ret = false;
+						break;
+					}
 					this.addCoordenadaPreenchida(i,j);
 				}
 			}
@@ -135,26 +189,44 @@ class Peca{
 				coluna_inicial = largura - 3;
 			}
 			for(var j=coluna_inicial; j<(coluna_inicial+3); j++){
+				if(this._matriz_tabuleiro[linha_inicial][j]!=0){
+					ret = false;
+					break;
+				}
 				this.addCoordenadaPreenchida(linha_inicial,j);
 				if((j==coluna_inicial&&this._direcao==2) || (j==(coluna_inicial+2)&&this._direcao==4)){
 					var i = (this._direcao==2)? linha_inicial-1 : linha_inicial+1;
+					if(this._matriz_tabuleiro[i][j]!=0){
+						ret = false;
+						break;
+					}
 					this.addCoordenadaPreenchida(i,j);
 				}
 			}
 		}
+		return ret;
 	}
 
 	preecherCoordenadasPeca4(linha_inicial,coluna_inicial){
 		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
+		var ret = true;
 		if(this._direcao == 1 || this._direcao == 3){
 			if(this._direcao == 1 && coluna_inicial == 0){
 				coluna_inicial = 1;
 			}
 			for(var i=linha_inicial; i>(linha_inicial-3); i--){
+				if(this._matriz_tabuleiro[i][coluna_inicial]!=0){
+					ret = false;
+					break;
+				}
 				this.addCoordenadaPreenchida(i,coluna_inicial);
 				if((i==linha_inicial&&this._direcao==3) || (i==(linha_inicial-2)&&this._direcao==1)){
 					var j = (this._direcao==3)? coluna_inicial+1 : coluna_inicial-1;
+					if(this._matriz_tabuleiro[i][j]!=0){
+						ret = false;
+						break;
+					}
 					this.addCoordenadaPreenchida(i,j);
 				}
 			}
@@ -166,18 +238,28 @@ class Peca{
 				coluna_inicial = largura - 3;
 			}
 			for(var j=coluna_inicial; j<(coluna_inicial+3); j++){
+				if(this._matriz_tabuleiro[linha_inicial][j]!=0){
+					ret = false;
+					break;
+				}
 				this.addCoordenadaPreenchida(linha_inicial,j);
 				if((j==coluna_inicial&&this._direcao==2) || (j==(coluna_inicial+2)&&this._direcao==4)){
 					var i = (this._direcao==2)? linha_inicial+1 : linha_inicial-1;
+					if(this._matriz_tabuleiro[i][j]!=0){
+						ret = false;
+						break;
+					}
 					this.addCoordenadaPreenchida(i,j);
 				}
 			}
 		}
+		return ret;
 	}
 
 	preecherCoordenadasPeca5(linha_inicial,coluna_inicial){
 		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
+		var ret = true;
 		if(this._direcao == 1 || this._direcao == 3){
 			if(coluna_inicial > (largura-3)){
 				coluna_inicial = largura - 3;
@@ -186,9 +268,17 @@ class Peca{
 				linha_inicial--;
 			}
 			for(var j=coluna_inicial; j<(coluna_inicial+3); j++){
+				if(this._matriz_tabuleiro[linha_inicial][j]!=0){
+					ret = false;
+					break;
+				}
 				this.addCoordenadaPreenchida(linha_inicial,j);
 				if(j==(coluna_inicial+1)){
 					var i = (this._direcao==1)? linha_inicial+1 : linha_inicial-1;
+					if(this._matriz_tabuleiro[linha_inicial][j]!=0){
+						ret = false;
+						break;
+					}
 					this.addCoordenadaPreenchida(i,j);
 				}
 			}
@@ -200,18 +290,28 @@ class Peca{
 				coluna_inicial = 1;
 			}
 			for(var i=linha_inicial; i<(linha_inicial+3); i++){
+				if(this._matriz_tabuleiro[i][coluna_inicial]!=0){
+					ret = false;
+					break;
+				}
 				this.addCoordenadaPreenchida(i,coluna_inicial);
 				if(i==(linha_inicial+1)){
 					var j = (this._direcao==2)? coluna_inicial+1 : coluna_inicial-1;
+					if(this._matriz_tabuleiro[i][j]!=0){
+						ret = false;
+						break;
+					}
 					this.addCoordenadaPreenchida(i,j);
 				}
 			}
-		}	
+		}
+		return ret;	
 	}
 
 	preecherCoordenadasPeca6(linha_inicial,coluna_inicial){
 		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
+		var ret = true;
 		if(this._direcao==1 || this._direcao==3){
 			if(coluna_inicial > (largura-3)){
 				coluna_inicial = largura - 3;
@@ -220,6 +320,10 @@ class Peca{
 				for(var j=coluna_inicial; j<(coluna_inicial+3); j++){
 					if(!(this._direcao==1 && i==linha_inicial && j==coluna_inicial+1) &&
 						!(this._direcao==3 && i==linha_inicial-1 && j==coluna_inicial+1)){
+						if(this._matriz_tabuleiro[i][j]!=0){
+							ret = false;
+							break;
+						}
 						this.addCoordenadaPreenchida(i,j);
 					}
 				}
@@ -229,15 +333,21 @@ class Peca{
 				for(var j=coluna_inicial; j<(coluna_inicial+2); j++){
 					if(!(this._direcao==2 && i==linha_inicial-1 && j==coluna_inicial+1) &&
 						!(this._direcao==4 && i==linha_inicial-1 && j==coluna_inicial)){
+						if(this._matriz_tabuleiro[i][j]!=0){
+							ret = false;
+							break;
+						}
 						this.addCoordenadaPreenchida(i,j);
 					}
 				}
 			}
 		}
+		return ret;
 	}
 
 	preecherCoordenadasPeca7(linha_inicial,coluna_inicial){
 		this.addCoordenadaPreenchida(linha_inicial,coluna_inicial);
+		return true;
 	}
 	
 
@@ -267,38 +377,43 @@ class Peca{
 	}
 
 	moverDireita(){
-		var linha_inicial = this._coordenadas_preenchidas[0][0];
-		var coluna_inicial = this._coordenadas_preenchidas[0][1] + 1;
-		var verificador = false;
-		switch(this._tipo){
-			case 1:
-				verificador = this.podeMoverDireitaPeca1(coluna_inicial);
-				break;
-			case 2:
-				verificador = this.podeMoverDireitaPeca2(coluna_inicial);
-				break;
-			case 3:
-				verificador = this.podeMoverDireitaPeca3(coluna_inicial);
-				break;
-			case 4:
-				verificador = this.podeMoverDireitaPeca4(coluna_inicial);
-				break;
-			case 5:
-				verificador = this.podeMoverDireitaPeca5(coluna_inicial);
-				break;
-			case 6:
-				verificador = this.podeMoverDireitaPeca6(coluna_inicial);
-				break;
-			case 7:
-				verificador = this.podeMoverDireitaPeca7(coluna_inicial);
-				break;
-			default:
-				verificador = false;
-				break;
-		}
-		if(verificador){
-			this.apagarCoordenadas();
-			this.preecherCoordenadas(linha_inicial,coluna_inicial);
+		if(!pecaColidiu(this)){
+			var linha_inicial = this._coordenadas_preenchidas[0][0];
+			var coluna_inicial = this._coordenadas_preenchidas[0][1] + 1;
+			var verificador = false;
+			switch(this._tipo){
+				case 1:
+					verificador = this.podeMoverDireitaPeca1(coluna_inicial);
+					break;
+				case 2:
+					verificador = this.podeMoverDireitaPeca2(coluna_inicial);
+					break;
+				case 3:
+					verificador = this.podeMoverDireitaPeca3(coluna_inicial);
+					break;
+				case 4:
+					verificador = this.podeMoverDireitaPeca4(coluna_inicial);
+					break;
+				case 5:
+					verificador = this.podeMoverDireitaPeca5(coluna_inicial);
+					break;
+				case 6:
+					verificador = this.podeMoverDireitaPeca6(coluna_inicial);
+					break;
+				case 7:
+					verificador = this.podeMoverDireitaPeca7(coluna_inicial);
+					break;
+				default:
+					verificador = false;
+					break;
+			}
+			if(verificador){
+				var ret = this.preecherCoordenadas(linha_inicial,coluna_inicial);
+				if(!ret){
+					coluna_inicial = this._coordenadas_preenchidas[0][1] - 1;
+					this.preecherCoordenadas(linha_inicial,coluna_inicial);
+				}
+			}
 		}
 	}
 
@@ -407,22 +522,27 @@ class Peca{
 	}
 
 	moverEsquerda(){
-		var linha_inicial = this._coordenadas_preenchidas[0][0];
-		var coluna_inicial = this._coordenadas_preenchidas[0][1] - 1;
-		var verificador = false;
-		if((this._tipo == 3 && this._direcao == 3) || (this._tipo == 4 && this._direcao == 1)
-			|| (this._tipo == 5 && this._direcao == 4)){
-			if(coluna_inicial >= 1){
-				verificador = true;
+		if(!pecaColidiu(this)){
+			var linha_inicial = this._coordenadas_preenchidas[0][0];
+			var coluna_inicial = this._coordenadas_preenchidas[0][1] - 1;
+			var verificador = false;
+			if((this._tipo == 3 && this._direcao == 3) || (this._tipo == 4 && this._direcao == 1)
+				|| (this._tipo == 5 && this._direcao == 4)){
+				if(coluna_inicial >= 1){
+					verificador = true;
+				}
+			}else{
+				if(coluna_inicial >= 0){
+					verificador = true;
+				}
 			}
-		}else{
-			if(coluna_inicial >= 0){
-				verificador = true;
+			if(verificador){
+				var ret = this.preecherCoordenadas(linha_inicial,coluna_inicial);
+				if(!ret){
+					coluna_inicial = this._coordenadas_preenchidas[0][1] + 1;
+					this.preecherCoordenadas(linha_inicial,coluna_inicial);
+				}
 			}
-		}
-		if(verificador){
-			this.apagarCoordenadas();
-			this.preecherCoordenadas(linha_inicial,coluna_inicial);
 		}
 	}
 
@@ -430,19 +550,30 @@ class Peca{
 		if(!pecaColidiu(this)){
 			var linha_inicial = this._coordenadas_preenchidas[0][0]-1;
 			var coluna_inicial = this._coordenadas_preenchidas[0][1];
-			this.apagarCoordenadas();
-			this.preecherCoordenadas(linha_inicial,coluna_inicial);
+			var ret = this.preecherCoordenadas(linha_inicial,coluna_inicial);
+			if(!ret){
+				linha_inicial = this._coordenadas_preenchidas[0][0]+1;
+				this.preecherCoordenadas(linha_inicial,coluna_inicial);
+			}
 		}
 	}
 
 	girar(){
-		this._direcao ++;
-		if(this._direcao > 4){
-			this._direcao = 1;
+		if(!pecaColidiu(this)){
+			this._direcao ++;
+			if(this._direcao > 4){
+				this._direcao = 1;
+			}
+			var linha_inicial = this._coordenadas_preenchidas[0][0];
+			var coluna_inicial = this._coordenadas_preenchidas[0][1];
+			var ret = this.preecherCoordenadas(linha_inicial,coluna_inicial);
+			if(!ret){
+				this._direcao --;
+				if(this._direcao < 1){
+					this._direcao = 4;
+				}
+				this.preecherCoordenadas(linha_inicial,coluna_inicial);
+			}
 		}
-		var linha_inicial = this._coordenadas_preenchidas[0][0];
-		var coluna_inicial = this._coordenadas_preenchidas[0][1];
-		this.apagarCoordenadas();
-		this.preecherCoordenadas(linha_inicial,coluna_inicial);
 	}
 }

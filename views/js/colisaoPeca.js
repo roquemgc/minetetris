@@ -1,6 +1,9 @@
 "use strict";
 
 function pecaColidiu(peca){
+	if(!(Peca.isPecaObj(peca))){
+		throw "'peca' não é um objeto da classe 'Peca'\nfunction 'checarTecla' - game.js";
+	}
 	var ret = chegouNoFimTabuleiro(peca);
 	if(!ret){
 		switch(peca.tipo){
