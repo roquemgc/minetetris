@@ -457,10 +457,10 @@ class Peca{
 				ret = this.chegouNoFimTabuleiroPeca2();
 				break;
 			case 3:
-				ret = this.chegouNoFimTabuleiroPecas3e4();
+				ret = this.chegouNoFimTabuleiroPeca3();
 				break;
 			case 4:
-				ret = this.chegouNoFimTabuleiroPecas3e4();
+				ret = this.chegouNoFimTabuleiroPeca4();
 				break;
 			case 5:
 				ret = this.chegouNoFimTabuleiroPeca5();
@@ -500,7 +500,7 @@ class Peca{
 		return ret;
 	}
 
-	chegouNoFimTabuleiroPecas3e4(){
+	chegouNoFimTabuleiroPeca3(){
 		var ret = false;
 		var linha_inicial = this._coordenadas_preenchidas[0][0];
 		if(this._direcao == 1 || this._direcao == 3){
@@ -511,6 +511,23 @@ class Peca{
 			if(this._direcao == 2 && linha_inicial <= 1){
 				ret = true;
 			}else if(this._direcao == 4 && linha_inicial <= 0){
+				ret = true;
+			}
+		}
+		return ret;
+	}
+
+	chegouNoFimTabuleiroPeca4(){
+		var ret = false;
+		var linha_inicial = this._coordenadas_preenchidas[0][0];
+		if(this._direcao == 1 || this._direcao == 3){
+			if(linha_inicial <= 2){
+				ret = true;
+			}
+		}else{
+			if(this._direcao == 2 && linha_inicial <= 0){
+				ret = true;
+			}else if(this._direcao == 4 && linha_inicial <= 1){
 				ret = true;
 			}
 		}
