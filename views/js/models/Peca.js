@@ -426,14 +426,12 @@ class Peca{
 	}
 
 	moverBaixo(){
-		var linha_inicial = this._coordenadas_preenchidas[0][0] - 1;
-		var coluna_inicial = this._coordenadas_preenchidas[0][1];
-		if(linha_inicial >= 0){
+		if(!this.chegouNoFimTabuleiro() && !this.colidiu()){
+			var linha_inicial = this._coordenadas_preenchidas[0][0]-1;
+			var coluna_inicial = this._coordenadas_preenchidas[0][1];
 			this.apagarCoordenadas();
 			this.preecherCoordenadas(linha_inicial,coluna_inicial);
 		}
-		this.apagarCoordenadas();
-		this.preecherCoordenadas(linha_inicial,coluna_inicial);
 	}
 
 	girar(){
@@ -445,6 +443,38 @@ class Peca{
 		var coluna_inicial = this._coordenadas_preenchidas[0][1];
 		this.apagarCoordenadas();
 		this.preecherCoordenadas(linha_inicial,coluna_inicial);
+	}
+
+	colidiu(){
+		var ret = this.chegouNoFimTabuleiro();
+		if(!ret){
+			switch(this._tipo){
+				case 1:
+					ret = this.colidiuPeca1();
+					break;
+			}
+		}
+		return ret;
+	}
+
+	colidiuPeca1(){
+		var ret = false;
+		if(this._direcao == 1 || this._direcao == 3){
+			var celula_final = this._coordenadas_preenchidas[3];
+			var prox_celula_valor = this._matriz_tabuleiro[celula_final[0]-1][celula_final[1]];
+			if(prox_celula_valor > 0){
+				ret = true;
+			}
+		}else{
+			for(var i=0; i<this._coordenadas_preenchidas.length; i++){
+				var celula_final = this._coordenadas_preenchidas[i];
+				var prox_celula_valor = this._matriz_tabuleiro[celula_final[0]-1][celula_final[1]];
+				if(prox_celula_valor > 0){
+					ret = true;
+				}
+			}
+		}
+		return ret;
 	}
 
 	chegouNoFimTabuleiro(){
@@ -478,7 +508,6 @@ class Peca{
 	chegouNoFimTabuleiroPeca1(){
 		var ret = false;
 		var linha_inicial = this._coordenadas_preenchidas[0][0];
-		console.log(linha_inicial);
 		if(this._direcao == 1 || this._direcao == 3){
 			if(linha_inicial <= 3){
 				ret = true;
