@@ -464,6 +464,12 @@ class Peca{
 				case 5:
 					ret = this.colidiuPeca5();
 					break;
+				case 6:
+					ret = this.colidiuPeca6();
+					break;
+				case 7:
+					ret = this.colidiuPeca7();
+					break;
 			}
 		}
 		return ret;
@@ -573,6 +579,36 @@ class Peca{
 		return ret;
 	}
 
+	colidiuPeca6(){
+		var ret = false;
+		for(var i=0; i<this._coordenadas_preenchidas.length; i++){
+			var celula_final = null;
+			if(this._direcao == 1 && i >= 2){
+				celula_final = this._coordenadas_preenchidas[i];	
+			}else if(this._direcao != 1 && i >= 3){
+					celula_final = this._coordenadas_preenchidas[i];
+			}
+			if(celula_final != null){
+				var prox_celula_valor = this._matriz_tabuleiro[celula_final[0]-1][celula_final[1]];
+				if(prox_celula_valor > 0){
+					ret = true;
+					break;
+				}
+			}
+		}
+		return ret;
+	}
+
+	colidiuPeca7(){
+		var ret = false;
+		var celula_final = this._coordenadas_preenchidas[0];
+		var prox_celula_valor = this._matriz_tabuleiro[celula_final[0]-1][celula_final[1]];
+		if(prox_celula_valor > 0){
+			ret = true;
+		}
+		return ret;
+	}
+
 	chegouNoFimTabuleiro(){
 		var ret = false;
 		switch(this._tipo){
@@ -675,7 +711,6 @@ class Peca{
 	chegouNoFimTabuleiroPeca6(){
 		var ret = false;
 		var linha_inicial = this._coordenadas_preenchidas[0][0];
-		console.log(linha_inicial);
 		if(this._direcao == 1 || this._direcao == 3){
 			if(linha_inicial <= 1){
 				ret = true;
