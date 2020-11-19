@@ -2,25 +2,37 @@
 
 function startGame(largura, altura){
 	try {
+
         var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
-        
-        var peca = gerarPecaAleatoria(tabuleiro);
-        
-    	addPecaNaMatrizTabuleiro(tabuleiro, peca, 1);
+        //var peca = gerarPecaAleatoria(tabuleiro);
+        var peca = new Peca(tabuleiro,5);
+        addPecaNaMatrizTabuleiro(tabuleiro, peca, 1);
         printarTabuleiro(tabuleiro);
-        
         document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
-
     	temporizador();
-
-    	var delayQueda = 1000;
-        // Chama a função peca.moverBaixo() em intervalos de 1000 milisegundos
-        setInterval(() => {
-            acelerarPeca(tabuleiro,peca);
-        }, delayQueda);	
+        rodada(tabuleiro,peca);
 	} catch(error){
 		console.log(error);
 	}
+}
+
+function rodada(tabuleiro,peca){
+    // Chama a função peca.moverBaixo() em intervalos de 1000 milisegundos
+    var delayQueda = 1000;
+    var mov = 0;
+    var quedaPeca = setInterval(() => {
+        acelerarPeca(tabuleiro,peca);
+        if(pecaColidiu(peca)){
+            clearInterval(quedaPeca);
+            //peca = gerarPecaAleatoria(tabuleiro);
+            peca = new Peca(tabuleiro,5);
+            addPecaNaMatrizTabuleiro(tabuleiro, peca, 1);
+            printarTabuleiro(tabuleiro);
+            document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
+            rodada(tabuleiro,peca);
+        }
+        mov ++;
+    }, delayQueda);
 }
 
 function temporizador(){

@@ -37,3 +37,8 @@ function acelerarPeca(tabuleiro,peca) {
 	addPecaNaMatrizTabuleiro(tabuleiro,peca,1);
 	printarTabuleiro(tabuleiro);
 }
+
+function pecaColidiu(peca){
+	var ret = peca.chegouNoFimTabuleiro();
+	return ret;
+}

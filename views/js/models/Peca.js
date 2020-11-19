@@ -447,4 +447,116 @@ class Peca{
 		this.preecherCoordenadas(linha_inicial,coluna_inicial);
 	}
 
+	chegouNoFimTabuleiro(){
+		var ret = false;
+		switch(this._tipo){
+			case 1:
+				ret = this.chegouNoFimTabuleiroPeca1();
+				break;
+			case 2:
+				ret = this.chegouNoFimTabuleiroPeca2();
+				break;
+			case 3:
+				ret = this.chegouNoFimTabuleiroPecas3e4();
+				break;
+			case 4:
+				ret = this.chegouNoFimTabuleiroPecas3e4();
+				break;
+			case 5:
+				ret = this.chegouNoFimTabuleiroPeca5();
+				break;
+			case 6:
+				ret = this.chegouNoFimTabuleiroPecas5e6();
+				break;
+			case 7:
+				ret = this.chegouNoFimTabuleiroPeca7();
+				break;
+		}
+		return ret;
+	}
+
+	chegouNoFimTabuleiroPeca1(){
+		var ret = false;
+		var linha_inicial = this._coordenadas_preenchidas[0][0];
+		if(this._direcao == 1 || this._direcao == 3){
+			if(linha_inicial <= 3){
+				ret = true;
+			}
+		}else{
+			if(linha_inicial <= 0){
+				ret = true;
+			}
+		}
+		return ret;
+	}
+
+	chegouNoFimTabuleiroPeca2(){
+		var ret = false;
+		var linha_inicial = this._coordenadas_preenchidas[0][0];
+		if(linha_inicial <= 1){
+			ret = true;
+		}
+		return ret;
+	}
+
+	chegouNoFimTabuleiroPecas3e4(){
+		var ret = false;
+		var linha_inicial = this._coordenadas_preenchidas[0][0];
+		if(this._direcao == 1 || this._direcao == 3){
+			if(linha_inicial <= 2){
+				ret = true;
+			}
+		}else{
+			if(linha_inicial <= 1){
+				ret = true;
+			}
+		}
+		return ret;
+	}
+
+	chegouNoFimTabuleiroPeca5(){
+		var ret = false;
+		var linha_inicial = this._coordenadas_preenchidas[0][0];
+		console.log(linha_inicial);
+		if(this._direcao == 2 || this._direcao == 4){
+			if(linha_inicial <= 0){
+				ret = true;
+				console.log("fim");
+			}
+		}else{
+			if(this._direcao == 1 && linha_inicial <= 0){
+				ret = true;
+				console.log("fim");	
+			}else if(this._direcao == 3 && linha_inicial <= 1){
+				ret = true;
+				console.log("fim");
+			}
+		}
+		return ret;
+	}
+
+	chegouNoFimTabuleiroPecas5e6(){
+		var ret = false;
+		var linha_inicial = this._coordenadas_preenchidas[0][0];
+		if(this._direcao == 1 || this._direcao <= 3){
+			if(linha_inicial == 1){
+				ret = true;
+			}
+		}else{
+			if(linha_inicial <= 2){
+				ret = true;
+			}
+		}
+		return ret;
+	}
+
+	chegouNoFimTabuleiroPeca7(){
+		var ret = false;
+		var linha_inicial = this._coordenadas_preenchidas[0][0];
+		if(linha_inicial == 0){
+			ret = true;
+		}
+		return ret;
+	}
+
 }
