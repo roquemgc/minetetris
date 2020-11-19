@@ -466,7 +466,7 @@ class Peca{
 				ret = this.chegouNoFimTabuleiroPeca5();
 				break;
 			case 6:
-				ret = this.chegouNoFimTabuleiroPecas5e6();
+				ret = this.chegouNoFimTabuleiroPeca6();
 				break;
 			case 7:
 				ret = this.chegouNoFimTabuleiroPeca7();
@@ -478,6 +478,7 @@ class Peca{
 	chegouNoFimTabuleiroPeca1(){
 		var ret = false;
 		var linha_inicial = this._coordenadas_preenchidas[0][0];
+		console.log(linha_inicial);
 		if(this._direcao == 1 || this._direcao == 3){
 			if(linha_inicial <= 3){
 				ret = true;
@@ -507,7 +508,9 @@ class Peca{
 				ret = true;
 			}
 		}else{
-			if(linha_inicial <= 1){
+			if(this._direcao == 2 && linha_inicial <= 1){
+				ret = true;
+			}else if(this._direcao == 4 && linha_inicial <= 0){
 				ret = true;
 			}
 		}
@@ -517,29 +520,22 @@ class Peca{
 	chegouNoFimTabuleiroPeca5(){
 		var ret = false;
 		var linha_inicial = this._coordenadas_preenchidas[0][0];
-		console.log(linha_inicial);
-		if(this._direcao == 2 || this._direcao == 4){
+		if(this._direcao == 1 || this._direcao == 2 || this._direcao == 4){
 			if(linha_inicial <= 0){
 				ret = true;
-				console.log("fim");
 			}
-		}else{
-			if(this._direcao == 1 && linha_inicial <= 0){
-				ret = true;
-				console.log("fim");	
-			}else if(this._direcao == 3 && linha_inicial <= 1){
-				ret = true;
-				console.log("fim");
-			}
+		}else if(linha_inicial <= 1){
+			ret = true;
 		}
 		return ret;
 	}
 
-	chegouNoFimTabuleiroPecas5e6(){
+	chegouNoFimTabuleiroPeca6(){
 		var ret = false;
 		var linha_inicial = this._coordenadas_preenchidas[0][0];
-		if(this._direcao == 1 || this._direcao <= 3){
-			if(linha_inicial == 1){
+		console.log(linha_inicial);
+		if(this._direcao == 1 || this._direcao == 3){
+			if(linha_inicial <= 1){
 				ret = true;
 			}
 		}else{
