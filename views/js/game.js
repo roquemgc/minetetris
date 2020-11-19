@@ -6,7 +6,7 @@ function startGame(largura, altura){
         var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
         var peca = gerarPecaAleatoria(tabuleiro);
         //var peca = new Peca(tabuleiro,1);
-        addPecaNaMatrizTabuleiro(tabuleiro, peca, 1);
+        addPecaNaMatrizTabuleiro(tabuleiro, peca);
         printarTabuleiro(tabuleiro);
         document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
     	temporizador();
@@ -25,7 +25,7 @@ function rodada(tabuleiro,peca){
             clearInterval(quedaPeca);
             peca = gerarPecaAleatoria(tabuleiro);
             //peca = new Peca(tabuleiro,6);
-            addPecaNaMatrizTabuleiro(tabuleiro, peca, 1);
+            addPecaNaMatrizTabuleiro(tabuleiro, peca);
             printarTabuleiro(tabuleiro);
             document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
             rodada(tabuleiro,peca);

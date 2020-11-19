@@ -106,12 +106,13 @@ function getAlturaTabuleiro(matriz_tabuleiro){
 	return matriz_tabuleiro.length;
 }
 
-function addPecaNaMatrizTabuleiro(matriz_tabuleiro,peca,tipo_presenca){
+function addPecaNaMatrizTabuleiro(matriz_tabuleiro,peca){
 	if(!(Peca.isPecaObj(peca))){
 		throw "'peca' não é um objeto da classe 'Peca'\nfunction 'addPecaNaMatrizTabuleiro' - manterTabuleiro.js";
 	}
-	if(tipo_presenca<1 || tipo_presenca>3){
-		throw "'tipo_presenca' inválido\nfunction 'addPecaNaMatrizTabuleiro' - manterTabuleiro.js";
+	var tipo_presenca = 1;
+	if(peca.tipo == 7){
+		tipo_presenca = 2;
 	}
 	for(var i = 0; i < peca.coordenadas_preenchidas.length; i++){
 		var coordenada = peca.coordenadas_preenchidas[i];
