@@ -1,5 +1,7 @@
 "use strict";
 
+var isRightSpin = true;
+
 function startGame(largura, altura){
 	try {
 
@@ -89,4 +91,22 @@ function aumentarDificuldade() {
 		delayQueda = 10;
 	}
 	document.getElementById("nivel-dificuldade").innerHTML = dif;
+}
+
+function actionSpinningGame(){
+
+    var animationSpinningGame = document.getElementById('rolling-tetris'); 
+
+    if(isRightSpin){
+
+        animationSpinningGame.classList.toggle('spinningRollingTetris');
+        isRightSpin = !isRightSpin; 
+
+    }else{
+
+        animationSpinningGame.classList.toggle('backToNormalRollingTetris');
+        isRightSpin = !isRightSpin; 
+    
+    }
+
 }

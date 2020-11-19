@@ -37,13 +37,59 @@ section {
     border: 0.5em ridge #c5c5c5;
 }
 
+.spinningRollingTetris {
+
+    animation-name: spinningTetris;
+    animation-duration: 3s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+
+}
+
+@keyframes spinningTetris{
+   
+    0% {transform: translateY(0px) rotate(0deg)}
+    4% {transform: translateY(5px) rotate(0deg)}
+    8% {transform: translateY(10px) rotate(0deg)}
+    12% {transform: translateY(15px) rotate(0deg)}
+    16% {transform: translateY(20px) rotate(0deg)}
+    20% {transform: translateY(30px) rotate(45deg)}
+    40% {transform: translateY(30px) rotateZ(90deg)}
+    50% {transform: translateY(30px) rotateZ(112.5deg)}
+    90% {transform: translateY(30px) rotateZ(180deg)}
+    100% {transform: translateY(0px) rotateZ(180deg)}
+
+}
+
+.backToNormalRollingTetris {
+
+    animation-name: backToNormalTetris;
+    animation-duration: 3s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+
+}
+
+@keyframes backToNormalTetris{
+   
+    0% {transform: translateY(0px) rotate(180deg)}
+    4% {transform: translateY(5px) rotate(180deg)}
+    8% {transform: translateY(10px) rotate(180deg)} 
+    12% {transform: translateY(15px) rotate(180deg)}
+    16% {transform: translateY(20px) rotate(180deg)}
+    20% {transform: translateY(30px) rotate(135deg)}
+    40% {transform: translateY(30px) rotateZ(90deg)}
+    50% {transform: translateY(30px) rotateZ(67.5deg)}
+    90% {transform: translateY(30px) rotateZ(0deg)}
+    100% {transform: translateY(0px) rotateZ(0deg)}
+}
+
 #rolling-tetris img {
     height: auto;
     width: 100%;
     position: absolute;
     opacity: 0.4;
 }
-
 
 #rolling-tetris button#comecar-game {
     height: 70px;
