@@ -1,42 +1,49 @@
 <!--Shigi-->
 <!DOCTYPE html>
 <html lang="pt">
-    <head>
-        <link href="../lib/img/favicon.ico" rel="icon" type="image/x-icon"/> <!--icone da pagina-->
-        
-        <!--Importando as folhas de estilo-->
-        <link rel="stylesheet" href="../styles/template.css"/>
-        <link rel="stylesheet" href="../styles/login.css"/>
-        
-        <!--definindo que o navegador deve usar esse metodo para converter os caracteres digitados em codigo de maquina-->
-        <meta charset="utf-8"/>
-        <title>MINETETRIS</title> <!--título da página-->
-    </head>
-    <body>
-        
-        <header>
-            <figure>
-                <a href="rt.html">
-                    <img src="../lib/img/minetetris.png" alt="Logo"/>
-                </a>
-            </figure>
-        </header>
 
-    	<main>
+<head>
+    <link href="../lib/img/favicon.ico" rel="icon" type="image/x-icon" />
+    <!--icone da pagina-->
 
-    		<section> <!--tipo uma div, tem valor semantico diferente, precisa de titulo-->
-    			<h2>Pagina de Login</h2> <!--titulo da section-->
-    			<form action="rt.html">
-    				<input type="text" name="username" placeholder="Username" title="Username" minlength="3" required/>
-                    <input type="password" name="senha" placeholder="Senha" title="Senha" minlength="8" required/>
-                    <input id="btn_submit" type="submit" value="Login"/>
-                    <!--type="submit" processa o formulario, value = oq vai aparecer pro usuario antes de ele digitar algo-->
-                    <label>Não tem conta?</label>
-                    <a href="cadastro.html" class="center">Criar Nova Conta</a>
-    			</form>
-    		</section>
+    <!--Importando as folhas de estilo-->
+    <link rel="stylesheet" href="../styles/template.css" />
+    <link rel="stylesheet" href="../styles/login.css" />
 
-    	</main>
+    <!--definindo que o navegador deve usar esse metodo para converter os caracteres digitados em codigo de maquina-->
+    <meta charset="utf-8" />
+    <title>MINETETRIS</title>
+    <!--título da página-->
+</head>
 
-    </body>
+<body>
+
+    <header>
+        <figure>
+            <a href="rt.html">
+                <img src="../lib/img/minetetris.png" alt="Logo" />
+            </a>
+        </figure>
+    </header>
+
+    <main>
+
+        <section>
+            <!--tipo uma div, tem valor semantico diferente, precisa de titulo-->
+            <h2>Pagina de Login</h2>
+            <!--titulo da section-->
+            <form action="rt.html">
+                <input type="text" name="username" placeholder="Username" title="Username" minlength="3" required />
+                <input type="password" name="senha" placeholder="Senha" title="Senha" minlength="8" required />
+                <input id="btn_submit" type="submit" value="Login" />
+                <!--type="submit" processa o formulario, value = oq vai aparecer pro usuario antes de ele digitar algo-->
+                <label>Não tem conta?</label>
+                <a href="cadastro.html" class="center">Criar Nova Conta</a>
+            </form>
+        </section>
+
+    </main>
+
+</body>
+
 </html>
