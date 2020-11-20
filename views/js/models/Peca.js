@@ -1,6 +1,6 @@
 class Peca{
 
-	constructor(matriz_tabuleiro,tipo){
+	constructor(matriz_tabuleiro, tipo){
 		this._matriz_tabuleiro = matriz_tabuleiro;
 		if(tipo >= 1 && tipo <= 7){
 			this._tipo = tipo;
@@ -85,8 +85,6 @@ class Peca{
 	}
 
 	preecherCoordenadas(linha_inicial,coluna_inicial){
-		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
-		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
 		var coordenas_antigas = new Array();
 		this.copiarConjCoordenadas(this._coordenadas_preenchidas,coordenas_antigas);
 		this.apagarCoordenadas();
@@ -121,7 +119,6 @@ class Peca{
 	}
 
 	preecherCoordenadasPeca1(linha_inicial,coluna_inicial){
-		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
 		var ret = true;
 		if(this._direcao == 1 || this._direcao == 3){
@@ -148,8 +145,6 @@ class Peca{
 	}
 
 	preecherCoordenadasPeca2(linha_inicial,coluna_inicial){
-		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
-		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
 		for(var i=linha_inicial; i>(linha_inicial-2); i--){
 			for(var j=coluna_inicial; j<(coluna_inicial+2); j++){
 				this.addCoordenadaPreenchida(i,j);
@@ -564,16 +559,11 @@ class Peca{
 			if(this._direcao > 4){
 				this._direcao = 1;
 			}
+			console.log(this._coordenadas_preenchidas)
 			var linha_inicial = this._coordenadas_preenchidas[0][0];
 			var coluna_inicial = this._coordenadas_preenchidas[0][1];
+
 			var ret = this.preecherCoordenadas(linha_inicial,coluna_inicial);
-			if(!ret){
-				this._direcao --;
-				if(this._direcao < 1){
-					this._direcao = 4;
-				}
-				this.preecherCoordenadas(linha_inicial,coluna_inicial);
-			}
 		}
 	}
 }

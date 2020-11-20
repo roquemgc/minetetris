@@ -1,16 +1,6 @@
 "use strict";
 
-function verificarLarguraAltura(largura, altura) {
-	var msg_erro = "Dimensão inválida de tabuleiro";
-	if (largura != 10 || altura != 20) {
-		if (largura != 22 || altura != 44) {
-			throw msg_erro + "\nfunction 'verificarLarguraAltura()' - manterTabuleiro.js";
-		}
-	}
-}
-
 function getMatrizVaziaTabuleiro(largura, altura) {
-	verificarLarguraAltura(largura, altura);
 	var tabuleiro = new Array(altura);
 	for (var i = 0; i < altura; i++) {
 		tabuleiro[i] = new Array(largura);
@@ -26,8 +16,8 @@ function posicaoTemPeca(matriz_tabuleiro, linha, coluna) {
 }
 
 function printarTabuleiro(matriz_tabuleiro) {
-	var altura = getAlturaTabuleiro(matriz_tabuleiro);
-	var largura = getLarguraTabuleiro(matriz_tabuleiro);
+	const altura = getAlturaTabuleiro(matriz_tabuleiro);
+	const largura = getLarguraTabuleiro(matriz_tabuleiro);
 	var div_tabuleiro = document.getElementById("rolling-tetris");
 	var tabuleiro = document.getElementById('tabuleiro');
 	if (tabuleiro != null) {
@@ -45,8 +35,8 @@ function printarTabuleiro(matriz_tabuleiro) {
 		grid_columns += j == 0 ? "auto" : " auto";
 	}
 
-	var largura_celula = (div_tabuleiro.clientWidth / largura);
-	var altura_celula = (div_tabuleiro.clientHeight / altura);
+	const largura_celula = (div_tabuleiro.clientWidth / largura);
+	const altura_celula = (div_tabuleiro.clientHeight / altura);
 	for (var i = (altura - 1); i >= 0; i--) {
 		var linha = document.createElement("div");
 		linha.id = "linha_" + i;
@@ -58,7 +48,6 @@ function printarTabuleiro(matriz_tabuleiro) {
 			celula.id = "celula_" + i + "_" + j;
 			celula.style.width = largura_celula + "px";
 			celula.style.height = altura_celula + "px";
-			celula.style.border = "1px solid black";
 			if (posicaoTemPeca(matriz_tabuleiro, i, j)) {
 				setCelulaPecaBackground(celula);
 			}
