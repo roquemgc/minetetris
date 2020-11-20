@@ -1,50 +1,61 @@
 <!--Mateus-->
 <!DOCTYPE html>
 <html lang="pt">
-    <head>
-    	<link href="../lib/img/favicon.ico" rel="icon" type="image/x-icon"/>
-        <link rel="stylesheet" href="../styles/template.css"/>
-        <link rel="stylesheet" href="../styles/edicao.css"/>
-        <meta charset="utf-8"/>
-        <title>MINETETRIS</title>
-    </head>
-    <body>
 
-        <header>
-        	<figure>
-				<a href="rt.html">
-                    <img src="../lib/img/minetetris.png" alt="Logo"/>
-                </a>
-        	</figure>
-        </header>
+<head>
+	<link href="../lib/img/favicon.ico" rel="icon" type="image/x-icon" />
+	<link rel="stylesheet" href="../styles/template.css" />
+	<link rel="stylesheet" href="../styles/edicao.css" />
+	<meta charset="utf-8" />
+	<title>MINETETRIS</title>
+</head>
 
-    	<main>
-    		
-    		<section>
-    			<h2>Editar Informacoes</h2>
-    			<form action="rt.html">
+<body>
 
-    				<input type="text" name="nome_completo" placeholder="Nome Completo" title="Nome Completo" minlength="3" required value="Jack Jorge" />
+	<header>
+		<figure>
+			<a href="rt.html">
+				<img src="../lib/img/minetetris.png" alt="Logo" />
+			</a>
+		</figure>
+	</header>
 
-    				<label for="data_nascimento">Data de nascimento</label>
-    				<input id="data_nascimento" type="date" name="data_nascimento" title="Data de nascimento" min="1900-01-01" max="2017-12-31" required value="2001-01-01" disabled />
+	<main>
 
-    				<input type="text" name="cpf" placeholder="CPF" title="CPF: xxx.xxx.xxx-xx" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" maxlength="14" required value="111.111.111-11" disabled/>
+		<section>
+			<h2>Editar Informacoes</h2>
+			<form action="rt.html">
 
-    				<input type="tel" name="telefone" placeholder="Telefone: (xx)xxxxx-xxxx" title="Telefone: (xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" maxlength="14" required value="(11)11111-1111"/>
+				<input type="text" name="nome_completo" placeholder="Nome Completo" title="Nome Completo" minlength="3"
+					required value="Jack Jorge" />
 
-    				<input type="email" name="email" placeholder="E-mail" title="E-mail" required value="jack@email.com"/>
+				<label for="data_nascimento">Data de nascimento</label>
+				<input id="data_nascimento" type="date" name="data_nascimento" title="Data de nascimento"
+					min="1900-01-01" max="2017-12-31" required value="2001-01-01" disabled />
 
-    				<input type="text" name="username" placeholder="Username" title="Username" minlength="3" required value="JackJ" disabled/>
+				<input type="text" name="cpf" placeholder="CPF" title="CPF: xxx.xxx.xxx-xx"
+					pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" maxlength="14" required value="111.111.111-11"
+					disabled />
 
-    				<input type="password" name="senha" placeholder="Senha" title="Senha" minlength="8" required value="senhaAtual"/>
+				<input type="tel" name="telefone" placeholder="Telefone: (xx)xxxxx-xxxx"
+					title="Telefone: (xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" maxlength="14" required
+					value="(11)11111-1111" />
 
-    				<input type="submit" value="Salvar"/>
+				<input type="email" name="email" placeholder="E-mail" title="E-mail" required value="jack@email.com" />
 
-    			</form>
-    		</section>
+				<input type="text" name="username" placeholder="Username" title="Username" minlength="3" required
+					value="JackJ" disabled />
 
-    	</main>
+				<input type="password" name="senha" placeholder="Senha" title="Senha" minlength="8" required
+					value="senhaAtual" />
 
-    </body>
+				<input type="submit" value="Salvar" />
+
+			</form>
+		</section>
+
+	</main>
+
+</body>
+
 </html>

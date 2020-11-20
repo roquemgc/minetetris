@@ -1,47 +1,46 @@
 @font-face {
     font-family: minecraft;
-    src: url(../lib/font/Minecraft.ttf);
+    src        : url(../lib/font/Minecraft.ttf);
 }
-  
-body{
-    font-size: 1vw;
-    font-family: minecraft, Arial, sans-serif;
-    background-image: url("../lib/img/background.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
+
+body {
+    font-size            : 1vw;
+    font-family          : minecraft, Arial, sans-serif;
+    background-image     : url("../lib/img/background.jpg");
+    background-position  : center;
+    background-repeat    : no-repeat;
     background-attachment: fixed;
-    background-size: 100vw 100vh;
+    background-size      : 100vw 100vh;
 }
-  
-header > h1 {
+
+header>h1 {
     margin-bottom: 10px;
 }
 
-header > figure{
+header>figure {
     text-align: center;
+    padding   : 0px;
+    margin    : 0px;
+}
+
+header>figure>a>img {
+    width  : 50vw;
+    margin : 0px;
     padding: 0px;
-    margin: 0px;
 }
 
-header > figure > a > img{
-    width: 50vw;
-    margin: 0px;
-    padding: 0px;
+main {
+    margin-bottom: 5%;
 }
 
-main{
-	margin-bottom: 5%;
-}
-
-main > section > h2 {
+main>section>h2 {
     margin-bottom: 10px;
-	text-align: center;
-	font-size: 3vw;
-	color: black;
-	text-shadow: 0 0 3px white, 0 0 5px white;
+    text-align   : center;
+    font-size    : 3vw;
+    color        : black;
+    text-shadow  : 0 0 3px white, 0 0 5px white;
 }
 
 a {
     text-decoration: none;
 }
-
