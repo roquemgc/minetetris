@@ -1,6 +1,7 @@
 "use strict";
 
 var isRightSpin = true;
+var needAdaptationOfTheMovementsOfThePieces = false;
 
 function startGame(largura, altura){
 	try {
@@ -58,22 +59,61 @@ function checarTecla(tabuleiro, peca) {
     if (e.keyCode == '38') {
         // Cima
         e.preventDefault();
-        girarPeca(tabuleiro,peca);
+
+        if(needAdaptationOfTheMovementsOfThePieces){
+
+            acelerarPeca(tabuleiro,peca);
+
+        }else{
+
+            girarPeca(tabuleiro,peca);
+
+        }
+        
     }
     else if (e.keyCode == '40') {
         // Baixo
         e.preventDefault();
-        acelerarPeca(tabuleiro,peca);
+
+        if(needAdaptationOfTheMovementsOfThePieces){
+
+            girarPeca(tabuleiro,peca);
+
+        }else{
+
+            acelerarPeca(tabuleiro,peca);
+
+        }
     }
     else if (e.keyCode == '37') {
         // Esquerda
         e.preventDefault();
-        moverPecaPraEsquerda(tabuleiro,peca);
+        
+        if(needAdaptationOfTheMovementsOfThePieces){
+
+            moverpecaPecaPraDireita(tabuleiro,peca);
+
+        }else{
+
+            moverPecaPraEsquerda(tabuleiro,peca);
+
+        }
+       
     }
     else if (e.keyCode == '39') {
         // Direita
         e.preventDefault();
-        moverpecaPecaPraDireita(tabuleiro,peca);
+
+        if(needAdaptationOfTheMovementsOfThePieces){
+
+            moverPecaPraEsquerda(tabuleiro,peca);
+            
+        }else{
+
+            moverpecaPecaPraDireita(tabuleiro,peca);
+
+        }
+        
     }
 }
 
@@ -101,11 +141,14 @@ function actionSpinningGame(){
 
         animationSpinningGame.classList.toggle('spinningRollingTetris');
         isRightSpin = !isRightSpin; 
+        needAdaptationOfTheMovementsOfThePieces = !needAdaptationOfTheMovementsOfThePieces;
+
 
     }else{
 
         animationSpinningGame.classList.toggle('backToNormalRollingTetris');
         isRightSpin = !isRightSpin; 
+        needAdaptationOfTheMovementsOfThePieces = !needAdaptationOfTheMovementsOfThePieces;
     
     }
 
