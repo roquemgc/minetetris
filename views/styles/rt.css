@@ -1,36 +1,36 @@
-h2 { 
+h2 {
     text-align: center;
-    color: #262626;
-    font-size: 1.7em;		
+    color     : #262626;
+    font-size : 1.7em;
 }
 
 section {
-    width:23%;
+    width   : 23%;
     position: absolute;
 
     border: 0.4em ridge #c5c5c5;
 }
 
 #start-container .modal-content .modal-body {
-    display: flex;
-    flex-direction: column;
+    display        : flex;
+    flex-direction : column;
     justify-content: center;
-    align-items: center;
+    align-items    : center;
 }
 
 #start-container .modal-content .modal-body button {
-    height: 100px;
-    width: 200px;
+    height    : 100px;
+    width     : 200px;
     margin-top: 15px;
-    font-size: 30px;
+    font-size : 30px;
 }
 
-#rolling-tetris { 
+#rolling-tetris {
     margin: 0 auto;
-    width: 24%;
+    width : 24%;
     height: 40em;
 
-    display: flex;
+    display : flex;
     position: relative;
     overflow: hidden;
 
@@ -39,70 +39,128 @@ section {
 
 .spinningRollingTetris {
 
-    animation-name: spinningTetris;
-    animation-duration: 3s;
-    animation-fill-mode: both;
+    animation-name           : spinningTetris;
+    animation-duration       : 3s;
+    animation-fill-mode      : both;
     animation-timing-function: linear;
 
 }
 
-@keyframes spinningTetris{
-   
-    0% {transform: translateY(0px) rotate(0deg)}
-    4% {transform: translateY(5px) rotate(0deg)}
-    8% {transform: translateY(10px) rotate(0deg)}
-    12% {transform: translateY(15px) rotate(0deg)}
-    16% {transform: translateY(20px) rotate(0deg)}
-    20% {transform: translateY(30px) rotate(45deg)}
-    40% {transform: translateY(30px) rotateZ(90deg)}
-    50% {transform: translateY(30px) rotateZ(112.5deg)}
-    90% {transform: translateY(30px) rotateZ(180deg)}
-    100% {transform: translateY(0px) rotateZ(180deg)}
+@keyframes spinningTetris {
+
+    0% {
+        transform: translateY(0px) rotate(0deg)
+    }
+
+    4% {
+        transform: translateY(5px) rotate(0deg)
+    }
+
+    8% {
+        transform: translateY(10px) rotate(0deg)
+    }
+
+    12% {
+        transform: translateY(15px) rotate(0deg)
+    }
+
+    16% {
+        transform: translateY(20px) rotate(0deg)
+    }
+
+    20% {
+        transform: translateY(30px) rotate(45deg)
+    }
+
+    40% {
+        transform: translateY(30px) rotateZ(90deg)
+    }
+
+    50% {
+        transform: translateY(30px) rotateZ(112.5deg)
+    }
+
+    90% {
+        transform: translateY(30px) rotateZ(180deg)
+    }
+
+    100% {
+        transform: translateY(0px) rotateZ(180deg)
+    }
 
 }
 
 .backToNormalRollingTetris {
 
-    animation-name: backToNormalTetris;
-    animation-duration: 3s;
-    animation-fill-mode: both;
+    animation-name           : backToNormalTetris;
+    animation-duration       : 3s;
+    animation-fill-mode      : both;
     animation-timing-function: linear;
 
 }
 
-@keyframes backToNormalTetris{
-   
-    0% {transform: translateY(0px) rotate(180deg)}
-    4% {transform: translateY(5px) rotate(180deg)}
-    8% {transform: translateY(10px) rotate(180deg)} 
-    12% {transform: translateY(15px) rotate(180deg)}
-    16% {transform: translateY(20px) rotate(180deg)}
-    20% {transform: translateY(30px) rotate(135deg)}
-    40% {transform: translateY(30px) rotateZ(90deg)}
-    50% {transform: translateY(30px) rotateZ(67.5deg)}
-    90% {transform: translateY(30px) rotateZ(0deg)}
-    100% {transform: translateY(0px) rotateZ(0deg)}
+@keyframes backToNormalTetris {
+
+    0% {
+        transform: translateY(0px) rotate(180deg)
+    }
+
+    4% {
+        transform: translateY(5px) rotate(180deg)
+    }
+
+    8% {
+        transform: translateY(10px) rotate(180deg)
+    }
+
+    12% {
+        transform: translateY(15px) rotate(180deg)
+    }
+
+    16% {
+        transform: translateY(20px) rotate(180deg)
+    }
+
+    20% {
+        transform: translateY(30px) rotate(135deg)
+    }
+
+    40% {
+        transform: translateY(30px) rotateZ(90deg)
+    }
+
+    50% {
+        transform: translateY(30px) rotateZ(67.5deg)
+    }
+
+    90% {
+        transform: translateY(30px) rotateZ(0deg)
+    }
+
+    100% {
+        transform: translateY(0px) rotateZ(0deg)
+    }
 }
 
 #rolling-tetris img {
-    height: auto;
-    width: 100%;
+    height  : auto;
+    width   : 100%;
     position: absolute;
-    opacity: 0.4;
+    opacity : 0.4;
 }
 
 #rolling-tetris button#comecar-game {
-    height: 70px;
-    width: 250px;
-    margin: auto auto;
+    height : 70px;
+    width  : 250px;
+    margin : auto auto;
     padding: 10px 15px 0;
 
     z-index: 2;
 
-	color: #f2f2f2;
+    color    : #f2f2f2;
     font-size: 40px;
 
-    border: 1px solid #98989a;
+    border          : 1px solid #98989a;
     background-image: url('../lib/img/stone.jpg');
 }
 
@@ -115,23 +173,23 @@ section {
 }
 
 #ranking-player {
-    background-image: url("../lib/img/images3.jpg"); 
+    background-image     : url("../lib/img/images3.jpg");
     background-attachment: fixed;
-    background-size: 5vw 5vh;
+    background-size      : 5vw 5vh;
 
     text-align: center;
 
     max-height: 12em;
-    top: 39.85em;
-    right: 3.5em;
-    padding: 5px 0;
+    top       : 39.85em;
+    right     : 3.5em;
+    padding   : 5px 0;
 
-    resize: none;
+    resize  : none;
     overflow: auto;
 }
 
 #ranking-player table {
-    width: 21.5em;
+    width : 21.5em;
     margin: 0 auto;
 
     color: white;
@@ -139,76 +197,87 @@ section {
 
 #ranking-player tr th {
     padding-top: 10px;
-    text-align: center;
-    border: 1px solid white;
+    text-align : center;
+    border     : 1px solid white;
 }
 
 #ranking-player tr td {
-    border: 1px solid white;
+    border     : 1px solid white;
     padding-top: 10px;
 }
- 
+
 
 #game-atual {
-    background-image: url("../lib/img/images3.jpg"); 
+    background-image     : url("../lib/img/images3.jpg");
     background-attachment: fixed;
-    background-size: 5vw 5vh;
+    background-size      : 5vw 5vh;
 
-    top: 18.8em;
+    top  : 18.8em;
     right: 3.5em;
 }
 
-#game-atual p.dado-do-jogo { 
-    color: #ffffff;
-    font-size: 1.3em;
+#game-atual p.dado-do-jogo {
+    color      : #ffffff;
+    font-size  : 1.3em;
     margin-left: 0.5em;
-    margin-top: 0.75em; 
+    margin-top : 0.75em;
 }
 
 
-#game-atual p.dado-do-jogo { 
-    color: #ffffff;
-    font-size: 1.3em;
+#game-atual p.dado-do-jogo {
+    color      : #ffffff;
+    font-size  : 1.3em;
     margin-left: 0.5em;
-    margin-top: 0.75em; 
+    margin-top : 0.75em;
 }
 
 #game-atual span.dados-do-jogo {
-    color: #ffef00;
+    color      : #ffef00;
     font-weight: bold;
 }
 
 #game-atual span.dados-do-jogo {
-    color: #ffef00;
+    color      : #ffef00;
     font-weight: bold;
 }
 
-#menu { 
-    background-image: url("../lib/img/images3.jpg"); 
+#menu {
+    background-image     : url("../lib/img/images3.jpg");
     background-attachment: fixed;
-    background-size: 5vw 5vh;
+    background-size      : 5vw 5vh;
 
-    top: 27em;
+    top : 27em;
     left: 3em;
 }
 
-#menu .menu-item { 
-    color: #ffffff;
-    font-size: 1.5em;
+#menu .menu-item {
+    color     : #ffffff;
+    font-size : 1.5em;
     text-align: center;
 }
 
 
-#menu a:link, a:visited { 
+#menu a:link,
+a:visited {
     text-decoration: none;
-    color: #ffffff;
+    color          : #ffffff;
 }
 
-#menu a:hover { 
-    text-decoration: underline; 
-    color: #000000; 
+#menu a:hover {
+    text-decoration: underline;
+    color          : #000000;
 }
 
-#menu a:active { 
+#menu a:active {
     color: #cc0000;
+}
+
+.checkbox-keys {
+    margin-top: 5px;
+}
+
+.checkbox-title-keys {
+    display   : inherit;
+    margin-top: 3px;
+    font-size : small;
 }

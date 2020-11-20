@@ -47,6 +47,14 @@
                         <button onclick="startGame(22,44)" data-dismiss="modal">22x44</button>
                       </div>
                       <div class="modal-footer">
+                        <div class="checkbox pull-left checkbox-keys">
+                            <label>
+                              <input type="checkbox" id="toggleInput" data-toggle="toggle">
+                              <span class="checkbox-title-keys">
+                                HABILITAR A INVERSÃO DAS TECLAS AO GIRAR O TABULEIRO.
+                              </span>
+                            </label>
+                        </div>
                         <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
                       </div>
                     </div>
@@ -61,7 +69,7 @@
             </div>
         </main>
 
-        <section id="ranking-player">
+        <section id="ranking-player" onclick="actionSpinningGame()">
             <h2>RANKING DAS SUAS PARTIDAS</h2>
             <table>
                 <thead>
