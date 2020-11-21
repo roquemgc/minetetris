@@ -2,6 +2,10 @@
     font-family: minecraft;
     src        : url(../lib/font/Minecraft.ttf);
 }
+@font-face {
+    font-family: arcade;
+    src: url(../lib/font/ArcadePI.ttf)
+}
 
 body {
     font-size            : 1vw;
@@ -11,6 +15,10 @@ body {
     background-repeat    : no-repeat;
     background-attachment: fixed;
     background-size      : 100vw 100vh;
+}
+
+main {
+    margin-bottom: 5%;
 }
 
 header>h1 {
@@ -29,9 +37,6 @@ header>figure>a>img {
     padding: 0px;
 }
 
-main {
-    margin-bottom: 5%;
-}
 
 main>section>h2 {
     margin-bottom: 10px;

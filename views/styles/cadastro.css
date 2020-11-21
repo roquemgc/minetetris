@@ -1,25 +1,31 @@
-main>section>form {
-	background-color     : white;
-	margin               : 0% auto;
-	display              : grid;
+main section form {
+	padding: 20px;
+	background-color: white;
+	margin: 0% auto;
+	display: grid;
 	grid-template-columns: 1fr;
-	width                : 25%;
-	padding-top          : 2%;
-	padding-bottom       : 1%;
-	box-shadow           : 0.5vw 0.5vw rgba(0, 0, 0, 0.5);
+	width: 25%;
+	padding-top: 2%;
+	padding-bottom: 1%;
+	box-shadow: 0.5vw 0.5vw rgba(0, 0, 0, 0.5);
 }
 
-main>section>form>label {
-	text-align: center;
+main section .input-block {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
-main>section>form>input {
-	margin       : 0% auto;
-	margin-bottom: 10%;
-	width        : 80%;
-	height       : 70%;
-	font-family  : minecraft, Arial, sans-serif;
-	text-align   : center;
+main section .input-block label {
+	font-size: 15px;
+}
+
+main section .input-block input {
+	margin: 4px 0 15px;
+	padding: 3px 10px;
+	height: 30px;
+	font-family: minecraft, Arial, sans-serif;
 }
 
 ::-webkit-input-placeholder {
@@ -36,12 +42,14 @@ main>section>form>input {
 	font-family: minecraft, Arial, sans-serif;
 }
 
-main>section>form>input[type="submit"] {
-	width           : 50%;
-	cursor          : pointer;
+main section form .input-block input[type="submit"] {
+	width: 50%;
+	height: 40px;
+	margin: 0 auto;
+	cursor: pointer;
 	background-color: rgb(182, 191, 182);
 }
 
-main>section>form>input[type="submit"]:hover {
+main section form .input-block input[type="submit"]:hover {
 	filter: brightness(112%);
 }
