@@ -5,10 +5,11 @@ h2 {
 }
 
 section {
-    width   : 23%;
+    width   : 25%;
     position: absolute;
 
     border: 0.4em ridge #c5c5c5;
+    font-family: minecraft, sans-serif;
 }
 
 #start-container .modal-content .modal-body {
