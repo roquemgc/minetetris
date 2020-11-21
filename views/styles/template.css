@@ -3,18 +3,18 @@
     src        : url(../lib/font/Minecraft.ttf);
 }
 @font-face {
-    font-family: arcade;
-    src: url(../lib/font/ArcadePI.ttf)
+    font-family: pressStart;
+    src: url(../lib/font/PressStart2P-Regular.ttf)
 }
 
 body {
-    font-size            : 1vw;
-    font-family          : minecraft, Arial, sans-serif;
-    background-image     : url("../lib/img/background.jpg");
-    background-position  : center;
-    background-repeat    : no-repeat;
+    font-size: 1vw;
+    font-family: pressStart, Arial, sans-serif;
+    background-image: url("../lib/img/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size      : 100vw 100vh;
+    background-size: 100vw 100vh;
 }
 
 main {
@@ -27,23 +27,23 @@ header>h1 {
 
 header>figure {
     text-align: center;
-    padding   : 0px;
-    margin    : 0px;
+    padding: 0px;
+    margin: 0px;
 }
 
 header>figure>a>img {
-    width  : 50vw;
-    margin : 0px;
+    width: 50vw;
+    margin: 0px;
     padding: 0px;
 }
 
 
 main>section>h2 {
-    margin-bottom: 10px;
-    text-align   : center;
-    font-size    : 3vw;
-    color        : black;
-    text-shadow  : 0 0 3px white, 0 0 5px white;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 3vw;
+    color: #fff;
+    text-shadow: 2px 4px 5px #000, 1px 2px 5px #fff;
 }
 
 a {

@@ -8,7 +8,7 @@
 
     <!--Importando as folhas de estilo-->
     <link rel="stylesheet" href="../styles/template.css" />
-    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="stylesheet" href="../styles/form.css" />
 
     <!--definindo que o navegador deve usar esse metodo para converter os caracteres digitados em codigo de maquina-->
     <meta charset="utf-8" />
@@ -29,16 +29,23 @@
     <main>
 
         <section>
-            <!--tipo uma div, tem valor semantico diferente, precisa de titulo-->
-            <h2>Pagina de Login</h2>
-            <!--titulo da section-->
+            <h2>Login</h2>
             <form action="rt.html">
-                <input type="text" name="username" placeholder="Username" title="Username" minlength="3" required />
-                <input type="password" name="senha" placeholder="Senha" title="Senha" minlength="8" required />
-                <input id="btn_submit" type="submit" value="Login" />
-                <!--type="submit" processa o formulario, value = oq vai aparecer pro usuario antes de ele digitar algo-->
-                <label>Não tem conta?</label>
-                <a href="cadastro.html" class="center">Criar Nova Conta</a>
+                <div class="input-block">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" placeholder="Insira seu username" title="Username" minlength="3" required />
+                </div>
+                <div class="input-block">
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha" placeholder="Insira sua senha" title="Senha" minlength="8" required />
+                </div>
+                <div class="input-block">
+                    <input id="btn_submit" type="submit" value="Login" />
+                </div>
+                <div class="link-wrapper">
+                    <p>Não está cadastrado?</p>
+                    <a href="cadastro.html" >Criar Nova Conta</a>
+                </div>
             </form>
         </section>
 

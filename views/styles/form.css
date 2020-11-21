@@ -18,14 +18,14 @@ main section .input-block {
 }
 
 main section .input-block label {
-	font-size: 15px;
+	font-size: 13px;
 }
 
 main section .input-block input {
-	margin: 4px 0 15px;
+	margin: 6px 0 18px;
 	padding: 3px 10px;
 	height: 30px;
-	font-family: minecraft, Arial, sans-serif;
+	font-size: 15px;
 }
 
 ::-webkit-input-placeholder {
@@ -47,9 +47,20 @@ main section form .input-block input[type="submit"] {
 	height: 40px;
 	margin: 0 auto;
 	cursor: pointer;
+	font-family: pressStart;
 	background-color: rgb(182, 191, 182);
 }
 
 main section form .input-block input[type="submit"]:hover {
 	filter: brightness(112%);
+}
+
+main section .link-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+main section .link-wrapper p {
+	margin: 15px 0 5px;
 }
