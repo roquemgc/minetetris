@@ -5,6 +5,7 @@ h2 {
 }
 
 section {
+    background-image     : url("../lib/img/images3.jpg");
     width   : 25%;
     position: absolute;
 
@@ -39,12 +40,10 @@ section {
 }
 
 .spinningRollingTetris {
-
     animation-name           : spinningTetris;
     animation-duration       : 3s;
     animation-fill-mode      : both;
     animation-timing-function: linear;
-
 }
 
 @keyframes spinningTetris {
@@ -92,12 +91,10 @@ section {
 }
 
 .backToNormalRollingTetris {
-
     animation-name           : backToNormalTetris;
     animation-duration       : 3s;
     animation-fill-mode      : both;
     animation-timing-function: linear;
-
 }
 
 @keyframes backToNormalTetris {
@@ -152,14 +149,14 @@ section {
 
 #rolling-tetris button#comecar-game {
     height : 70px;
-    width  : 250px;
+    width  : 80%;
     margin : auto auto;
     padding: 10px 15px 0;
 
     z-index: 2;
 
     color    : #f2f2f2;
-    font-size: 40px;
+    font-size: 250%;
 
     border          : 1px solid #98989a;
     background-image: url('../lib/img/stone.jpg');
@@ -174,7 +171,6 @@ section {
 }
 
 #ranking-player {
-    background-image     : url("../lib/img/images3.jpg");
     background-attachment: fixed;
     background-size      : 5vw 5vh;
 
@@ -190,7 +186,7 @@ section {
 }
 
 #ranking-player table {
-    width : 21.5em;
+    width : 95%;
     margin: 0 auto;
 
     color: white;
@@ -209,7 +205,6 @@ section {
 
 
 #game-atual {
-    background-image     : url("../lib/img/images3.jpg");
     background-attachment: fixed;
     background-size      : 5vw 5vh;
 
@@ -243,7 +238,6 @@ section {
 }
 
 #menu {
-    background-image     : url("../lib/img/images3.jpg");
     background-attachment: fixed;
     background-size      : 5vw 5vh;
 
@@ -265,7 +259,6 @@ a:visited {
 }
 
 #menu a:hover {
-    text-decoration: underline;
     color          : #000000;
 }
 
