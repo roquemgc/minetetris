@@ -2,10 +2,11 @@
 
 var isRightSpin = true;
 var needAdaptationOfTheMovementsOfThePieces = false;
+var changeTheKeys = false;
 
 function startGame(largura, altura){
 	try {
-
+		changeTheKeys = document.querySelector('#toggleInput').checked;
 		var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
 		var peca = gerarPecaAleatoria(tabuleiro);
 		//var peca = new Peca(tabuleiro,1);
@@ -60,7 +61,7 @@ function checarTecla(tabuleiro, peca) {
 		// Cima
 		e.preventDefault();
 
-		if(needAdaptationOfTheMovementsOfThePieces){
+		if(needAdaptationOfTheMovementsOfThePieces && !changeTheKeys){
 			acelerarPeca(tabuleiro,peca);
 		}else{
 			girarPeca(tabuleiro,peca);
@@ -69,7 +70,7 @@ function checarTecla(tabuleiro, peca) {
 		// Baixo
 		e.preventDefault();
 
-		if(needAdaptationOfTheMovementsOfThePieces){
+		if(needAdaptationOfTheMovementsOfThePieces && !changeTheKeys){
 
 			girarPeca(tabuleiro,peca);
 
@@ -81,7 +82,7 @@ function checarTecla(tabuleiro, peca) {
 		// Esquerda
 		e.preventDefault();
 		
-		if(needAdaptationOfTheMovementsOfThePieces){
+		if(needAdaptationOfTheMovementsOfThePieces && !changeTheKeys){
 
 			moverpecaPecaPraDireita(tabuleiro,peca);
 
@@ -96,7 +97,7 @@ function checarTecla(tabuleiro, peca) {
 		// Direita
 		e.preventDefault();
 
-		if(needAdaptationOfTheMovementsOfThePieces){
+		if(needAdaptationOfTheMovementsOfThePieces && !changeTheKeys){
 
 			moverPecaPraEsquerda(tabuleiro,peca);
 		}else{
