@@ -49,7 +49,7 @@ function printarTabuleiro(matriz_tabuleiro) {
 			celula.style.width = largura_celula + "px";
 			celula.style.height = altura_celula + "px";
 			if (posicaoTemPeca(matriz_tabuleiro, i, j)) {
-				setCelulaPecaBackground(celula);
+				printarPeca(matriz_tabuleiro[i][j], celula);
 			}
 			linha.appendChild(celula);
 		}
@@ -99,13 +99,10 @@ function addPecaNaMatrizTabuleiro(matriz_tabuleiro, peca) {
 	if (!(Peca.isPecaObj(peca))) {
 		throw "'peca' não é um objeto da classe 'Peca'\nfunction 'addPecaNaMatrizTabuleiro' - manterTabuleiro.js";
 	}
-	var tipo_presenca = 1;
-	if (peca.tipo == 7) {
-		tipo_presenca = 2;
-	}
+
 	for (var i = 0; i < peca.coordenadas_preenchidas.length; i++) {
 		var coordenada = peca.coordenadas_preenchidas[i];
-		matriz_tabuleiro[coordenada[0]][coordenada[1]] = tipo_presenca;
+		matriz_tabuleiro[coordenada[0]][coordenada[1]] = peca.tipo;
 	}
 }
 
