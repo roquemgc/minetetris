@@ -65,8 +65,8 @@ function printarTabuleiro(matriz_tabuleiro) {
 
 function limparLinhas(tabuleiro, linhas) {
 	linhas.forEach(linha => {
-		tabuleiro[linha].map((bloco) => {
-			bloco = 0;
+		tabuleiro[linha].map((bloco, index) => {
+			tabuleiro[linha][index] = 0;
 		})
 	});
 }

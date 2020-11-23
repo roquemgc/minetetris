@@ -121,7 +121,7 @@ function checarLinhasCheias(tabuleiro) {
 		}
 		cont = 0;
 	});
-	if(linhasCheias.length) {
+	if(linhasCheias.length > 0) {
 		limparLinhas(tabuleiro, linhasCheias)
 	}
 }
