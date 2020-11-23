@@ -11,7 +11,7 @@ class Peca{
 		this._direcao = Math.floor(Math.random() * 4) + 1;
 		// Preeche as coordenas da peca a partir do início do tabuleiro e de uma coluna aleatória
 		this._coordenadas_preenchidas = new Array();
-		this.preecherCoordenadas((getAlturaTabuleiro(this._matriz_tabuleiro)-1),this.gerarColunaAleatoria());
+		this.preecherCoordenadas(this.getLinhaInicial(),this.gerarColunaAleatoria());
 	}
 
 	get matriz_tabuleiro(){
@@ -41,6 +41,37 @@ class Peca{
 
 	get coordenadas_preenchidas(){
 		return this._coordenadas_preenchidas;
+	}
+
+	getLinhaInicial(){
+		var linha = getAlturaTabuleiro(this._matriz_tabuleiro);
+		switch(this._tipo){
+			case 1:
+				linha += (this._direcao == 1 || this._direcao == 3)? 3 : 0;
+				break;
+			case 2:
+				linha += 1;
+				break;
+			case 3:
+				linha += (this._direcao == 1 || this._direcao == 3)? 2 : 1;
+				break;
+			case 4:
+				linha += (this._direcao == 1 || this._direcao == 3)? 2 : 0;
+				break;
+			case 5:
+				linha += 0;
+				break;
+			case 6:
+				linha += (this._direcao == 1 || this._direcao == 3)? 1 : 2;
+				break;
+			case 7:
+				linha += 0;
+				break;
+			default:
+				linha += 3;
+				break;
+		}
+		return linha;
 	}
 
 	addCoordenadaPreenchida(linha,coluna){
@@ -145,16 +176,21 @@ class Peca{
 	}
 
 	preecherCoordenadasPeca2(linha_inicial,coluna_inicial){
+		var ret = true;
 		for(var i=linha_inicial; i>(linha_inicial-2); i--){
 			for(var j=coluna_inicial; j<(coluna_inicial+2); j++){
+				if(this._matriz_tabuleiro[i][j]!=0){
+					ret = false;
+					break;
+				}
 				this.addCoordenadaPreenchida(i,j);
 			}
 		}
-		return true;
+		return ret;
 	}
 
 	preecherCoordenadasPeca3(linha_inicial,coluna_inicial){
-		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
+		var altura = getAlturaTabuleiro(this._matriz_tabuleiro) + 3;
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
 		var ret = true;
 		if(this._direcao == 1 || this._direcao == 3){
@@ -203,7 +239,7 @@ class Peca{
 	}
 
 	preecherCoordenadasPeca4(linha_inicial,coluna_inicial){
-		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
+		var altura = getAlturaTabuleiro(this._matriz_tabuleiro) + 3;
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
 		var ret = true;
 		if(this._direcao == 1 || this._direcao == 3){
@@ -252,14 +288,14 @@ class Peca{
 	}
 
 	preecherCoordenadasPeca5(linha_inicial,coluna_inicial){
-		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
+		var altura = getAlturaTabuleiro(this._matriz_tabuleiro)+3;
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
 		var ret = true;
 		if(this._direcao == 1 || this._direcao == 3){
 			if(coluna_inicial > (largura-3)){
 				coluna_inicial = largura - 3;
 			}
-			if(this._direcao==1 && linha_inicial==(altura-1)){
+			if(this._direcao==1 && linha_inicial==altura){
 				linha_inicial--;
 			}
 			for(var j=coluna_inicial; j<(coluna_inicial+3); j++){
@@ -278,8 +314,8 @@ class Peca{
 				}
 			}
 		}else{
-			if(linha_inicial >= (altura-2)){
-				linha_inicial = altura - 3;
+			if(linha_inicial >= altura-2){
+				linha_inicial = altura-3;
 			}
 			if(this._direcao == 4 && coluna_inicial == 0){
 				coluna_inicial = 1;
@@ -304,7 +340,7 @@ class Peca{
 	}
 
 	preecherCoordenadasPeca6(linha_inicial,coluna_inicial){
-		var altura = getAlturaTabuleiro(this._matriz_tabuleiro);
+		var altura = getAlturaTabuleiro(this._matriz_tabuleiro) + 3;
 		var largura = getLarguraTabuleiro(this._matriz_tabuleiro);
 		var ret = true;
 		if(this._direcao==1 || this._direcao==3){
@@ -341,8 +377,13 @@ class Peca{
 	}
 
 	preecherCoordenadasPeca7(linha_inicial,coluna_inicial){
-		this.addCoordenadaPreenchida(linha_inicial,coluna_inicial);
-		return true;
+		var ret = true;
+		if(this._matriz_tabuleiro[linha_inicial][coluna_inicial]!=0){
+			ret = false;
+		}else{
+			this.addCoordenadaPreenchida(linha_inicial,coluna_inicial);
+		}
+		return ret;
 	}
 	
 

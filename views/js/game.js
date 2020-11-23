@@ -3,9 +3,13 @@
 var isRightSpin = true;
 var needAdaptationOfTheMovementsOfThePieces = false;
 var changeTheKeys = false;
+var intervalTemporizador = null;
+var tempoPartida = {"minutos":0, "segundos":0};
+var soundFundo = new Audio();
 
 function startGame(largura, altura){
 	try {
+		playSoundFundo();
 		changeTheKeys = document.querySelector('#toggleInput').checked;
 		var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
 		var peca = gerarPecaAleatoria(tabuleiro);
@@ -25,11 +29,19 @@ function rodada(tabuleiro, peca){
 	var delayQueda = 1000;
 	var quedaPeca = setInterval(() => {
 		acelerarPeca(tabuleiro,peca);
+		await checarLinhasCheias(tabuleiro);
 		if(pecaColidiu(peca)){
+			playSoundColisao();
 			clearInterval(quedaPeca);
+<<<<<<< HEAD
 
 			console.log(limparLinhas(tabuleiro));
 
+=======
+			if(isGameOver(tabuleiro)){
+				return;
+			}
+>>>>>>> acf44b9e60a872377de9b4700912a9788d0343cc
 			peca = gerarPecaAleatoria(tabuleiro);
 			addPecaNaMatrizTabuleiro(tabuleiro, peca);
 			printarTabuleiro(tabuleiro);
@@ -47,11 +59,11 @@ function temporizador(){
 	const hora = minuto * 60;
 	const inicio = Date.now();
 
-	setInterval(function(){
+	intervalTemporizador = setInterval(function(){
 		const agora = Date.now() - inicio;
-		var minutos = Math.floor((agora % hora) / minuto);
-		var segundos = Math.floor((agora % minuto) / segundo);
-		document.getElementById("tempo-partida").innerHTML = minutos + "m : " + segundos + "s";
+		tempoPartida["minutos"] = Math.floor((agora % hora) / minuto);
+		tempoPartida["segundos"] = Math.floor((agora % minuto) / segundo);
+		document.getElementById("tempo-partida").innerHTML = tempoPartida["minutos"] + "m : " + tempoPartida["segundos"] + "s";
 	}, 1000);
 }
 
@@ -109,6 +121,41 @@ function checarTecla(tabuleiro, peca) {
 	}
 }
 
+<<<<<<< HEAD
+=======
+async function checarLinhasCheias(tabuleiro) {	
+	var cont = 0;
+	var linhasCheias = [];
+	var pecaEspecial = false;
+	tabuleiro.forEach((linha, posicao) => {
+		linha.forEach(bloco => {
+			if(bloco !== 0) {
+				cont++;
+			}
+		})
+		if(cont >= linha.length) {
+			linhasCheias.push(posicao);
+			linha.forEach(bloco => {
+				if(bloco == 7) {
+					pecaEspecial = true;
+				}
+			})
+		}
+		cont = 0;
+	});
+
+	if(linhasCheias.length > 0) {
+		limparLinhas(tabuleiro, linhasCheias);
+		playSoundLimparLinhas();
+		// aumentarPontuacao(linhasCheias.length);
+		if(pecaEspecial) {
+			playSoundSpinning();
+			actionSpinningGame();
+		}
+	}
+}
+
+>>>>>>> acf44b9e60a872377de9b4700912a9788d0343cc
 function aumentarPontuacao(linhaRemovidas) {
   var elemPontuacao = document.getElementById("pontuacao")
   
@@ -142,4 +189,51 @@ function actionSpinningGame(){
 	
 	}
 
+}
+
+function isGameOver(tabuleiro){
+	var ret = false;
+	var linhaFinal = getAlturaTabuleiro(tabuleiro) - 1;
+	tabuleiro[linhaFinal].forEach(bloco => {
+		if(bloco != 0){
+			ret = true;
+		}
+	});
+	if(ret){
+		clearInterval(intervalTemporizador);
+		stopSoundFundo();
+		var text = "Game Over";
+		text += "\nTempo de partida: " + tempoPartida["minutos"] + "m";
+		text += " " + tempoPartida["segundos"] + "s";
+		window.alert(text);
+	}
+	return ret;
+}
+
+function playSound(filename,loop,volume){
+	var audio = new Audio('../lib/sound/'+filename);
+	audio.loop = loop;
+	audio.volume = volume;
+	audio.play();
+	return audio;
+}
+
+function playSoundFundo(){
+	soundFundo = playSound("fundo.mp3",true,0.01);
+}
+
+function stopSoundFundo(){
+	soundFundo.pause();
+}
+
+function playSoundColisao(){
+	playSound("colisao.mp3",false,0.5);
+}
+
+function playSoundLimparLinhas(){
+	playSound("limparLinhas.mp3",false,0.5);
+}
+
+function playSoundSpinning(){
+	playSound("spinning.mp3",false,0.5);
 }
