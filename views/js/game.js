@@ -1,17 +1,15 @@
 "use strict";
 
 var isRightSpin = true;
-var needAdaptationOfTheMovementsOfThePieces = false;
-var changeTheKeys = false;
-var intervalTemporizador = null;
-var tempoPartida = {"minutos":0, "segundos":0};
+var inverterTeclas = false;
+var tabuleiroInvertido = false;
 var soundFundo = new Audio();
 var delayQueda = 1000;
 
 function startGame(largura, altura){
 	try {
 		playSoundFundo();
-		changeTheKeys = document.querySelector('#toggleInput').checked;
+		inverterTeclas = document.querySelector('#toggleInput').checked;
 		var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
 		var peca = gerarPecaAleatoria(tabuleiro);
 		peca = new Peca(tabuleiro, 7)
@@ -26,7 +24,6 @@ function startGame(largura, altura){
 }
 
 function rodada(tabuleiro, peca){
-	// Chama a função peca.moverBaixo() em intervalos de 1000 milisegundos
 	var quedaPeca = setInterval(() => {
 		acelerarPeca(tabuleiro,peca);
 		if(pecaColidiu(peca)){
@@ -34,8 +31,6 @@ function rodada(tabuleiro, peca){
 			playSoundColisao();
 
 			const [linhas, temPecaEspecial] = limparLinhas(tabuleiro);
-			console.log(linhas);
-			console.log(temPecaEspecial)
 			if(linhas) {
 				aumentarPontuacao(linhas);
 				if(temPecaEspecial) {
@@ -58,13 +53,13 @@ function rodada(tabuleiro, peca){
 }
 
 function temporizador(){
-		
+	var tempoPartida = { "minutos": 0, "segundos": 0 };
 	const segundo = 1000;
 	const minuto = segundo * 60;
 	const hora = minuto * 60;
 	const inicio = Date.now();
 
-	intervalTemporizador = setInterval(function(){
+	setInterval(function(){
 		const agora = Date.now() - inicio;
 		tempoPartida["minutos"] = Math.floor((agora % hora) / minuto);
 		tempoPartida["segundos"] = Math.floor((agora % minuto) / segundo);
@@ -73,56 +68,43 @@ function temporizador(){
 }
 
 function checarTecla(tabuleiro, peca) {
-	if(!(Peca.isPecaObj(peca))){
-		throw "'peca' não é um objeto da classe 'Peca'\nfunction 'checarTecla' - game.js";
+	var cima = '38';
+	var baixo = '40';
+	var esquerda = '37';
+	var direita = '39';
+
+	if(inverterTeclas && tabuleiroInvertido) {
+		cima = '40';
+		baixo = '38';
+		esquerda = '39';
+		direita = '37'; 
 	}
+
 	var e = e || window.event;
-	if (e.keyCode == '38') {
+
+	if(e.keyCode == cima) {
 		// Cima
 		e.preventDefault();
 
-		if(needAdaptationOfTheMovementsOfThePieces && !changeTheKeys){
-			acelerarPeca(tabuleiro,peca);
-		}else{
-			girarPeca(tabuleiro,peca);
-		}
-	} else if (e.keyCode == '40') {
+		girarPeca(tabuleiro, peca);
+
+	} else if(e.keyCode == baixo) {
 		// Baixo
 		e.preventDefault();
 
-		if(needAdaptationOfTheMovementsOfThePieces && !changeTheKeys){
+		acelerarPeca(tabuleiro, peca);
 
-			girarPeca(tabuleiro,peca);
-
-		}else{
-			acelerarPeca(tabuleiro,peca);
-		}
-	}
-	else if (e.keyCode == '37') {
+	} else if(e.keyCode == esquerda) {
 		// Esquerda
 		e.preventDefault();
 		
-		if(needAdaptationOfTheMovementsOfThePieces && !changeTheKeys){
-
-			moverpecaPecaPraDireita(tabuleiro,peca);
-
-		}else{
-
-			moverPecaPraEsquerda(tabuleiro,peca);
-
-		}
+		moverPecaPraEsquerda(tabuleiro, peca);
 	   
-	}
-	else if (e.keyCode == '39') {
+	} else if(e.keyCode == direita){
 		// Direita
 		e.preventDefault();
 
-		if(needAdaptationOfTheMovementsOfThePieces && !changeTheKeys){
-
-			moverPecaPraEsquerda(tabuleiro,peca);
-		}else{
-			moverpecaPecaPraDireita(tabuleiro,peca);
-		}
+		moverpecaPecaPraDireita(tabuleiro, peca);
 	}
 }
 
@@ -153,16 +135,17 @@ function actionSpinningGame(){
 	if(isRightSpin){
 
 		animationSpinningGame.classList.toggle('spinningRollingTetris');
-		isRightSpin = !isRightSpin; 
-		needAdaptationOfTheMovementsOfThePieces = !needAdaptationOfTheMovementsOfThePieces;
-	}else{
+		isRightSpin = !isRightSpin;
+		tabuleiroInvertido = !tabuleiroInvertido;
+		inverterTeclas = !inverterTeclas;
+
+	} else { 
 
 		animationSpinningGame.classList.toggle('backToNormalRollingTetris');
-		isRightSpin = !isRightSpin; 
-		needAdaptationOfTheMovementsOfThePieces = !needAdaptationOfTheMovementsOfThePieces;
-	
+		isRightSpin = !isRightSpin;
+		tabuleiroInvertido = !tabuleiroInvertido;
+		inverterTeclas = !inverterTeclas; 
 	}
-
 }
 
 function isGameOver(tabuleiro){
