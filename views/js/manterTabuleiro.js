@@ -78,7 +78,7 @@ function limparLinhas(tabuleiro) {
 			linhas++;
 		}
 	});
-	return linhas;
+	return [linhas, temPecaEspecial];
 }
 
 function addPecaNaMatrizTabuleiro(matriz_tabuleiro, peca) {

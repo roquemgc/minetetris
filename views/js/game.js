@@ -33,14 +33,14 @@ function rodada(tabuleiro, peca){
 			clearInterval(quedaPeca);
 			playSoundColisao();
 
-			var linhas = limparLinhas(tabuleiro);
-			// console.log(linhas);
-			// console.log(temPecaEspecial)
+			const [linhas, temPecaEspecial] = limparLinhas(tabuleiro);
+			console.log(linhas);
+			console.log(temPecaEspecial)
 			if(linhas) {
 				aumentarPontuacao(linhas);
-				// if(temPecaEspecial) {
-				// 	actionSpinningGame();
-				// }
+				if(temPecaEspecial) {
+					actionSpinningGame();
+				}
 			}
 
 			if(isGameOver(tabuleiro)){
