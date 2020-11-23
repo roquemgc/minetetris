@@ -5,6 +5,7 @@ Caso ele não tenha uma conta no MineTetris, ele deverá clicar em "Criar Conta"
 
 Na página principal, a do tabuleiro do jogo, ele pode clicar para editar suas informações pessoais (views/edicao.html) ou ver o ranking (views/ranking.html) de sua pontuação e da pontuação global do jogo. Ao fim de cada partida, o usuário pode escolher se deseja ou não iniciar um novo jogo.
 
-Foi utilizado o seguinte template CSS: https://getbootstrap.com/docs/3.4/
+O framework Bootstrap(3.4.1) foi utilizado na construção de um modal da página rt.html: https://getbootstrap.com/docs/3.4/
+Juntamente com a biblioteca jQuery: https://jquery.com/download/
 
 Playlist do YouTube: https://www.youtube.com/playlist?list=PLS6bmmMSWLXsb0oThZ0haVUJ-JOh6ktiR
