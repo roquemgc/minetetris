@@ -559,7 +559,6 @@ class Peca{
 			if(this._direcao > 4){
 				this._direcao = 1;
 			}
-			console.log(this._coordenadas_preenchidas)
 			var linha_inicial = this._coordenadas_preenchidas[0][0];
 			var coluna_inicial = this._coordenadas_preenchidas[0][1];
 

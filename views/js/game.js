@@ -30,6 +30,7 @@ function rodada(tabuleiro, peca){
 			peca = gerarPecaAleatoria(tabuleiro);
 			//peca = new Peca(tabuleiro,6);
 			addPecaNaMatrizTabuleiro(tabuleiro, peca);
+			checarLinhasCheias(tabuleiro)
 			printarTabuleiro(tabuleiro);
 			document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
 			rodada(tabuleiro,peca);
@@ -103,6 +104,25 @@ function checarTecla(tabuleiro, peca) {
 		}else{
 			moverpecaPecaPraDireita(tabuleiro,peca);
 		}
+	}
+}
+
+function checarLinhasCheias(tabuleiro) {	
+	var cont = 0;
+	var linhasCheias = [];
+	tabuleiro.forEach((linha, posicao) => {
+		linha.forEach(bloco => {
+			if(bloco !== 0) {
+				cont++;
+			}
+		})
+		if(cont >= linha.length) {
+			linhasCheias.push(posicao);
+		}
+		cont = 0;
+	});
+	if(linhasCheias.length) {
+		limparLinhas(tabuleiro, linhasCheias)
 	}
 }
 

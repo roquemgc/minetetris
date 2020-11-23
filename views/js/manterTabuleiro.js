@@ -63,6 +63,14 @@ function printarTabuleiro(matriz_tabuleiro) {
 	div_tabuleiro.appendChild(tabuleiro);
 }
 
+function limparLinhas(tabuleiro, linhas) {
+	linhas.forEach(linha => {
+		tabuleiro[linha].map((bloco) => {
+			bloco = 0;
+		})
+	});
+}
+
 function getCelula(linha, coluna) {
 	if (linha < 0 || linha >= getAlturaTabuleiro() || coluna < 0 || coluna >= getLarguraTabuleiro()) {
 		throw "Índices inválidos da célula\nfunction 'getCelula()' - manterTabuleiro.js";
