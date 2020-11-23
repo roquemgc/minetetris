@@ -63,38 +63,25 @@ function printarTabuleiro(matriz_tabuleiro) {
 }
 
 function limparLinhas(tabuleiro) {
-	var linhas = 0;
+	var linhasCheias = [];
 	var temPecaEspecial = false;
 	tabuleiro.forEach((linha, posicao) => {
 		// Verifica se todos blocos na linha são maiores que zero
 		if (linha.every((bloco) => bloco != 0)) {
-			console.log(linha);
+			console.log(tabuleiro, posicao);
 			if(linha.indexOf(7)+1){
 				temPecaEspecial = true
 			}
-			// Remove a linha cheia
-			tabuleiro.splice(posicao, 1);
+			linhasCheias.push(posicao);
+		}
+		linhasCheias.forEach((linha) => {
+			// Remove a linha cheia do tabuleiro
+			tabuleiro.splice(linha, 1);
 			// Adiciona uma nova linha no topo
 			tabuleiro.push(Array(tabuleiro[0].length).fill(0));
-			linhas++;
-		}
+		})
 	});
-	tabuleiro.forEach((linha, posicao) => {
-		// Verifica se todos blocos na linha são maiores que zero
-		if (linha.every((bloco) => bloco != 0)) {
-			console.log(linha);
-			if(linha.indexOf(7)+1){
-				temPecaEspecial = true
-			}
-			// Remove a linha cheia
-			tabuleiro.splice(posicao, 1);
-			// Adiciona uma nova linha no topo
-			tabuleiro.push(Array(tabuleiro[0].length).fill(0));
-			linhas++;
-		}
-	});
-	console.log(tabuleiro)
-	return [linhas, temPecaEspecial];
+	return [linhasCheias.length, temPecaEspecial];
 }
 
 function addPecaNaMatrizTabuleiro(matriz_tabuleiro, peca) {

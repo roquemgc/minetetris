@@ -38,13 +38,13 @@ function rodada(tabuleiro, peca) {
 				}
 			}
 
-			if (isGameOver(tabuleiro)) {
-				return;
-			}
-
 			peca = gerarPecaAleatoria(tabuleiro);
 			addPecaNaMatrizTabuleiro(tabuleiro, peca);
 			printarTabuleiro(tabuleiro);
+
+			if (isGameOver(tabuleiro)) {
+				return;
+			}
 
 			document.onkeydown = function () { checarTecla(tabuleiro, peca); };
 			rodada(tabuleiro, peca);
