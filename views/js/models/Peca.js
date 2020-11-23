@@ -176,12 +176,17 @@ class Peca{
 	}
 
 	preecherCoordenadasPeca2(linha_inicial,coluna_inicial){
+		var ret = true;
 		for(var i=linha_inicial; i>(linha_inicial-2); i--){
 			for(var j=coluna_inicial; j<(coluna_inicial+2); j++){
+				if(this._matriz_tabuleiro[i][j]!=0){
+					ret = false;
+					break;
+				}
 				this.addCoordenadaPreenchida(i,j);
 			}
 		}
-		return true;
+		return ret;
 	}
 
 	preecherCoordenadasPeca3(linha_inicial,coluna_inicial){
@@ -372,8 +377,13 @@ class Peca{
 	}
 
 	preecherCoordenadasPeca7(linha_inicial,coluna_inicial){
-		this.addCoordenadaPreenchida(linha_inicial,coluna_inicial);
-		return true;
+		var ret = true;
+		if(this._matriz_tabuleiro[linha_inicial][coluna_inicial]!=0){
+			ret = false;
+		}else{
+			this.addCoordenadaPreenchida(linha_inicial,coluna_inicial);
+		}
+		return ret;
 	}
 	
 
