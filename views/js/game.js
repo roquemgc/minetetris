@@ -25,12 +25,12 @@ function rodada(tabuleiro, peca){
 	var delayQueda = 1000;
 	var quedaPeca = setInterval(async () => {
 		acelerarPeca(tabuleiro,peca);
+		await checarLinhasCheias(tabuleiro);
 		if(pecaColidiu(peca)){
 			clearInterval(quedaPeca);
 			peca = gerarPecaAleatoria(tabuleiro);
 			//peca = new Peca(tabuleiro,6);
 			addPecaNaMatrizTabuleiro(tabuleiro, peca);
-			await checarLinhasCheias(tabuleiro)
 			printarTabuleiro(tabuleiro);
 			document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
 			rodada(tabuleiro,peca);
@@ -112,8 +112,6 @@ async function checarLinhasCheias(tabuleiro) {
 	var linhasCheias = [];
 	var pecaEspecial = false;
 	tabuleiro.forEach((linha, posicao) => {
-		console.log(linha);
-		console.log(posicao);
 		linha.forEach(bloco => {
 			if(bloco !== 0) {
 				cont++;
