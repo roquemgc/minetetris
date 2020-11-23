@@ -5,9 +5,11 @@ var needAdaptationOfTheMovementsOfThePieces = false;
 var changeTheKeys = false;
 var intervalTemporizador = null;
 var tempoPartida = {"minutos":0, "segundos":0};
+var soundFundo = new Audio();
 
 function startGame(largura, altura){
 	try {
+		playSoundFundo();
 		changeTheKeys = document.querySelector('#toggleInput').checked;
 		var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
 		var peca = gerarPecaAleatoria(tabuleiro);
@@ -29,6 +31,7 @@ function rodada(tabuleiro, peca){
 		acelerarPeca(tabuleiro,peca);
 		await checarLinhasCheias(tabuleiro);
 		if(pecaColidiu(peca)){
+			playSoundColisao();
 			clearInterval(quedaPeca);
 			if(isGameOver(tabuleiro)){
 				return;
@@ -135,8 +138,10 @@ async function checarLinhasCheias(tabuleiro) {
 
 	if(linhasCheias.length > 0) {
 		limparLinhas(tabuleiro, linhasCheias);
+		playSoundLimparLinhas();
 		// aumentarPontuacao(linhasCheias.length);
 		if(pecaEspecial) {
+			playSoundSpinning();
 			actionSpinningGame();
 		}
 	}
@@ -187,10 +192,39 @@ function isGameOver(tabuleiro){
 	});
 	if(ret){
 		clearInterval(intervalTemporizador);
+		stopSoundFundo();
 		var text = "Game Over";
 		text += "\nTempo de partida: " + tempoPartida["minutos"] + "m";
 		text += " " + tempoPartida["segundos"] + "s";
 		window.alert(text);
 	}
 	return ret;
+}
+
+function playSound(filename,loop,volume){
+	var audio = new Audio('../lib/sound/'+filename);
+	audio.loop = loop;
+	audio.volume = volume;
+	audio.play();
+	return audio;
+}
+
+function playSoundFundo(){
+	soundFundo = playSound("fundo.mp3",true,0.01);
+}
+
+function stopSoundFundo(){
+	soundFundo.pause();
+}
+
+function playSoundColisao(){
+	playSound("colisao.mp3",false,0.5);
+}
+
+function playSoundLimparLinhas(){
+	playSound("limparLinhas.mp3",false,0.5);
+}
+
+function playSoundSpinning(){
+	playSound("spinning.mp3",false,0.5);
 }

@@ -63,7 +63,7 @@ function printarTabuleiro(matriz_tabuleiro) {
 function limparLinhas(tabuleiro, linhas) {
 	// Remove as linhas cheias
 	tabuleiro.splice(linhas[0], linhas.length);
-
+	
 	// Adiciona linhas vazias no topo
 	linhas.forEach(() => {
 		tabuleiro.push((new Array(tabuleiro[0].length).fill(0)));
