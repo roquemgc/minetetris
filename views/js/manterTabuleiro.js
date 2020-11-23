@@ -1,12 +1,10 @@
 "use strict";
 
 function getMatrizVaziaTabuleiro(largura, altura) {
-	var tabuleiro = (Array(altura).fill(0))
-
+	var tabuleiro = (Array(altura+4).fill(0))
 	tabuleiro.forEach((coluna, index) => {
 		tabuleiro[index] = (Array(largura).fill(0));
 	})
-
 	return tabuleiro;
 }
 
@@ -122,5 +120,5 @@ function getLarguraTabuleiro(matriz_tabuleiro) {
 }
 
 function getAlturaTabuleiro(matriz_tabuleiro) {
-	return matriz_tabuleiro.length;
+	return (matriz_tabuleiro.length - 4);
 }
