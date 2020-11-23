@@ -28,22 +28,8 @@ main section .input-block input {
 	font-size: 15px;
 }
 
-::-webkit-input-placeholder {
-	/* Edge */
-	font-family: minecraft, Arial, sans-serif;
-}
-
-:-ms-input-placeholder {
-	/* Internet Explorer 10-11 */
-	font-family: minecraft, Arial, sans-serif;
-}
-
-::placeholder {
-	font-family: minecraft, Arial, sans-serif;
-}
-
 main section form .input-block input[type="submit"] {
-	width: 50%;
+	width: 60%;
 	height: 40px;
 	margin: 0 auto;
 	cursor: pointer;

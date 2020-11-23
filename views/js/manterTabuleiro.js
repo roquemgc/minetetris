@@ -68,7 +68,6 @@ function limparLinhas(tabuleiro) {
 	tabuleiro.forEach((linha, posicao) => {
 		// Verifica se todos blocos na linha são maiores que zero
 		if (linha.every((bloco) => bloco != 0)) {
-			console.log(tabuleiro, posicao);
 			if(linha.indexOf(7)+1){
 				temPecaEspecial = true
 			}
