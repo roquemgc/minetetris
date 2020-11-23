@@ -2,7 +2,7 @@
 
 function setCelulaPecaBackground(celula, cor, borderColor) {
 	celula.style.backgroundImage = cor;
-	celula.style.border = "2px solid"+ borderColor;
+	celula.style.border = "1px solid"+ borderColor;
 }
 
 function printarPeca(peca_matriz_tabuleiro, celula) {

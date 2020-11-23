@@ -1,10 +1,12 @@
 "use strict";
 
+var soundFundo = new Audio();
+var intervalTemporizador;
+var tempoPartida = { "minutos": 0, "segundos": 0 };
+var delayQueda = 1000;
 var isRightSpin = true;
 var inverterTeclas = false;
 var tabuleiroInvertido = false;
-var soundFundo = new Audio();
-var delayQueda = 1000;
 
 function startGame(largura, altura){
 	try {
@@ -53,13 +55,12 @@ function rodada(tabuleiro, peca){
 }
 
 function temporizador(){
-	var tempoPartida = { "minutos": 0, "segundos": 0 };
 	const segundo = 1000;
 	const minuto = segundo * 60;
 	const hora = minuto * 60;
 	const inicio = Date.now();
 
-	setInterval(function(){
+	intervalTemporizador = setInterval(function(){
 		const agora = Date.now() - inicio;
 		tempoPartida["minutos"] = Math.floor((agora % hora) / minuto);
 		tempoPartida["segundos"] = Math.floor((agora % minuto) / segundo);
