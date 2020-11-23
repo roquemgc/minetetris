@@ -8,7 +8,7 @@ var isRightSpin = true;
 var inverterTeclas = false;
 var tabuleiroInvertido = false;
 
-function startGame(largura, altura){
+function startGame(largura, altura) {
 	try {
 		playSoundFundo();
 		inverterTeclas = document.querySelector('#toggleInput').checked;
@@ -16,29 +16,29 @@ function startGame(largura, altura){
 		var peca = gerarPecaAleatoria(tabuleiro);
 		addPecaNaMatrizTabuleiro(tabuleiro, peca);
 		printarTabuleiro(tabuleiro);
-		document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
+		document.onkeydown = function () { checarTecla(tabuleiro, peca); };
 		temporizador();
-		rodada(tabuleiro,peca);
-	} catch(error){
+		rodada(tabuleiro, peca);
+	} catch (error) {
 		console.log(error);
 	}
 }
 
-function rodada(tabuleiro, peca){
+function rodada(tabuleiro, peca) {
 	var quedaPeca = setInterval(() => {
-		acelerarPeca(tabuleiro,peca);
-		if(pecaColidiu(peca)){
+		acelerarPeca(tabuleiro, peca);
+		if (pecaColidiu(peca)) {
 			playSoundColisao();
 			clearInterval(quedaPeca);
 			const [linhas, temPecaEspecial] = limparLinhas(tabuleiro);
-			if(linhas) {
+			if (linhas) {
 				aumentarPontuacao(linhas);
-				if(temPecaEspecial) {
+				if (temPecaEspecial) {
 					actionSpinningGame();
 				}
 			}
 
-			if(isGameOver(tabuleiro)){
+			if (isGameOver(tabuleiro)) {
 				return;
 			}
 
@@ -46,19 +46,19 @@ function rodada(tabuleiro, peca){
 			addPecaNaMatrizTabuleiro(tabuleiro, peca);
 			printarTabuleiro(tabuleiro);
 
-			document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
-			rodada(tabuleiro,peca);
+			document.onkeydown = function () { checarTecla(tabuleiro, peca); };
+			rodada(tabuleiro, peca);
 		}
 	}, delayQueda);
 }
 
-function temporizador(){
+function temporizador() {
 	const segundo = 1000;
 	const minuto = segundo * 60;
 	const hora = minuto * 60;
 	const inicio = Date.now();
 
-	intervalTemporizador = setInterval(function(){
+	intervalTemporizador = setInterval(function () {
 		const agora = Date.now() - inicio;
 		tempoPartida["minutos"] = Math.floor((agora % hora) / minuto);
 		tempoPartida["segundos"] = Math.floor((agora % minuto) / segundo);
@@ -72,34 +72,34 @@ function checarTecla(tabuleiro, peca) {
 	var esquerda = '37';
 	var direita = '39';
 
-	if(inverterTeclas && tabuleiroInvertido) {
+	if (inverterTeclas && tabuleiroInvertido) {
 		cima = '40';
 		baixo = '38';
 		esquerda = '39';
-		direita = '37'; 
+		direita = '37';
 	}
 
 	var e = e || window.event;
 
-	if(e.keyCode == cima) {
+	if (e.keyCode == cima) {
 		// Cima
 		e.preventDefault();
 
 		girarPeca(tabuleiro, peca);
 
-	} else if(e.keyCode == baixo) {
+	} else if (e.keyCode == baixo) {
 		// Baixo
 		e.preventDefault();
 
 		acelerarPeca(tabuleiro, peca);
 
-	} else if(e.keyCode == esquerda) {
+	} else if (e.keyCode == esquerda) {
 		// Esquerda
 		e.preventDefault();
-		
+
 		moverPecaPraEsquerda(tabuleiro, peca);
-	   
-	} else if(e.keyCode == direita){
+
+	} else if (e.keyCode == direita) {
 		// Direita
 		e.preventDefault();
 
@@ -109,7 +109,7 @@ function checarTecla(tabuleiro, peca) {
 
 function aumentarPontuacao(linhasRemovidas) {
 	const elemPontuacao = document.getElementById("pontuacao");
-	const elemLinhasEliminadas =  document.getElementById("linhas-eliminadas");
+	const elemLinhasEliminadas = document.getElementById("linhas-eliminadas");
 	var pontuacao = parseInt(elemPontuacao.innerText) + ((linhasRemovidas * 10) * linhasRemovidas);
 
 	elemPontuacao.innerText = pontuacao;
@@ -127,35 +127,37 @@ function aumentarDificuldade(pontuacao) {
 	elemDificuldade.innerText = Math.trunc(dif) + 1;
 }
 
-function actionSpinningGame(){
+function actionSpinningGame() {
 
-	var animationSpinningGame = document.getElementById('rolling-tetris'); 
+	var animationSpinningGame = document.getElementById('rolling-tetris');
 
-	if(isRightSpin){
+	if (isRightSpin) {
 
+		animationSpinningGame.classList.remove('backToNormalRollingTetris');
 		animationSpinningGame.classList.toggle('spinningRollingTetris');
 		isRightSpin = !isRightSpin;
 		tabuleiroInvertido = !tabuleiroInvertido;
 		inverterTeclas = !inverterTeclas;
 
-	} else { 
+	} else {
 
+		animationSpinningGame.classList.remove('spinningRollingTetris');
 		animationSpinningGame.classList.toggle('backToNormalRollingTetris');
 		isRightSpin = !isRightSpin;
 		tabuleiroInvertido = !tabuleiroInvertido;
-		inverterTeclas = !inverterTeclas; 
+		inverterTeclas = !inverterTeclas;
 	}
 }
 
-function isGameOver(tabuleiro){
+function isGameOver(tabuleiro) {
 	var ret = false;
 	var linhaFinal = getAlturaTabuleiro(tabuleiro) - 1;
 	tabuleiro[linhaFinal].forEach(bloco => {
-		if(bloco != 0){
+		if (bloco != 0) {
 			ret = true;
 		}
 	});
-	if(ret){
+	if (ret) {
 		clearInterval(intervalTemporizador);
 		stopSoundFundo();
 		var text = "Game Over";
@@ -166,30 +168,30 @@ function isGameOver(tabuleiro){
 	return ret;
 }
 
-function playSound(filename,loop,volume){
-	var audio = new Audio('../lib/sound/'+filename);
+function playSound(filename, loop, volume) {
+	var audio = new Audio('../lib/sound/' + filename);
 	audio.loop = loop;
 	audio.volume = volume;
 	audio.play();
 	return audio;
 }
 
-function playSoundFundo(){
-	soundFundo = playSound("fundo.mp3",true,0.01);
+function playSoundFundo() {
+	soundFundo = playSound("fundo.mp3", true, 0.01);
 }
 
-function stopSoundFundo(){
+function stopSoundFundo() {
 	soundFundo.pause();
 }
 
-function playSoundColisao(){
-	playSound("colisao.mp3",false,0.5);
+function playSoundColisao() {
+	playSound("colisao.mp3", false, 0.5);
 }
 
-function playSoundLimparLinhas(){
-	playSound("limparLinhas.mp3",false,0.5);
+function playSoundLimparLinhas() {
+	playSound("limparLinhas.mp3", false, 0.5);
 }
 
-function playSoundSpinning(){
-	playSound("spinning.mp3",false,0.5);
+function playSoundSpinning() {
+	playSound("spinning.mp3", false, 0.5);
 }
