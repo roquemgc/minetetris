@@ -67,7 +67,8 @@ function limparLinhas(tabuleiro) {
 	var temPecaEspecial = false;
 	tabuleiro.forEach((linha, posicao) => {
 		// Verifica se todos blocos na linha são maiores que zero
-		if (linha.every((bloco) => bloco > 0)) {
+		if (linha.every((bloco) => bloco != 0)) {
+			console.log(linha);
 			if(linha.indexOf(7)+1){
 				temPecaEspecial = true
 			}
@@ -78,6 +79,21 @@ function limparLinhas(tabuleiro) {
 			linhas++;
 		}
 	});
+	tabuleiro.forEach((linha, posicao) => {
+		// Verifica se todos blocos na linha são maiores que zero
+		if (linha.every((bloco) => bloco != 0)) {
+			console.log(linha);
+			if(linha.indexOf(7)+1){
+				temPecaEspecial = true
+			}
+			// Remove a linha cheia
+			tabuleiro.splice(posicao, 1);
+			// Adiciona uma nova linha no topo
+			tabuleiro.push(Array(tabuleiro[0].length).fill(0));
+			linhas++;
+		}
+	});
+	console.log(tabuleiro)
 	return [linhas, temPecaEspecial];
 }
 
