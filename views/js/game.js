@@ -23,14 +23,14 @@ function startGame(largura, altura){
 function rodada(tabuleiro, peca){
 	// Chama a função peca.moverBaixo() em intervalos de 1000 milisegundos
 	var delayQueda = 1000;
-	var quedaPeca = setInterval(() => {
+	var quedaPeca = setInterval(async () => {
 		acelerarPeca(tabuleiro,peca);
 		if(pecaColidiu(peca)){
 			clearInterval(quedaPeca);
 			peca = gerarPecaAleatoria(tabuleiro);
 			//peca = new Peca(tabuleiro,6);
 			addPecaNaMatrizTabuleiro(tabuleiro, peca);
-			checarLinhasCheias(tabuleiro)
+			await checarLinhasCheias(tabuleiro)
 			printarTabuleiro(tabuleiro);
 			document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
 			rodada(tabuleiro,peca);
@@ -107,13 +107,17 @@ function checarTecla(tabuleiro, peca) {
 	}
 }
 
-function checarLinhasCheias(tabuleiro) {	
+async function checarLinhasCheias(tabuleiro) {	
 	var cont = 0;
 	var linhasCheias = [];
+	var pecaEspecial = false;
 	tabuleiro.forEach((linha, posicao) => {
 		linha.forEach(bloco => {
 			if(bloco !== 0) {
 				cont++;
+			}
+			if(bloco == 7) {
+				pecaEspecial = true;
 			}
 		})
 		if(cont >= linha.length) {
@@ -121,8 +125,13 @@ function checarLinhasCheias(tabuleiro) {
 		}
 		cont = 0;
 	});
+
 	if(linhasCheias.length > 0) {
-		limparLinhas(tabuleiro, linhasCheias)
+		limparLinhas(tabuleiro, linhasCheias);
+		// aumentarPontuacao(linhasCheias.length);
+		if(pecaEspecial) {
+			actionSpinningGame();
+		}
 	}
 }
 

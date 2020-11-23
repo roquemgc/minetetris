@@ -1,13 +1,12 @@
 "use strict";
 
 function getMatrizVaziaTabuleiro(largura, altura) {
-	var tabuleiro = new Array(altura);
-	for (var i = 0; i < altura; i++) {
-		tabuleiro[i] = new Array(largura);
-		for (var j = 0; j < largura; j++) {
-			tabuleiro[i][j] = 0;
-		}
-	}
+	var tabuleiro = (Array(altura).fill(0))
+
+	tabuleiro.forEach((coluna, index) => {
+		tabuleiro[index] = (Array(largura).fill(0));
+	})
+
 	return tabuleiro;
 }
 
@@ -64,11 +63,35 @@ function printarTabuleiro(matriz_tabuleiro) {
 }
 
 function limparLinhas(tabuleiro, linhas) {
-	linhas.forEach(linha => {
-		tabuleiro[linha].map((bloco, index) => {
-			tabuleiro[linha][index] = 0;
-		})
+	// Remove as linhas cheias
+	tabuleiro.splice(linhas[0], linhas.length);
+
+	// Adiciona linhas vazias no topo
+	linhas.forEach(() => {
+		tabuleiro.push((new Array(tabuleiro[0].length).fill(0)));
 	});
+	console.log(tabuleiro)
+}
+
+function addPecaNaMatrizTabuleiro(matriz_tabuleiro, peca) {
+	if (!(Peca.isPecaObj(peca))) {
+		throw "'peca' não é um objeto da classe 'Peca'\nfunction 'addPecaNaMatrizTabuleiro' - manterTabuleiro.js";
+	}
+
+	for (var i = 0; i < peca.coordenadas_preenchidas.length; i++) {
+		var coordenada = peca.coordenadas_preenchidas[i];
+		matriz_tabuleiro[coordenada[0]][coordenada[1]] = peca.tipo;
+	}
+}
+
+function removePecaNaMatrizTabuleiro(matriz_tabuleiro, peca) {
+	if (!(Peca.isPecaObj(peca))) {
+		throw "'peca' não é um objeto da classe 'Peca'\nfunction 'removePecaNaMatrizTabuleiro' - manterTabuleiro.js";
+	}
+	for (var i = 0; i < peca.coordenadas_preenchidas.length; i++) {
+		var coordenada = peca.coordenadas_preenchidas[i];
+		matriz_tabuleiro[coordenada[0]][coordenada[1]] = 0;
+	}
 }
 
 function getCelula(linha, coluna) {
@@ -101,25 +124,4 @@ function getLarguraTabuleiro(matriz_tabuleiro) {
 
 function getAlturaTabuleiro(matriz_tabuleiro) {
 	return matriz_tabuleiro.length;
-}
-
-function addPecaNaMatrizTabuleiro(matriz_tabuleiro, peca) {
-	if (!(Peca.isPecaObj(peca))) {
-		throw "'peca' não é um objeto da classe 'Peca'\nfunction 'addPecaNaMatrizTabuleiro' - manterTabuleiro.js";
-	}
-
-	for (var i = 0; i < peca.coordenadas_preenchidas.length; i++) {
-		var coordenada = peca.coordenadas_preenchidas[i];
-		matriz_tabuleiro[coordenada[0]][coordenada[1]] = peca.tipo;
-	}
-}
-
-function removePecaNaMatrizTabuleiro(matriz_tabuleiro, peca) {
-	if (!(Peca.isPecaObj(peca))) {
-		throw "'peca' não é um objeto da classe 'Peca'\nfunction 'removePecaNaMatrizTabuleiro' - manterTabuleiro.js";
-	}
-	for (var i = 0; i < peca.coordenadas_preenchidas.length; i++) {
-		var coordenada = peca.coordenadas_preenchidas[i];
-		matriz_tabuleiro[coordenada[0]][coordenada[1]] = 0;
-	}
 }
