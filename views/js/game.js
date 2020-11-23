@@ -9,7 +9,7 @@ function startGame(largura, altura){
 		changeTheKeys = document.querySelector('#toggleInput').checked;
 		var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
 		var peca = gerarPecaAleatoria(tabuleiro);
-		//var peca = new Peca(tabuleiro,1);
+		peca = new Peca(tabuleiro, 7)
 		addPecaNaMatrizTabuleiro(tabuleiro, peca);
 		printarTabuleiro(tabuleiro);
 		document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
@@ -23,15 +23,17 @@ function startGame(largura, altura){
 function rodada(tabuleiro, peca){
 	// Chama a função peca.moverBaixo() em intervalos de 1000 milisegundos
 	var delayQueda = 1000;
-	var quedaPeca = setInterval(async () => {
+	var quedaPeca = setInterval(() => {
 		acelerarPeca(tabuleiro,peca);
 		if(pecaColidiu(peca)){
 			clearInterval(quedaPeca);
+
+			console.log(limparLinhas(tabuleiro));
+
 			peca = gerarPecaAleatoria(tabuleiro);
-			//peca = new Peca(tabuleiro,6);
 			addPecaNaMatrizTabuleiro(tabuleiro, peca);
-			await checarLinhasCheias(tabuleiro)
 			printarTabuleiro(tabuleiro);
+
 			document.onkeydown = function(){ checarTecla(tabuleiro, peca); };
 			rodada(tabuleiro,peca);
 		}
@@ -107,38 +109,10 @@ function checarTecla(tabuleiro, peca) {
 	}
 }
 
-async function checarLinhasCheias(tabuleiro) {	
-	var cont = 0;
-	var linhasCheias = [];
-	var pecaEspecial = false;
-	tabuleiro.forEach((linha, posicao) => {
-		linha.forEach(bloco => {
-			if(bloco !== 0) {
-				cont++;
-			}
-			if(bloco == 7) {
-				pecaEspecial = true;
-			}
-		})
-		if(cont >= linha.length) {
-			linhasCheias.push(posicao);
-		}
-		cont = 0;
-	});
-
-	if(linhasCheias.length > 0) {
-		limparLinhas(tabuleiro, linhasCheias);
-		// aumentarPontuacao(linhasCheias.length);
-		if(pecaEspecial) {
-			actionSpinningGame();
-		}
-	}
-}
-
 function aumentarPontuacao(linhaRemovidas) {
   var elemPontuacao = document.getElementById("pontuacao")
   
-  elemPontuacao.innerText = parseInt(elemPontuacao.value) + ((linhaRemovidas * 10) + (10 * linhaRemovidas -1))
+  elemPontuacao.innerText = parseInt(elemPontuacao.value) + ((linhaRemovidas * 10) * linhaRemovidas)
 	aumentarDificuldade();
 }
 
