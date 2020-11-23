@@ -126,11 +126,14 @@ function checarTecla(tabuleiro, peca) {
 	}
 }
 
-function aumentarPontuacao(linhaRemovidas) {
+function aumentarPontuacao(linhasRemovidas) {
 	const elemPontuacao = document.getElementById("pontuacao");
-	var pontuacao = parseInt(elemPontuacao.value); 
-  
-  elemPontuacao.innerText = pontuacao + ((linhaRemovidas * 10) * linhaRemovidas)
+	const elemLinhasEliminadas =  document.getElementById("linhas-eliminadas");
+	var pontuacao = parseInt(elemPontuacao.innerText) + ((linhasRemovidas * 10) * linhasRemovidas);
+
+	elemPontuacao.innerText = pontuacao;
+	elemLinhasEliminadas.innerText = parseInt(elemLinhasEliminadas.innerText) + linhasRemovidas;
+
 	aumentarDificuldade(pontuacao);
 }
 
@@ -140,7 +143,7 @@ function aumentarDificuldade(pontuacao) {
 	var dif = pontuacao / 300;
 	delayQueda -= 50 * Math.trunc(dif);
 
-	elemDificuldade.innerText = Math.trunc(dif);
+	elemDificuldade.innerText = Math.trunc(dif) + 1;
 }
 
 function actionSpinningGame(){
