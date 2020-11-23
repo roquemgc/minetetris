@@ -3,6 +3,8 @@
 var isRightSpin = true;
 var needAdaptationOfTheMovementsOfThePieces = false;
 var changeTheKeys = false;
+var intervalTemporizador = null;
+var tempoPartida = {"minutos":0, "segundos":0};
 
 function startGame(largura, altura){
 	try {
@@ -28,6 +30,9 @@ function rodada(tabuleiro, peca){
 		await checarLinhasCheias(tabuleiro);
 		if(pecaColidiu(peca)){
 			clearInterval(quedaPeca);
+			if(isGameOver(tabuleiro)){
+				return;
+			}
 			peca = gerarPecaAleatoria(tabuleiro);
 			//peca = new Peca(tabuleiro,6);
 			addPecaNaMatrizTabuleiro(tabuleiro, peca);
@@ -45,11 +50,11 @@ function temporizador(){
 	const hora = minuto * 60;
 	const inicio = Date.now();
 
-	setInterval(function(){
+	intervalTemporizador = setInterval(function(){
 		const agora = Date.now() - inicio;
-		var minutos = Math.floor((agora % hora) / minuto);
-		var segundos = Math.floor((agora % minuto) / segundo);
-		document.getElementById("tempo-partida").innerHTML = minutos + "m : " + segundos + "s";
+		tempoPartida["minutos"] = Math.floor((agora % hora) / minuto);
+		tempoPartida["segundos"] = Math.floor((agora % minuto) / segundo);
+		document.getElementById("tempo-partida").innerHTML = tempoPartida["minutos"] + "m : " + tempoPartida["segundos"] + "s";
 	}, 1000);
 }
 
@@ -170,4 +175,22 @@ function actionSpinningGame(){
 	
 	}
 
+}
+
+function isGameOver(tabuleiro){
+	var ret = false;
+	var linhaFinal = getAlturaTabuleiro(tabuleiro) - 1;
+	tabuleiro[linhaFinal].forEach(bloco => {
+		if(bloco != 0){
+			ret = true;
+		}
+	});
+	if(ret){
+		clearInterval(intervalTemporizador);
+		var text = "Game Over";
+		text += "\nTempo de partida: " + tempoPartida["minutos"] + "m";
+		text += " " + tempoPartida["segundos"] + "s";
+		window.alert(text);
+	}
+	return ret;
 }
