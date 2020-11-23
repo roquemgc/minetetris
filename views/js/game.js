@@ -6,6 +6,7 @@ var changeTheKeys = false;
 var intervalTemporizador = null;
 var tempoPartida = {"minutos":0, "segundos":0};
 var soundFundo = new Audio();
+var delayQueda = 1000;
 
 function startGame(largura, altura){
 	try {
@@ -26,16 +27,26 @@ function startGame(largura, altura){
 
 function rodada(tabuleiro, peca){
 	// Chama a função peca.moverBaixo() em intervalos de 1000 milisegundos
-	var delayQueda = 1000;
 	var quedaPeca = setInterval(() => {
 		acelerarPeca(tabuleiro,peca);
-		limparLinhas(tabuleiro);
 		if(pecaColidiu(peca)){
-			playSoundColisao();
 			clearInterval(quedaPeca);
+			playSoundColisao();
+
+			var linhas = limparLinhas(tabuleiro);
+			// console.log(linhas);
+			// console.log(temPecaEspecial)
+			if(linhas) {
+				aumentarPontuacao(linhas);
+				// if(temPecaEspecial) {
+				// 	actionSpinningGame();
+				// }
+			}
+
 			if(isGameOver(tabuleiro)){
 				return;
 			}
+
 			peca = gerarPecaAleatoria(tabuleiro);
 			addPecaNaMatrizTabuleiro(tabuleiro, peca);
 			printarTabuleiro(tabuleiro);
@@ -116,19 +127,20 @@ function checarTecla(tabuleiro, peca) {
 }
 
 function aumentarPontuacao(linhaRemovidas) {
-  var elemPontuacao = document.getElementById("pontuacao")
+	const elemPontuacao = document.getElementById("pontuacao");
+	var pontuacao = parseInt(elemPontuacao.value); 
   
-  elemPontuacao.innerText = parseInt(elemPontuacao.value) + ((linhaRemovidas * 10) * linhaRemovidas)
-	aumentarDificuldade();
+  elemPontuacao.innerText = pontuacao + ((linhaRemovidas * 10) * linhaRemovidas)
+	aumentarDificuldade(pontuacao);
 }
 
-function aumentarDificuldade() {
-	dif = elemPontuacao / 300;
-	delayQueda = (-50) * dif;
-	if (delayQueda < 10) {
-		delayQueda = 10;
-	}
-	document.getElementById("nivel-dificuldade").innerHTML = dif;
+function aumentarDificuldade(pontuacao) {
+	const elemDificuldade = document.getElementById("nivel-dificuldade");
+
+	var dif = pontuacao / 300;
+	delayQueda -= 50 * Math.trunc(dif);
+
+	elemDificuldade.innerText = Math.trunc(dif);
 }
 
 function actionSpinningGame(){

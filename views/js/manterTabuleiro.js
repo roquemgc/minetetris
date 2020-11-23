@@ -63,7 +63,7 @@ function printarTabuleiro(matriz_tabuleiro) {
 }
 
 function limparLinhas(tabuleiro) {
-	var lines = 0;
+	var linhas = 0;
 	var temPecaEspecial = false;
 	tabuleiro.forEach((linha, posicao) => {
 		// Verifica se todos blocos na linha são maiores que zero
@@ -75,10 +75,10 @@ function limparLinhas(tabuleiro) {
 			tabuleiro.splice(posicao, 1);
 			// Adiciona uma nova linha no topo
 			tabuleiro.push(Array(tabuleiro[0].length).fill(0));
-			lines++;
+			linhas++;
 		}
 	});
-	return lines, temPecaEspecial;
+	return linhas;
 }
 
 function addPecaNaMatrizTabuleiro(matriz_tabuleiro, peca) {
