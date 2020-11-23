@@ -29,19 +29,13 @@ function rodada(tabuleiro, peca){
 	var delayQueda = 1000;
 	var quedaPeca = setInterval(() => {
 		acelerarPeca(tabuleiro,peca);
-		await checarLinhasCheias(tabuleiro);
+		limparLinhas(tabuleiro);
 		if(pecaColidiu(peca)){
 			playSoundColisao();
 			clearInterval(quedaPeca);
-<<<<<<< HEAD
-
-			console.log(limparLinhas(tabuleiro));
-
-=======
 			if(isGameOver(tabuleiro)){
 				return;
 			}
->>>>>>> acf44b9e60a872377de9b4700912a9788d0343cc
 			peca = gerarPecaAleatoria(tabuleiro);
 			addPecaNaMatrizTabuleiro(tabuleiro, peca);
 			printarTabuleiro(tabuleiro);
@@ -121,41 +115,6 @@ function checarTecla(tabuleiro, peca) {
 	}
 }
 
-<<<<<<< HEAD
-=======
-async function checarLinhasCheias(tabuleiro) {	
-	var cont = 0;
-	var linhasCheias = [];
-	var pecaEspecial = false;
-	tabuleiro.forEach((linha, posicao) => {
-		linha.forEach(bloco => {
-			if(bloco !== 0) {
-				cont++;
-			}
-		})
-		if(cont >= linha.length) {
-			linhasCheias.push(posicao);
-			linha.forEach(bloco => {
-				if(bloco == 7) {
-					pecaEspecial = true;
-				}
-			})
-		}
-		cont = 0;
-	});
-
-	if(linhasCheias.length > 0) {
-		limparLinhas(tabuleiro, linhasCheias);
-		playSoundLimparLinhas();
-		// aumentarPontuacao(linhasCheias.length);
-		if(pecaEspecial) {
-			playSoundSpinning();
-			actionSpinningGame();
-		}
-	}
-}
-
->>>>>>> acf44b9e60a872377de9b4700912a9788d0343cc
 function aumentarPontuacao(linhaRemovidas) {
   var elemPontuacao = document.getElementById("pontuacao")
   

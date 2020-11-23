@@ -1,19 +1,12 @@
 "use strict";
 
 function getMatrizVaziaTabuleiro(largura, altura) {
-<<<<<<< HEAD
 	var tabuleiro = []
 
 	for(var i = 0; i < altura; i++) {
 		tabuleiro.push((Array(largura).fill(0)));
 	}
 
-=======
-	var tabuleiro = (Array(altura+4).fill(0))
-	tabuleiro.forEach((coluna, index) => {
-		tabuleiro[index] = (Array(largura).fill(0));
-	})
->>>>>>> acf44b9e60a872377de9b4700912a9788d0343cc
 	return tabuleiro;
 }
 
@@ -69,7 +62,6 @@ function printarTabuleiro(matriz_tabuleiro) {
 	div_tabuleiro.appendChild(tabuleiro);
 }
 
-<<<<<<< HEAD
 function limparLinhas(tabuleiro) {
 	var lines = 0;
 	var temPecaEspecial = false;
@@ -87,16 +79,6 @@ function limparLinhas(tabuleiro) {
 		}
 	});
 	return lines, temPecaEspecial;
-=======
-function limparLinhas(tabuleiro, linhas) {
-	// Remove as linhas cheias
-	tabuleiro.splice(linhas[0], linhas.length);
-	
-	// Adiciona linhas vazias no topo
-	linhas.forEach(() => {
-		tabuleiro.push((new Array(tabuleiro[0].length).fill(0)));
-	});
->>>>>>> acf44b9e60a872377de9b4700912a9788d0343cc
 }
 
 function addPecaNaMatrizTabuleiro(matriz_tabuleiro, peca) {
