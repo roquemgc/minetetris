@@ -177,7 +177,7 @@ section {
     text-align: center;
 
     max-height: 12em;
-    top       : 39.85em;
+    top       : 43em;
     right     : 3.5em;
     padding   : 5px 0;
 
@@ -208,7 +208,7 @@ section {
     background-attachment: fixed;
     background-size      : 5vw 5vh;
 
-    top  : 18.8em;
+    top  : 22em;
     right: 3.5em;
 }
 
@@ -250,7 +250,6 @@ section {
     font-size : 1.5em;
     text-align: center;
 }
-
 
 #menu a:link,
 a:visited {
