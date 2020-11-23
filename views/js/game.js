@@ -112,16 +112,20 @@ async function checarLinhasCheias(tabuleiro) {
 	var linhasCheias = [];
 	var pecaEspecial = false;
 	tabuleiro.forEach((linha, posicao) => {
+		console.log(linha);
+		console.log(posicao);
 		linha.forEach(bloco => {
 			if(bloco !== 0) {
 				cont++;
 			}
-			if(bloco == 7) {
-				pecaEspecial = true;
-			}
 		})
 		if(cont >= linha.length) {
 			linhasCheias.push(posicao);
+			linha.forEach(bloco => {
+				if(bloco == 7) {
+					pecaEspecial = true;
+				}
+			})
 		}
 		cont = 0;
 	});

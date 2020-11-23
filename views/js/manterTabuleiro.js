@@ -70,7 +70,6 @@ function limparLinhas(tabuleiro, linhas) {
 	linhas.forEach(() => {
 		tabuleiro.push((new Array(tabuleiro[0].length).fill(0)));
 	});
-	console.log(tabuleiro)
 }
 
 function addPecaNaMatrizTabuleiro(matriz_tabuleiro, peca) {
