@@ -35,6 +35,7 @@ function rodada(tabuleiro, peca) {
 			clearInterval(quedaPeca);
 			const [linhas, temPecaEspecial] = limparLinhas(tabuleiro);
 			if (linhas) {
+				playSoundLimparLinhas();
 				aumentarPontuacao(linhas);
 				if (temPecaEspecial) {
 					actionSpinningGame();
@@ -134,6 +135,7 @@ function aumentarDificuldade(pontuacao) {
 
 function actionSpinningGame() {
 
+	playSoundSpinning();
 	var animationSpinningGame = document.getElementById('rolling-tetris');
 
 	if (isRightSpin) {
