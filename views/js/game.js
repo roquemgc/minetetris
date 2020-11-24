@@ -6,6 +6,7 @@ var tempoPartida = { "minutos": 0, "segundos": 0 };
 var pontos = 0;
 var dificuldade = 1;
 var linhasEliminadas = 0;
+var quedaPeca;
 var delayQueda = 1000;
 var isRightSpin = true;
 var inverterTeclas = false;
@@ -17,6 +18,7 @@ function startGame(largura, altura) {
 		inverterTeclas = document.querySelector('#toggleInput').checked;
 		var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
 		var peca = gerarPecaAleatoria(tabuleiro);
+		peca = new Peca(tabuleiro, 2)
 		addPecaNaMatrizTabuleiro(tabuleiro, peca);
 		printarTabuleiro(tabuleiro);
 		document.onkeydown = function () { checarTecla(tabuleiro, peca); };
@@ -28,30 +30,9 @@ function startGame(largura, altura) {
 }
 
 function rodada(tabuleiro, peca) {
-	var quedaPeca = setInterval(() => {
-		acelerarPeca(tabuleiro, peca);
-		if (pecaColidiu(peca)) {
-			playSoundColisao();
-			clearInterval(quedaPeca);
-			const [linhas, temPecaEspecial] = limparLinhas(tabuleiro);
-			if (linhas) {
-				playSoundLimparLinhas();
-				aumentarPontuacao(linhas);
-				if (temPecaEspecial) {
-					actionSpinningGame();
-				}
-			}
-			if (isGameOver(tabuleiro)) {
-				return;
-			}
+	quedaPeca = setInterval(() => {
+		acelerarPeca(quedaPeca, tabuleiro, peca);
 
-			peca = gerarPecaAleatoria(tabuleiro);
-			addPecaNaMatrizTabuleiro(tabuleiro, peca);
-			printarTabuleiro(tabuleiro);
-
-			document.onkeydown = function () { checarTecla(tabuleiro, peca); };
-			rodada(tabuleiro, peca);
-		}
 	}, delayQueda);
 }
 
@@ -94,7 +75,7 @@ function checarTecla(tabuleiro, peca) {
 		// Baixo
 		e.preventDefault();
 
-		acelerarPeca(tabuleiro, peca);
+		acelerarPeca(quedaPeca, tabuleiro, peca);
 
 	} else if (e.keyCode == esquerda) {
 		// Esquerda

@@ -74,13 +74,14 @@ function limparLinhas(tabuleiro) {
 			linhasCheias.push(posicao);
 		}
 	});
-	linhasCheias.forEach((linha) => {
-		// Remove a linha cheia do tabuleiro
-		tabuleiro.splice(linha, 1);
+	// Remove as linhas cheias do tabuleiro
+	tabuleiro.splice(linhasCheias[0], linhasCheias.length);
+
+	linhasCheias.forEach(() => {
 		// Adiciona uma nova linha no topo
 		tabuleiro.push(Array(tabuleiro[0].length).fill(0));
-		
 	})
+
 	return [linhasCheias.length, temPecaEspecial];
 }
 
