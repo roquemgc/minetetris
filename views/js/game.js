@@ -3,6 +3,9 @@
 var soundFundo = new Audio();
 var intervalTemporizador;
 var tempoPartida = { "minutos": 0, "segundos": 0 };
+var pontos = 0;
+var dificuldade = 1;
+var linhasEliminadas = 0;
 var delayQueda = 1000;
 var isRightSpin = true;
 var inverterTeclas = false;
@@ -110,9 +113,11 @@ function aumentarPontuacao(linhasRemovidas) {
 	const elemPontuacao = document.getElementById("pontuacao");
 	const elemLinhasEliminadas = document.getElementById("linhas-eliminadas");
 	var pontuacao = parseInt(elemPontuacao.innerText) + ((linhasRemovidas * 10) * linhasRemovidas);
+	pontos = pontuacao;
 
 	elemPontuacao.innerText = pontuacao;
 	elemLinhasEliminadas.innerText = parseInt(elemLinhasEliminadas.innerText) + linhasRemovidas;
+	linhasEliminadas = elemLinhasEliminadas.innerText;
 
 	aumentarDificuldade(pontuacao);
 }
@@ -124,6 +129,7 @@ function aumentarDificuldade(pontuacao) {
 	delayQueda -= 50 * Math.trunc(dif);
 
 	elemDificuldade.innerText = Math.trunc(dif) + 1;
+	dificuldade = elemDificuldade.innerText;
 }
 
 function actionSpinningGame() {
@@ -162,7 +168,11 @@ function isGameOver(tabuleiro) {
 		var text = "Game Over";
 		text += "\nTempo de partida: " + tempoPartida["minutos"] + "m";
 		text += " " + tempoPartida["segundos"] + "s";
+		text += "\nDificuldade: " + dificuldade;
+		text += "\nPontuação: " + pontos;
+		text += "\nLinhas Eliminadas: " + linhasEliminadas;
 		window.alert(text);
+		window.location.reload();
 	}
 	return ret;
 }
