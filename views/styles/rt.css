@@ -73,21 +73,20 @@ section {
     }
 
     40% {
-        transform: translateY(30px) rotateZ(90deg)
+        transform: translateY(30px) rotate(90deg)
     }
 
     50% {
-        transform: translateY(30px) rotateZ(112.5deg)
+        transform: translateY(30px) rotate(112.5deg)
     }
 
     90% {
-        transform: translateY(30px) rotateZ(180deg)
+        transform: translateY(30px) rotate(180deg)
     }
 
     100% {
-        transform: translateY(0px) rotateZ(180deg)
+        transform: translateY(0px) rotate(180deg)
     }
-
 }
 
 .backToNormalRollingTetris {
@@ -124,19 +123,19 @@ section {
     }
 
     40% {
-        transform: translateY(30px) rotateZ(90deg)
+        transform: translateY(30px) rotate(90deg)
     }
 
     50% {
-        transform: translateY(30px) rotateZ(67.5deg)
+        transform: translateY(30px) rotate(67.5deg)
     }
 
     90% {
-        transform: translateY(30px) rotateZ(0deg)
+        transform: translateY(30px) rotate(0deg)
     }
 
     100% {
-        transform: translateY(0px) rotateZ(0deg)
+        transform: translateY(0px) rotate(0deg)
     }
 }
 

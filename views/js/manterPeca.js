@@ -53,7 +53,7 @@ function acelerarPeca(quedaPeca, tabuleiro, peca) {
 		}
 
 		peca = gerarPecaAleatoria(tabuleiro);
-		peca = new Peca(tabuleiro, 2)
+		peca = new Peca(tabuleiro, 1)
 		addPecaNaMatrizTabuleiro(tabuleiro, peca);
 		printarTabuleiro(tabuleiro);
 

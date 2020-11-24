@@ -18,7 +18,7 @@ function startGame(largura, altura) {
 		inverterTeclas = document.querySelector('#toggleInput').checked;
 		var tabuleiro = getMatrizVaziaTabuleiro(largura, altura);
 		var peca = gerarPecaAleatoria(tabuleiro);
-		peca = new Peca(tabuleiro, 2)
+		peca = new Peca(tabuleiro, 7)
 		addPecaNaMatrizTabuleiro(tabuleiro, peca);
 		printarTabuleiro(tabuleiro);
 		document.onkeydown = function () { checarTecla(tabuleiro, peca); };
