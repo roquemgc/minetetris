@@ -31,33 +31,11 @@ function moverpecaPecaPraDireita(tabuleiro, peca) {
 }
 
 // Acelera a queda da peça em jogo
-function acelerarPeca(quedaPeca, tabuleiro, peca) {
+function acelerarPeca(tabuleiro, peca) {
 	removePecaNaMatrizTabuleiro(tabuleiro, peca);
 	peca.moverBaixo();
 	addPecaNaMatrizTabuleiro(tabuleiro, peca, 1);
 	printarTabuleiro(tabuleiro);
 
-	if(pecaColidiu(peca)) {
-		playSoundColisao();
-		clearInterval(quedaPeca);
-		const [linhas, temPecaEspecial] = limparLinhas(tabuleiro);
-		if (linhas) {
-			playSoundLimparLinhas();
-			aumentarPontuacao(linhas);
-			if (temPecaEspecial) {
-				actionSpinningGame();
-			}
-		}
-		if (isGameOver(tabuleiro)) {
-			return;
-		}
-
-		peca = gerarPecaAleatoria(tabuleiro);
-		peca = new Peca(tabuleiro, 1)
-		addPecaNaMatrizTabuleiro(tabuleiro, peca);
-		printarTabuleiro(tabuleiro);
-
-		document.onkeydown = function () { checarTecla(tabuleiro, peca); };
-		rodada(tabuleiro, peca);
-	}
+	rodada(tabuleiro, peca)
 }
