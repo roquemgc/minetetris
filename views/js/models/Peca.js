@@ -603,7 +603,7 @@ class Peca{
 			var linha_inicial = this._coordenadas_preenchidas[0][0];
 			var coluna_inicial = this._coordenadas_preenchidas[0][1];
 
-			var ret = this.preecherCoordenadas(linha_inicial,coluna_inicial);
+			this.preecherCoordenadas(linha_inicial,coluna_inicial);
 		}
 	}
 }
