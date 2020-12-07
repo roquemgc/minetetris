@@ -1,3 +1,7 @@
+<?php
+	require_once '../../controllers/services/errors.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
