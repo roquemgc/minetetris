@@ -23,7 +23,7 @@
 
 		<section>
 			<h2>Editar dados</h2>
-			<form action="rt.php">
+			<form action="../../controllers/edicao.php" method="POST">
 				<div class="input-block">
 					<label for="nome_completo">Nome completo</label>
 					<input id="nome_completo" type="text" name="nome_completo" placeholder="Nome Completo" title="Nome Completo" minlength="3"
@@ -33,14 +33,14 @@
 				<div class="input-block">
 					<label for="data_nascimento">Data de nascimento</label>
 					<input id="data_nascimento" type="date" name="data_nascimento" title="Data de nascimento"
-						min="1900-01-01" max="2017-12-31" required value="2001-01-01" disabled />
+						min="1900-01-01" max="2017-12-31" required value="2001-01-01" readonly />
 				</div>
 
 				<div class="input-block">
 					<label for="cpf">CPF</label>
 					<input id="cpf" type="text" name="cpf" placeholder="CPF" title="CPF: xxx.xxx.xxx-xx"
 						pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" maxlength="14" required value="111.111.111-11"
-						disabled />
+						readonly />
 				</div>
 
 				<div class="input-block">
@@ -58,7 +58,7 @@
 				<div class="input-block">
 					<label for="username">Username</label>
 					<input id="username" type="text" name="username" placeholder="Username" title="Username" minlength="3" required
-						value="JackJ" disabled />
+						value="JackJ" readonly />
 				</div>
 
 				<div class="input-block">
