@@ -2,22 +2,16 @@
 
 final class Jogador{
 
-    private $username;
-    private $cpf;
-    private $nome;
-    private $dataNascimento;
-    private $telefone;
-    private $email;
-    private $senha;
+    private $username = null;
+    private $cpf = null;
+    private $nome = null;
+    private $dataNascimento = null;
+    private $telefone = null;
+    private $email = null;
+    private $senha = null;
 
-    public function __construct($username,$cpf,$nome,$dataNascimento,$telefone,$email,$senha){
+    public function __construct($username){
         $this->setUsername($username);
-        $this->setCpf($cpf);
-        $this->setNome($nome);
-        $this->setDataNascimento($dataNascimento);
-        $this->setTelefone($telefone);
-        $this->setEmail($email);
-        $this->setSenha($senha);
     }
 
     private function setUsername($username){
@@ -31,7 +25,7 @@ final class Jogador{
         return $this->username;
     }
 
-    private function setCpf($cpf){
+    public function setCpf($cpf){
         if(preg_match("/[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}/",$cpf) == 0){
             throw new Exception("CPF : '".$cpf."' inválido");
         }
@@ -42,7 +36,7 @@ final class Jogador{
         return $this->cpf;
     }
 
-    private function setNome($nome){
+    public function setNome($nome){
         if(strlen($nome) < 3){
             throw new Exception("Nome : '".$nome."' inválido");
         }
@@ -53,7 +47,7 @@ final class Jogador{
         return $this->nome;
     }
 
-    private function setDataNascimento($dataNascimento){
+    public function setDataNascimento($dataNascimento){
         if(preg_match("/[1900-2017]-[01-12]{2}-[01-31]{2}/",$dataNascimento) == 0){
             throw new Exception("Data de nascimento : '".$dataNascimento."' inválida");
         }
@@ -64,7 +58,7 @@ final class Jogador{
         return $this->dataNascimento;
     }
 
-    private function setTelefone($telefone){
+    public function setTelefone($telefone){
         if(preg_match("/\([0-9]{2}\)[0-9]{5}-[0-9]{4}/",$telefone) == 0){
             throw new Exception("Telefone : '".$telefone."' inválido");
         }
@@ -75,7 +69,7 @@ final class Jogador{
         return $this->telefone;
     }
 
-    private function setEmail($email){
+    public function setEmail($email){
         if(!strpos($email,"@") || !strpos($email,".com")){
             throw new Exception("Email : '".$email."' inválido");
         }
@@ -86,7 +80,7 @@ final class Jogador{
         return $this->email;
     }
 
-    private function setSenha($senha){
+    public function setSenha($senha){
         if(strlen($senha) < 8){
             throw new Exception("Senha : '".$email."' inválida");
         }
