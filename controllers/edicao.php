@@ -20,6 +20,8 @@ try{
     $jogador->setEmail($_POST['email']);
     $jogador->setSenha($_POST['senha']);
     JogadorDAO::update($conn,$jogador);
+    $lastPage = getLastPage();
+    header("Location: ../views/pages/$lastPage");
 }catch(Exception $e){
     returnErrorToLastPage($e->getMessage());
 }

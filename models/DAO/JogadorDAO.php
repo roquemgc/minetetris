@@ -46,7 +46,7 @@ final class JogadorDAO extends DAO{
         $nome = $jogador->getNome();
         $email = $jogador->getEmail();
         $senha = $jogador->getSenha();
-        $sql = "UPDATE jogador SET nome='$nome', email='$email', senha='$email' WHERE username='$username';";
+        $sql = "UPDATE jogador SET nome='$nome', email='$email', senha='$senha' WHERE username='$username';";
         $stmt = $conn->prepare($sql);
         $ret = null;
         try{

@@ -48,7 +48,11 @@ final class Jogador{
     }
 
     public function setDataNascimento($dataNascimento){
-        if(preg_match("/[1900-2017]-[01-12]{2}-[01-31]{2}/",$dataNascimento) == 0){
+        $timestamp = strtotime($dataNascimento);
+        $dataNascimento = date($dataNascimento);
+        $min = date("1900-01-01");
+        $max = date("2017-12-31");
+        if(!$timestamp || $dataNascimento < $min || $dataNascimento > $max){
             throw new Exception("Data de nascimento : '".$dataNascimento."' inválida");
         }
         $this->dataNascimento = $dataNascimento;
