@@ -19,7 +19,7 @@
 
     <header>
         <figure>
-            <a href="rt.php">
+            <a href="login.php">
                 <img src="../lib/img/minetetris.png" alt="Logo" />
             </a>
         </figure>
@@ -29,7 +29,7 @@
 
         <section>
             <h2>Login</h2>
-            <form method="POST" action="../controllers/login.php">
+            <form action="../../controllers/syslogin.php" method="POST">
                 <div class="input-block">
                     <label for="username">Username</label>
                     <input id="username" type="text" name="username" placeholder="Insira seu username" title="Username" minlength="3" required />
