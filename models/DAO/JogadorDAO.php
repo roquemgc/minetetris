@@ -35,6 +35,25 @@ final class JogadorDAO extends DAO{
         }
     }
 
+    public static function selectAll($conn){
+        if(!parent::isConnObj($conn)){
+            throw new Exception("Parâmetro 'conn' não é um objeto da classe 'PDO'");
+        }
+        $sql = "SELECT * FROM jogador;";
+        $ret = null;
+        try{
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $ret = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                array_push($ret,$row);
+            }
+            return $ret;
+        }catch(Exception $e){
+            throw new Exception($e->getMessage());
+        }
+    }
+
     public static function insert($conn,$jogador){
         self::verifyParameters($conn,$jogador);
         throw new Exception("'insert()' não implementado ainda");
