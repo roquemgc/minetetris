@@ -29,15 +29,15 @@ final class JogadorDAO extends DAO{
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 array_push($ret,$row);
             }
+            return $ret;
         }catch(Exception $e){
-            $ret = $e->getMessage();
+            throw new Exception($e->getMessage());
         }
-        return $ret;
     }
 
     public static function insert($conn,$jogador){
         self::verifyParameters($conn,$jogador);
-        return "Não implementado ainda";
+        throw new Exception("'insert()' não implementado ainda");
     }
 
     public static function update($conn,$jogador){
@@ -51,16 +51,15 @@ final class JogadorDAO extends DAO{
         $ret = null;
         try{
             $stmt->execute();
-            $ret = $stmt->rowCount();
+            return $stmt->rowCount();
         }catch(Exception $e){
-            $ret = $e->getMessage();
+            throw new Exception($e->getMessage());
         }
-        return $ret;
     }
 
     public static function delete($conn,$jogador){
         self::verifyParameters($conn,$jogador);
-        return "Não implementado ainda";
+        throw new Exception("'delete()' não implementado ainda");
     }
 
 }

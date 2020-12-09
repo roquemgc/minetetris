@@ -9,9 +9,9 @@ final class Jogo{
     private $pontuacao;
     private $linhasEliminadas;
 
-    public function __construct($idJogo,$username,$tempo,$dificuldade,$pontuacao,$linhasEliminadas){
+    public function __construct($idJogo,$jogador,$tempo,$dificuldade,$pontuacao,$linhasEliminadas){
         $this->setIdJogo($idJogo);
-        $this->setUsername($username);
+        $this->setUsernameFromJogador($jogador);
         $this->setTempo($tempo);
         $this->setDificuldade($dificuldade);
         $this->setPontuacao($pontuacao);
@@ -26,8 +26,11 @@ final class Jogo{
         return $this->idJogo;
     }
 
-    private function setUsername($username){
-        $this->username = $username;
+    private function setUsernameFromJogador($jogador){
+        if(!is_object($jogador) || !get_class($jogador) == "Jogador"){
+            throw new Exception("Parâmetro 'jogador' não é um objeto da classe 'Jogador'");
+        }
+        $this->username = $jogador->getUsername();
     }
 
     public function getUsername(){
