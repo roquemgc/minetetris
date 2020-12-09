@@ -2,27 +2,27 @@
 	
 	session_start();
 
-	require_once('../controllers/db/dbConnection.php');
+    require_once 'services\post.php';
+    require_once '..\models\Jogador.php';
+    require_once 'db\dbConnection.php';
+    require_once '..\models\DAO\JogadorDAO.php';
+    require_once 'services\errors.php';
 
-	$sql = "SELECT * FROM Jogador WHERE username='".$_POST['username']."' AND senha='".$_POST['senha']."'";
-    $stmt = $conn->query($sql); 
-    
-    if ($stmt)
-    {
-        $count = 0;
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) 
-        {
-            $count++;
+    try{
+        if(!isset($_POST['username']) || !isset($_POST['senha'])){
+            header("Location: sair.php");
         }
-
-        if ($count == 1)
-        {
+        fixPost();
+        $jogador = new Jogador($_POST['username']);
+        $jogador->setSenha($_POST['senha']);
+        $select = JogadorDAO::select($conn,$jogador);
+        if(sizeof($select) == 1 && $select[0]["senha"] == $_POST['senha']){
             $_SESSION['usuario'] = $_POST['username'];
-            header("location:../views/pages/rt.php");
+            header("Location: ../views/pages/rt.php");
+        }else{
+            throw new Exception("usuario ou senha incorretos");
         }
-        else
-        {
-            header("location:../views/pages/login.php?erro=usuario ou senha incorretos");
-        }
-    }       
+    }catch(Exception $e){
+        returnErrorToLastPage($e->getMessage());
+    }   
 ?>
