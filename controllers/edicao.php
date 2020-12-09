@@ -19,7 +19,7 @@ try{
     $jogador->setTelefone($_POST['telefone']);
     $jogador->setEmail($_POST['email']);
     $jogador->setSenha($_POST['senha']);
-    JogadorDAO::update($conn,$jogador);
+    JogadorDAO::update(getNewDBConnection(),$jogador);
     $lastPage = getLastPage();
     header("Location: ../views/pages/$lastPage");
 }catch(Exception $e){
