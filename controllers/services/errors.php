@@ -16,3 +16,8 @@ function returnErrorToLastPage($errorMessage){
 function getErrorMessage(){
     return (isset($_GET["error"])) ? $_GET["error"] : null;
 }
+
+function getAlertForError(){
+    $errorMessage = getErrorMessage();
+    return ($errorMessage != null)? "onload=\"alert('$errorMessage')\"" : "";
+}

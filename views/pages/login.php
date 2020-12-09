@@ -1,3 +1,7 @@
+<?php
+    require_once '../../controllers/services/errors.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -15,7 +19,7 @@
     <!--título da página-->
 </head>
 
-<body>
+<body <?= getAlertForError(); ?> >
 
     <header>
         <figure>

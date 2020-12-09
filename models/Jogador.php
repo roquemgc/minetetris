@@ -16,7 +16,7 @@ final class Jogador{
 
     private function setUsername($username){
         if(strlen($username) < 3){
-            throw new Exception("Username : '".$username."' inválido");
+            throw new Exception("Username : [".$username."] inválido");
         }
         $this->username = $username;
     }
@@ -27,7 +27,7 @@ final class Jogador{
 
     public function setCpf($cpf){
         if(preg_match("/[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}/",$cpf) == 0){
-            throw new Exception("CPF : '".$cpf."' inválido");
+            throw new Exception("CPF : [".$cpf."] inválido");
         }
         $this->cpf = $cpf;
     }
@@ -38,7 +38,7 @@ final class Jogador{
 
     public function setNome($nome){
         if(strlen($nome) < 3){
-            throw new Exception("Nome : '".$nome."' inválido");
+            throw new Exception("Nome : [".$nome."] inválido");
         }
         $this->nome = $nome;
     }
@@ -53,7 +53,7 @@ final class Jogador{
         $min = date("1900-01-01");
         $max = date("2017-12-31");
         if(!$timestamp || $dataNascimento < $min || $dataNascimento > $max){
-            throw new Exception("Data de nascimento : '".$dataNascimento."' inválida");
+            throw new Exception("Data de nascimento : [".$dataNascimento."] inválida");
         }
         $this->dataNascimento = $dataNascimento;
     }
@@ -64,7 +64,7 @@ final class Jogador{
 
     public function setTelefone($telefone){
         if(preg_match("/\([0-9]{2}\)[0-9]{5}-[0-9]{4}/",$telefone) == 0){
-            throw new Exception("Telefone : '".$telefone."' inválido");
+            throw new Exception("Telefone : [".$telefone."] inválido");
         }
         $this->telefone = $telefone;
     }
@@ -75,7 +75,7 @@ final class Jogador{
 
     public function setEmail($email){
         if(!strpos($email,"@") || !strpos($email,".com")){
-            throw new Exception("Email : '".$email."' inválido");
+            throw new Exception("Email : [".$email."] inválido");
         }
         $this->email = $email;
     }
@@ -86,7 +86,7 @@ final class Jogador{
 
     public function setSenha($senha){
         if(strlen($senha) < 8){
-            throw new Exception("Senha : '".$email."' inválida");
+            throw new Exception("Senha : [".$senha."] inválida");
         }
         $this->senha = $senha;
     }

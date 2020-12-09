@@ -20,8 +20,7 @@
 	<meta charset="utf-8" />
 	<title>MINETETRIS</title>
 </head>
-
-<body>
+<body <?= getAlertForError(); ?> >
 
 	<header>
 		<figure>
