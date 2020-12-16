@@ -1,3 +1,3 @@
 <?php
-  include_once('environment.php');
+  require_once('environment.php');
   header("Location: views/pages/login.php");

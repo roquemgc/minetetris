@@ -1,10 +1,10 @@
 <?php
 
-require_once 'services\post.php';
-require_once '..\models\Jogador.php';
-require_once 'db\dbConnection.php';
-require_once '..\models\DAO\JogadorDAO.php';
-require_once 'services\errors.php';
+require_once '..\services\post.php';
+require_once '..\..\models\Jogador.php';
+require_once '..\db\dbConnection.php';
+require_once '..\..\models\DAO\JogadorDAO.php';
+require_once '..\services\errors.php';
 
 try{
     if(!isset($_POST['username']) || !isset($_POST['cpf']) || !isset($_POST['nome_completo']) || !isset($_POST['data_nascimento'])
@@ -20,7 +20,7 @@ try{
     $jogador->setEmail($_POST['email']);
     $jogador->setSenha($_POST['senha']);
     JogadorDAO::update(getNewDBConnection(),$jogador);
-    header("Location: ../views/pages/rt.php");
+    header("Location: ../../views/pages/rt.php");
 }catch(Exception $e){
     returnErrorToLastPage($e->getMessage());
 }

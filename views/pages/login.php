@@ -28,11 +28,11 @@
             </a>
         </figure>
     </header>
-    <main>
 
+    <main>
         <section>
             <h2>Login</h2>
-            <form action="../../controllers/syslogin.php" method="POST">
+            <form action="../../controllers/jogadorControllers/login.php" method="POST">
                 <div class="input-block">
                     <label for="username">Username</label>
                     <input id="username" type="text" name="username" placeholder="Insira seu username" title="Username" minlength="3" required />
@@ -53,5 +53,4 @@
 
     </main>
 </body>
-
 </html>

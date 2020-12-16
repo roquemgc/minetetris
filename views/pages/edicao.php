@@ -34,7 +34,7 @@
 
 		<section>
 			<h2>Editar dados</h2>
-			<form action="../../controllers/edicao.php" method="POST">
+			<form action="../../controllers/jogadorControllers/edicao.php" method="POST">
 				<div class="input-block">
 					<label for="nome_completo">Nome completo</label>
 					<input id="nome_completo" type="text" name="nome_completo" placeholder="Nome Completo" title="Nome Completo" minlength="3"

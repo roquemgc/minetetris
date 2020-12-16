@@ -20,7 +20,7 @@
     <main>
         <section>
             <h2>Cadastro</h2>
-            <form action="login.php" method="POST">
+            <form action="../../controllers/jogadorControllers/cadastro.php" method="POST">
                 <div class="input-block">
                     <label for="nome_completo">Nome Completo</label>
                     <input type="text" id="nome_completo" placeholder="Insira seu nome completo" title="Nome Completo"
