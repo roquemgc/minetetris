@@ -1,6 +1,9 @@
 # Minetetris
-Para configuração do ambiente de desenvolvimento, deve ser criado o banco de dados SQL. O script para ser executado está em controllers/database/database.sql
-Também é necessário ajustar o nome de usuário e senha do seu banco de dados, isso deve ser feito nas variaveis de ambiente do programa, em environment.php
+
+# Configuração para desenvolvimento
+Para configuração do ambiente de desenvolvimento, deve ser criado o banco de dados SQL. O script para ser executado está em controllers/database/database.sql.
+
+Também é necessário ajustar o nome de usuário e senha do seu banco de dados, isso deve ser feito nas variaveis de ambiente do programa, em environment.php.
 
 Ao acessar o sistema, o usuário enxergará a tela de Login (views/login.html). Caso já possua conta, ele digitará seus dados cadastrados no sistema e será redirecionado ao Rolling Tetris (views/rt.html). 
 
