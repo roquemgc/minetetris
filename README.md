@@ -12,7 +12,15 @@ Caso ele não tenha uma conta no MineTetris, ele deverá clicar em "Criar Conta"
 
 Na página principal, a do tabuleiro do jogo, ele pode clicar para editar suas informações pessoais (views/edicao.html) ou ver o ranking (views/ranking.html) de sua pontuação e da pontuação global do jogo. Ao fim de cada partida, o usuário pode escolher se deseja ou não iniciar um novo jogo.
 
-O framework Bootstrap(3.4.1) foi utilizado na construção de um modal da página rt.html: https://getbootstrap.com/docs/3.4/.
-Juntamente com a biblioteca jQuery: https://jquery.com/download/.
+# Ferramentas
+HTML5, CSS3 e JavaScript para criação e tratamento de interfaces.
+
+PHP7 para manipulação e persistência de dados.
+
+Para criação de um modal na tela de jogo (rt.php), foram usados:
+
+Bootstrap(3.4.1): https://getbootstrap.com/docs/3.4/.
+
+jQuery: https://jquery.com/download/.
 
 Playlist do YouTube: https://www.youtube.com/playlist?list=PLS6bmmMSWLXsb0oThZ0haVUJ-JOh6ktiR
