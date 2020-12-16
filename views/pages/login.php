@@ -28,7 +28,6 @@
             </a>
         </figure>
     </header>
-
     <main>
 
         <section>
@@ -53,7 +52,6 @@
         </section>
 
     </main>
-
 </body>
 
 </html>
