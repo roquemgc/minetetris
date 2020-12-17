@@ -20,7 +20,7 @@ final class JogadorDAO extends DAO{
     public static function select($conn,$jogador){
         self::verifyParameters($conn,$jogador);
         $username = $jogador->getUsername();
-        $sql = "SELECT * FROM jogador WHERE username='$username';";
+        $sql = "SELECT * FROM Jogador WHERE username='$username';";
         $ret = null;
         try{
             $stmt = $conn->prepare($sql);
@@ -39,7 +39,7 @@ final class JogadorDAO extends DAO{
         if(!parent::isConnObj($conn)){
             throw new Exception("Parâmetro 'conn' não é um objeto da classe 'PDO'");
         }
-        $sql = "SELECT * FROM jogador;";
+        $sql = "SELECT * FROM Jogador;";
         $ret = null;
         try{
             $stmt = $conn->prepare($sql);

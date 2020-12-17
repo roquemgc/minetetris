@@ -9,7 +9,7 @@ require_once '..\services\errors.php';
 try{
     if(!isset($_POST['username']) || !isset($_POST['cpf']) || !isset($_POST['nome_completo']) || !isset($_POST['data_nascimento'])
     || !isset($_POST['telefone']) || !isset($_POST['email']) || !isset($_POST['senha'])){
-        header("Location: sair.php");
+        header("Location: logout.php");
     }
     fixPost();
     $jogador = new Jogador($_POST['username']);

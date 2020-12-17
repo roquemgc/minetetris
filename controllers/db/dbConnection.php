@@ -1,4 +1,5 @@
 <?php
+    include_once('../../environment.php');
 
     function getNewDBConnection(){
         $servername = "localhost";

@@ -19,5 +19,5 @@ function getErrorMessage(){
 
 function getAlertForError(){
     $errorMessage = getErrorMessage();
-    return ($errorMessage != null)? "onload=\"alert('$errorMessage')\"" : "";
+    return ($errorMessage != null) ? "onload=alert('$errorMessage')" : "";
 }
