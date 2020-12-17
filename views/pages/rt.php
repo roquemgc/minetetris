@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['usuario']))
     {
-        header("location:../../controllers/jogadorController/sair.php");
+        header("location:../../controllers/jogadorController/logout.php");
     }
 ?>
 
@@ -122,7 +122,7 @@
         <nav>
             <p class="menu-item"><a href="ranking.php"><span class="negrito">RANKING GLOBAL</span></a></p>
             <p class="menu-item"><a href="edicao.php"><span class="negrito">EDITAR DADOS PESSOAIS</span></a></p>
-            <p class="menu-item"><a href="../../controllers/sair.php"><span class="negrito">SAIR</span></a></p>
+            <p class="menu-item"><a href="../../controllers/jogadorControllers/logout.php"><span class="negrito">SAIR</span></a></p>
         </nav>
     </section>
 </body>
