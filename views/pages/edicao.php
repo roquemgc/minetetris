@@ -7,7 +7,7 @@
 	{
 		header("location:../../controllers/sair.php");
 	}
-	require_once "../../controllers/prepareEdicao.php";
+	require_once "../../controllers/jogadorControllers/prepareEdicao.php";
 ?>
 
 <!DOCTYPE html>
