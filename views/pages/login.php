@@ -19,7 +19,7 @@
     <!--título da página-->
 </head>
 
-<body <?=getAlertForError(); ?> >
+<body <?=getAlertForError()?> >
 
     <header>
         <figure>

@@ -5,19 +5,19 @@ function getLastURL(){
 }
 
 function getLastPage(){
-    return explode("pages/",getLastURL())[1];
+    return explode("?",explode("pages/",getLastURL())[1])[0];
 }
 
 function returnErrorToLastPage($errorMessage){
     $lastPage = getLastPage();
-    header("Location: ../views/pages/$lastPage?error=" . urlencode($errorMessage));
+    header("Location: ../../views/pages/$lastPage?error=" . urlencode($errorMessage));
 }
 
 function getErrorMessage(){
-    return (isset($_GET["error"])) ? $_GET["error"] : null;
+    return (isset($_GET["error"])) ? urldecode($_GET["error"]) : null;
 }
 
 function getAlertForError(){
-    $errorMessage = getErrorMessage();
-    return ($errorMessage != null) ? "onload=alert('$errorMessage')" : "";
+    $errorMessage = str_replace("'","",getErrorMessage());
+    return ($errorMessage != null) ? "onload=\"alert('$errorMessage')\"" : "";
 }
