@@ -1,9 +1,11 @@
 <?php
-    session_start();
+    require_once '../../controllers/services/errors.php';
 
+    session_start();
+    
     if(!isset($_SESSION['usuario']))
     {
-        header("location:../../controllers/jogadorController/logout.php");
+        header("location:../../controllers/jogadorControllers/logout.php");
     }
 ?>
 
@@ -33,7 +35,7 @@
     <script src="../js/manterPeca.js"></script>
 </head>
 
-<body>
+<body <?= getAlertForMessage(); ?>>
     <header>
         <figure>
             <a href="rt.php"><img src="../lib/img/minetetris.png" alt="Logo"></a>

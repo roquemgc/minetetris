@@ -5,7 +5,7 @@
 
 	if(!isset($_SESSION['usuario']))
 	{
-		header("location:../../controllers/sair.php");
+		header("location:../../controllers/jogadorControllers/logout.php");
 	}
 	require_once "../../controllers/jogadorControllers/prepareEdicao.php";
 ?>
@@ -20,7 +20,7 @@
 	<meta charset="utf-8" />
 	<title>MINETETRIS</title>
 </head>
-<body <?= getAlertForError(); ?> >
+<body <?= getAlertForMessage(); ?> >
 
 	<header>
 		<figure>

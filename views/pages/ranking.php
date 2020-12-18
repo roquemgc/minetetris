@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['usuario']))
     {
-        header("location:../../controllers/sair.php");
+        header("location:../../controllers/jogadorControllers/logout.php");
     }
 ?>
 

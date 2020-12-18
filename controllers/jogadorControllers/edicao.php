@@ -20,7 +20,7 @@ try{
     $jogador->setEmail($_POST['email']);
     $jogador->setSenha($_POST['senha']);
     JogadorDAO::update(getNewDBConnection(),$jogador);
-    header("Location: ../../views/pages/rt.php");
+    returnSuccessToPage("Atualização feita com sucesso","rt.php");
 }catch(Exception $e){
     returnErrorToLastPage($e->getMessage());
 }
