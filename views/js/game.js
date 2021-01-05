@@ -36,7 +36,7 @@ function quedaPeca(tabuleiro, peca) {
 }
 
 function rodada(tabuleiro, peca) {
-	if(pecaColidiu(peca)) {
+	if (pecaColidiu(peca)) {
 		playSoundColisao();
 		clearInterval(intervaloQueda);
 		const [linhas, temPecaEspecial] = limparLinhas(tabuleiro);
@@ -55,7 +55,7 @@ function rodada(tabuleiro, peca) {
 		addPecaNaMatrizTabuleiro(tabuleiro, peca);
 		printarTabuleiro(tabuleiro);
 
-		document.onkeydown = function() { checarTecla(tabuleiro, peca); };
+		document.onkeydown = function () { checarTecla(tabuleiro, peca); };
 		quedaPeca(tabuleiro, peca);
 		rodada(tabuleiro, peca);
 	}
@@ -173,6 +173,7 @@ function isGameOver(tabuleiro) {
 	if (ret) {
 		clearInterval(intervalTemporizador);
 		stopSoundFundo();
+
 		var text = "Game Over";
 		text += "\nTempo de partida: " + tempoPartida["minutos"] + "m";
 		text += " " + tempoPartida["segundos"] + "s";
@@ -180,6 +181,22 @@ function isGameOver(tabuleiro) {
 		text += "\nPontuação: " + pontos;
 		text += "\nLinhas Eliminadas: " + linhasEliminadas;
 		window.alert(text);
+		//teste
+		var http = new XMLHttpRequest();
+		var url = "../../controllers/jogadorControllers/rt.php";
+		var gameHistory = new FormData();
+		var tempoFinal = "";
+		tempoFinal += tempoPartida["minutos"] + "m";
+		tempoFinal += " " + tempoPartida["segundos"] + "s";
+		gameHistory.append("tempo", tempoFinal);
+		gameHistory.append("dificuldade", dificuldade);
+		gameHistory.append("pontuacao", pontos);
+		gameHistory.append("linhas_eliminadas", linhasEliminadas);
+		http.open("POST", url, true);
+		http.send(gameHistory);
+		//$.post('../../controllers/jogadorControllers/rt.php', dados);
+		//fim teste
+
 		window.location.reload();
 	}
 	return ret;

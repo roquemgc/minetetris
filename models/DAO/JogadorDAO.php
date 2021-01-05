@@ -54,18 +54,17 @@ final class JogadorDAO extends DAO{
         }
     }
 
-    public static function insert($conn, $jogador){
+    public static function insert($conn,$jogador){
         self::verifyParameters($conn, $jogador);
         $username = $jogador->getUsername();
         $cpf = $jogador->getCpf();
         $nome = $jogador->getNome();
-        $dataNascimento = $jogador->getDataNascimento();
+        $data_nascimento = $jogador->getDataNascimento();
         $telefone = $jogador->getTelefone();
-        $emai = $jogador->getEmail();
+        $email = $jogador->getEmail();
         $senha = $jogador->getSenha();
 
-        $sql = "INSERT INTO Jogador (username, cpf, nome, data_nascimento, telefone, email, senha) 
-                VALUES ('$username', '$cpf', '$nome', '$data_nascimento', '$telefone', '$email', '$senha');";
+        $sql = "INSERT INTO jogador (username, cpf, nome, data_nascimento, telefone, email, senha) VALUES ('$username', '$cpf', '$nome', '$data_nascimento', '$telefone', '$email', '$senha')";
         
         $stmt = $conn->prepare($sql);
         try {

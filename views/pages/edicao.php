@@ -1,4 +1,4 @@
-<?php
+ <?php
 	require_once '../../controllers/services/errors.php';
 	
 	session_start();

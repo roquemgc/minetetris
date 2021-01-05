@@ -9,9 +9,9 @@ final class Jogo{
     private $pontuacao;
     private $linhasEliminadas;
 
-    public function __construct($idJogo,$jogador,$tempo,$dificuldade,$pontuacao,$linhasEliminadas){
-        $this->setIdJogo($idJogo);
-        $this->setUsernameFromJogador($jogador);
+    public function __construct($tempo,$dificuldade,$pontuacao,$linhasEliminadas){
+       // $this->setIdJogo($idJogo);
+        //$this->setUsernameFromJogador($jogador);
         $this->setTempo($tempo);
         $this->setDificuldade($dificuldade);
         $this->setPontuacao($pontuacao);
