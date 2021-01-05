@@ -1,3 +1,3 @@
 <?php
-putenv("DATABASE_USERNAME=root");
-putenv("DATABASE_PASSWORD=");
+putenv("DATABASE_USERNAME=admin");
+putenv("DATABASE_PASSWORD=g51c1vyv");

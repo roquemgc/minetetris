@@ -142,20 +142,20 @@ function animate(now = 0) {
 function gameOver() {
   cancelAnimationFrame(requestId);
 
-  var http = new XMLHttpRequest();
-  var url = "/minetetris/controllers/jogoControllers/rt.php";
-  var dadosGame = new FormData();
-  dadosGame.append("tempo", account.time);
-  dadosGame.append("dificuldade", account.level);
-  dadosGame.append("pontuacao", account.score);
-  dadosGame.append("linhas_eliminadas", account.lines);
+  let http = new XMLHttpRequest();
+  let url = "/minetetris/controllers/jogoControllers/rt.php";
+  let gameData = new FormData();
+  gameData.append("tempo", account.time);
+  gameData.append("dificuldade", account.level);
+  gameData.append("pontuacao", account.score);
+  gameData.append("linhas_eliminadas", account.lines);
   http.open("POST", url, true);
-  http.send(dadosGame);
+  http.send(gameData);
 
   let time = account.time.split(':');
   console.log(time);
 
-  var text = "Game Over";
+  let text = "Game Over";
   text += "\nTempo de partida: " + time[0] + "m";
   text += " " + time[1] + "s";
   text += "\nDificuldade: " + account.level;
@@ -163,7 +163,7 @@ function gameOver() {
   text += "\nLinhas Eliminadas: " + account.lines;
   window.alert(text);
 
-  window.location.reload();
+  // window.location.reload();
   
   sound.pause();
   finishSound.play();
