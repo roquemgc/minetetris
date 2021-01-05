@@ -1,2 +1,5 @@
 # Variáveis de ambiente
 environment.php
+
+# Configuração de IDE
+.vscode
