@@ -4,12 +4,17 @@ h2 {
     font-size : 1.7em;
 }
 
-section {
-    background-image: url("../lib/img/images3.jpg");
-    width           : 25%;
-    position        : absolute;
+body {
+    display: flex;
+    flex-direction: column;
+}
 
-    border     : 0.4em ridge #c5c5c5;
+section {
+    background-image     : url("../lib/img/blured_stone.jpg");
+    width   : 25%;
+    position: absolute;
+
+    border: 0.4em ridge #c5c5c5;
     font-family: minecraft, sans-serif;
 }
 
@@ -27,27 +32,14 @@ section {
     font-size : 30px;
 }
 
-#rolling-tetris {
-    margin: 0 auto;
-    width : 24.5%;
-    height: 38em;
-
-    display : flex;
-    position: relative;
-    overflow: hidden;
-
-    border: 0.5em ridge #c5c5c5;
-}
-
-.spinningRollingTetris {
-    animation-name           : spinningTetris;
+.rotate-board {
+    animation-name           : rotate;
     animation-duration       : 3s;
     animation-fill-mode      : both;
     animation-timing-function: linear;
 }
 
-@keyframes spinningTetris {
-
+@keyframes rotate {
     0% {
         transform: translateY(0px) rotate(0deg)
     }
@@ -89,15 +81,14 @@ section {
     }
 }
 
-.backToNormalRollingTetris {
-    animation-name           : backToNormalTetris;
+.reverse-rotate-board {
+    animation-name           : reverseRotate;
     animation-duration       : 3s;
     animation-fill-mode      : both;
     animation-timing-function: linear;
 }
 
-@keyframes backToNormalTetris {
-
+@keyframes reverseRotate {
     0% {
         transform: translateY(0px) rotate(180deg)
     }
@@ -139,6 +130,38 @@ section {
     }
 }
 
+main {
+    margin: 15px auto 75px;
+    display: flex;
+}
+
+main #control-container {
+    height: 90px;
+    width: 100px;
+    margin: auto 5px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+main #control-container #pause-btn {
+    display: none;
+}
+
+#rolling-tetris {
+    width : 312px;
+    height: 550px;
+    margin: 0 auto;
+
+    display : flex;
+    position: relative;
+    overflow: hidden;
+
+    border: 0.5em ridge #c5c5c5;
+}
+
 #rolling-tetris img {
     height  : auto;
     width   : 100%;
@@ -146,7 +169,7 @@ section {
     opacity : 0.4;
 }
 
-#rolling-tetris button#comecar-game {
+#rolling-tetris button#start-btn {
     height : 70px;
     width  : 80%;
     margin : auto auto;
@@ -158,15 +181,21 @@ section {
     font-size: 250%;
 
     border          : 1px solid #98989a;
+    border-radius   : 2px;
     background-image: url('../lib/img/stone.jpg');
 }
 
-#rolling-tetris button#comecar-game:hover {
+#rolling-tetris button#start-btn:hover {
     border: 2px solid #9d9d9d;
 }
 
-#rolling-tetris #tabuleiro {
+#rolling-tetris .game-board {
+    display: none;
     z-index: 2;
+}
+
+#rolling-tetris .next {
+    display: none;
 }
 
 #ranking-player {
@@ -257,7 +286,7 @@ a:visited {
 }
 
 #menu a:hover {
-    color: #000000;
+    color          : #000000;
 }
 
 #menu a:active {

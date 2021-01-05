@@ -1,11 +1,11 @@
 <?php
-require_once '../../controllers/services/errors.php';
+    require_once '../../controllers/services/errors.php';
 
-session_start();
+    session_start();
 
-if (!isset($_SESSION['usuario'])) {
-    header("location:../../controllers/jogadorControllers/logout.php");
-}
+    if (!isset($_SESSION['usuario'])) {
+        header("location:../../controllers/jogadorControllers/logout.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -25,16 +25,9 @@ if (!isset($_SESSION['usuario'])) {
     <!-- Scripts para o modal -->
     <script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-
-    <script src="../js/models/Peca.js"></script>
-    <script src="../js/game.js"></script>
-    <script src="../js/manterTabuleiro.js"></script>
-    <script src="../js/printadorPeca.js"></script>
-    <script src="../js/colisaoPeca.js"></script>
-    <script src="../js/manterPeca.js"></script>
 </head>
 
-<body <?= getAlertForMessage(); ?>>
+<body>
     <header>
         <figure>
             <a href="rt.php"><img src="../lib/img/minetetris.png" alt="Logo"></a>
@@ -55,13 +48,13 @@ if (!isset($_SESSION['usuario'])) {
                             <h4 class="modal-title">Escolha o tamanho do tabuleiro:</h4>
                         </div>
                         <div class="modal-body">
-                            <button onclick="startGame(10,20)" data-dismiss="modal">10x20</button>
-                            <button onclick="startGame(22,44)" data-dismiss="modal">22x44</button>
+                            <button onclick="play('small')" type="button" data-dismiss="modal">10x20</button>
+                            <button onclick="play('big')" type="button" data-dismiss="modal">22x44</button>
                         </div>
                         <div class="modal-footer">
                             <div class="checkbox pull-left checkbox-keys">
                                 <label>
-                                    <input id="toggleInput" name="reverse-keys" type="checkbox" data-toggle="toggle">
+                                    <input id="toggle-reverse-keys" name="reverse-keys" type="checkbox" data-toggle="toggle">
                                     <span class="checkbox-title-keys">
                                         HABILITAR A INVERSÃO DAS TECLAS AO GIRAR O TABULEIRO.
                                     </span>
@@ -74,10 +67,17 @@ if (!isset($_SESSION['usuario'])) {
             </div>
         </div>
         <div id="rolling-tetris">
-            <img id="rt-background" src="../lib/img/image.jpg" alt="background RollingTetris">
-            <button id="comecar-game" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+            <img id="rt-background" src="../lib/img/stone_background.jpg" alt="background RollingTetris">
+            <button id="start-btn" type="button" data-toggle="modal" data-target="#myModal">
                 JOGAR
             </button>
+
+            <canvas id="board" class="game-board"></canvas>
+            <canvas id="next" class="next"></canvas>
+        </div>
+        <div id="control-container">
+            <button id="pause-btn" onclick="pause()" class="play-button">PAUSAR</button>
+            <span class="sound-item" id="sound-speaker"></span>
         </div>
     </main>
 
@@ -87,7 +87,6 @@ if (!isset($_SESSION['usuario'])) {
             <thead>
                 <tr>
                     <th><span class="negrito">#</span></th>
-                    <th><span class="negrito">NOME</span></th>
                     <th><span class="negrito">PONTOS</span></th>
                     <th><span class="negrito">NÍVEL</span></th>
                     <th><span class="negrito">TEMPO</span></th>
@@ -96,7 +95,6 @@ if (!isset($_SESSION['usuario'])) {
             <tbody>
                 <tr>
                     <td>01</td>
-                    <td>Alkz</td>
                     <td>758</td>
                     <td>1</td>
                     <td>10:38</td>
@@ -107,10 +105,14 @@ if (!isset($_SESSION['usuario'])) {
 
     <section id="game-atual">
         <h2>JOGO ATUAL</h2>
-        <p class="dado-do-jogo"><span class="negrito">TEMPO DA PARTIDA: </span><span class="dados-do-jogo" id="tempo-partida">00:00</span></p>
-        <p class="dado-do-jogo"><span class="negrito">NÍVEL DE DIFICULDADE: </span><span class="dados-do-jogo" id="nivel-dificuldade">1</span></p>
-        <p class="dado-do-jogo"><span class="negrito">PONTUAÇÃO: </span><span class="dados-do-jogo" id="pontuacao">0</span></p>
-        <p class="dado-do-jogo"><span class="negrito">LINHAS ELIMIMINADAS: </span><span class="dados-do-jogo" id="linhas-eliminadas">0</span></p>
+        <p class="dado-do-jogo"><span class="negrito">TEMPO DA PARTIDA: </span><span class="dados-do-jogo"
+                id="time">00:00</span></p>
+        <p class="dado-do-jogo"><span class="negrito">PONTUAÇÃO: </span><span class="dados-do-jogo"
+                id="score">0</span></p>
+        <p class="dado-do-jogo"><span class="negrito">LINHAS ELIMIMINADAS: </span><span class="dados-do-jogo"
+                id="lines">0</span></p> 
+        <p class="dado-do-jogo"><span class="negrito">NÍVEL DE DIFICULDADE: </span><span class="dados-do-jogo"
+                id="level">1</span></p>
     </section>
 
     <section id="menu">
@@ -121,6 +123,13 @@ if (!isset($_SESSION['usuario'])) {
             <p class="menu-item"><a href="../../controllers/jogadorControllers/logout.php"><span class="negrito">SAIR</span></a></p>
         </nav>
     </section>
+
+    <!-- Scripts para o tabuleiro do jogo -->
+    <script type="text/javascript" src="../js/constants.js"></script>
+    <script type="text/javascript" src="../js/board.js"></script>
+    <script type="text/javascript" src="../js/piece.js"></script>
+    <script type="text/javascript" src="../js/sound.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
 </body>
 
 </html>
