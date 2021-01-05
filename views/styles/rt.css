@@ -5,11 +5,11 @@ h2 {
 }
 
 section {
-    background-image     : url("../lib/img/images3.jpg");
-    width   : 25%;
-    position: absolute;
+    background-image: url("../lib/img/images3.jpg");
+    width           : 25%;
+    position        : absolute;
 
-    border: 0.4em ridge #c5c5c5;
+    border     : 0.4em ridge #c5c5c5;
     font-family: minecraft, sans-serif;
 }
 
@@ -257,7 +257,7 @@ a:visited {
 }
 
 #menu a:hover {
-    color          : #000000;
+    color: #000000;
 }
 
 #menu a:active {

@@ -174,6 +174,19 @@ function isGameOver(tabuleiro) {
 		clearInterval(intervalTemporizador);
 		stopSoundFundo();
 
+		var tempoFinal = "";
+		tempoFinal += tempoPartida["minutos"] + "m";
+		tempoFinal += " " + tempoPartida["segundos"] + "s";
+		var http = new XMLHttpRequest();
+		var url = "/minetetris/controllers/jogadorControllers/rt.php";
+		var dadosGame = new FormData();
+		dadosGame.append("tempo", tempoFinal);
+		dadosGame.append("dificuldade", dificuldade);
+		dadosGame.append("pontuacao", pontos);
+		dadosGame.append("linhas_eliminadas", linhasEliminadas);
+		http.open("POST", url, true);
+		http.send(dadosGame);
+
 		var text = "Game Over";
 		text += "\nTempo de partida: " + tempoPartida["minutos"] + "m";
 		text += " " + tempoPartida["segundos"] + "s";
@@ -181,21 +194,6 @@ function isGameOver(tabuleiro) {
 		text += "\nPontuação: " + pontos;
 		text += "\nLinhas Eliminadas: " + linhasEliminadas;
 		window.alert(text);
-		//teste
-		var http = new XMLHttpRequest();
-		var url = "../../controllers/jogadorControllers/rt.php";
-		var gameHistory = new FormData();
-		var tempoFinal = "";
-		tempoFinal += tempoPartida["minutos"] + "m";
-		tempoFinal += " " + tempoPartida["segundos"] + "s";
-		gameHistory.append("tempo", tempoFinal);
-		gameHistory.append("dificuldade", dificuldade);
-		gameHistory.append("pontuacao", pontos);
-		gameHistory.append("linhas_eliminadas", linhasEliminadas);
-		http.open("POST", url, true);
-		http.send(gameHistory);
-		//$.post('../../controllers/jogadorControllers/rt.php', dados);
-		//fim teste
 
 		window.location.reload();
 	}

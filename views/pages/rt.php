@@ -1,12 +1,11 @@
 <?php
-    require_once '../../controllers/services/errors.php';
+require_once '../../controllers/services/errors.php';
 
-    session_start();
-    
-    if(!isset($_SESSION['usuario']))
-    {
-        header("location:../../controllers/jogadorControllers/logout.php");
-    }
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header("location:../../controllers/jogadorControllers/logout.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -76,8 +75,7 @@
         </div>
         <div id="rolling-tetris">
             <img id="rt-background" src="../lib/img/image.jpg" alt="background RollingTetris">
-            <button id="comecar-game" type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                data-target="#myModal">
+            <button id="comecar-game" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
                 JOGAR
             </button>
         </div>
@@ -109,14 +107,10 @@
 
     <section id="game-atual">
         <h2>JOGO ATUAL</h2>
-        <p class="dado-do-jogo"><span class="negrito">TEMPO DA PARTIDA: </span><span class="dados-do-jogo"
-                id="tempo-partida">00:00</span></p>
-        <p class="dado-do-jogo"><span class="negrito">NÍVEL DE DIFICULDADE: </span><span class="dados-do-jogo"
-                id="nivel-dificuldade">1</span></p>
-        <p class="dado-do-jogo"><span class="negrito">PONTUAÇÃO: </span><span class="dados-do-jogo"
-                id="pontuacao">0</span></p>
-        <p class="dado-do-jogo"><span class="negrito">LINHAS ELIMIMINADAS: </span><span class="dados-do-jogo"
-                id="linhas-eliminadas">0</span></p>
+        <p class="dado-do-jogo"><span class="negrito">TEMPO DA PARTIDA: </span><span class="dados-do-jogo" id="tempo-partida">00:00</span></p>
+        <p class="dado-do-jogo"><span class="negrito">NÍVEL DE DIFICULDADE: </span><span class="dados-do-jogo" id="nivel-dificuldade">1</span></p>
+        <p class="dado-do-jogo"><span class="negrito">PONTUAÇÃO: </span><span class="dados-do-jogo" id="pontuacao">0</span></p>
+        <p class="dado-do-jogo"><span class="negrito">LINHAS ELIMIMINADAS: </span><span class="dados-do-jogo" id="linhas-eliminadas">0</span></p>
     </section>
 
     <section id="menu">

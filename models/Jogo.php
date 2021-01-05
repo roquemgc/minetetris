@@ -1,72 +1,70 @@
 <?php
 
-final class Jogo{
+final class Jogo
+{
 
-    private $idJogo;
     private $username;
     private $tempo;
     private $dificuldade;
     private $pontuacao;
     private $linhasEliminadas;
 
-    public function __construct($tempo,$dificuldade,$pontuacao,$linhasEliminadas){
-       // $this->setIdJogo($idJogo);
-        //$this->setUsernameFromJogador($jogador);
+    public function __construct($username, $tempo, $dificuldade, $pontuacao, $linhasEliminadas)
+    {
+        $this->setUsernameFromJogador($username);
         $this->setTempo($tempo);
         $this->setDificuldade($dificuldade);
         $this->setPontuacao($pontuacao);
         $this->setLinhasEliminadas($linhasEliminadas);
     }
 
-    private function setIdJogo($idJogo){
-        $this->idJogo = $idJogo;
+    private function setUsernameFromJogador($username)
+    {
+        $this->username = $username;
     }
 
-    public function getIdJogo(){
-        return $this->idJogo;
-    }
-
-    private function setUsernameFromJogador($jogador){
-        if(!is_object($jogador) || !get_class($jogador) == "Jogador"){
-            throw new Exception("Parâmetro 'jogador' não é um objeto da classe 'Jogador'");
-        }
-        $this->username = $jogador->getUsername();
-    }
-
-    public function getUsername(){
+    public function getUsername()
+    {
         return $this->username;
     }
 
-    private function setTempo($tempo){
+    private function setTempo($tempo)
+    {
         $this->tempo = $tempo;
     }
 
-    public function getTempo(){
+    public function getTempo()
+    {
         return $this->tempo;
     }
 
-    private function setDificuldade($dificuldade){
+    private function setDificuldade($dificuldade)
+    {
         $this->dificuldade = $dificuldade;
     }
 
-    public function getDificuldade(){
+    public function getDificuldade()
+    {
         return $this->dificuldade;
     }
 
-    private function setPontuacao($pontuacao){
+    private function setPontuacao($pontuacao)
+    {
         $this->pontuacao = $pontuacao;
     }
 
-    public function getPontuacao(){
+    public function getPontuacao()
+    {
         return $this->pontuacao;
     }
 
-    private function setLinhasEliminadas($linhasEliminadas){
+    private function setLinhasEliminadas($linhasEliminadas)
+    {
         $this->linhasEliminadas = $linhasEliminadas;
     }
 
-    public function getLinhasEliminadas(){
+    public function getLinhasEliminadas()
+    {
         return $this->linhasEliminadas;
     }
-
 }

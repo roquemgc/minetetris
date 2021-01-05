@@ -2,7 +2,7 @@
 
 function setCelulaPecaBackground(celula, cor, borderColor) {
 	celula.style.backgroundImage = cor;
-	celula.style.border = "1px solid"+ borderColor;
+	celula.style.border = "1px solid" + borderColor;
 }
 
 function printarPeca(peca_matriz_tabuleiro, celula) {
@@ -31,6 +31,6 @@ function printarPeca(peca_matriz_tabuleiro, celula) {
 			break;
 		default:
 			throw "ocorreu um erro, pois a peça não existe";
-			
+
 	}
 }

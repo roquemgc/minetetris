@@ -23,8 +23,7 @@
             <form action="../../controllers/jogadorControllers/cadastro.php" method="POST">
                 <div class="input-block">
                     <label for="nome_completo">Nome Completo</label>
-                    <input type="text" name="nome_completo" id="nome_completo" placeholder="Insira seu nome completo" title="Nome Completo"
-                        minlength="3" required />
+                    <input type="text" name="nome_completo" id="nome_completo" placeholder="Insira seu nome completo" title="Nome Completo" minlength="3" required />
                 </div>
 
                 <div class="input-block">
@@ -34,14 +33,12 @@
 
                 <div class="input-block">
                     <label for="CPF">CPF</label>
-                    <input type="text" name="cpf" id="CPF" placeholder="Insira seu CPF" title="CPF xxx.xxx.xxx-xx"
-                        pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" maxlength="14" required />
+                    <input type="text" name="cpf" id="CPF" placeholder="Insira seu CPF" title="CPF xxx.xxx.xxx-xx" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" maxlength="14" required />
                 </div>
 
                 <div class="input-block">
                     <label for="telefone">Telefone</label>
-                    <input type="tel" name="telefone" id="telefone" placeholder="Insira seu telefone" title="Telefone (xx)xxxxx-xxxx"
-                        pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" maxlength="14" required />
+                    <input type="tel" name="telefone" id="telefone" placeholder="Insira seu telefone" title="Telefone (xx)xxxxx-xxxx" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" maxlength="14" required />
                 </div>
 
                 <div class="input-block">
@@ -50,7 +47,7 @@
                 </div>
 
                 <div class="input-block">
-                <label for="username">Username</label>
+                    <label for="username">Username</label>
                     <input name="username" id="username" type="text" placeholder="Insira seu username" title="Username" minlength="3" required />
                 </div>
 
@@ -61,8 +58,7 @@
 
                 <div class="input-block">
                     <label for="senha2">Confirme a senha</label>
-                    <input type="password" name="senha2" id="senha2" placeholder="Confirme sua senha" title="Confirme a Senha"
-                        minlength="8" required/>
+                    <input type="password" name="senha2" id="senha2" placeholder="Confirme sua senha" title="Confirme a Senha" minlength="8" required />
                 </div>
 
                 <div class="input-block">

@@ -1,5 +1,5 @@
 <?php
-    require_once '../../controllers/services/errors.php';
+require_once '../../controllers/services/errors.php';
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
     <!--título da página-->
 </head>
 
-<body <?=getAlertForMessage()?> >
+<body <?= getAlertForMessage() ?>>
 
     <header>
         <figure>
@@ -42,15 +42,16 @@
                     <input id="senha" type="password" name="senha" placeholder="Insira sua senha" title="Senha" minlength="8" required />
                 </div>
                 <div class="input-block">
-                    <input type="submit" value="login" id="login" name="login"/>
+                    <input type="submit" value="login" id="login" name="login" />
                 </div>
                 <div class="link-wrapper">
                     <p>Não está cadastrado?</p>
-                    <a href="cadastro.php" >Criar Nova Conta</a>
+                    <a href="cadastro.php">Criar Nova Conta</a>
                 </div>
             </form>
         </section>
 
     </main>
 </body>
+
 </html>

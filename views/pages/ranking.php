@@ -1,10 +1,9 @@
 <?php
-    session_start();
+session_start();
 
-    if(!isset($_SESSION['usuario']))
-    {
-        header("location:../../controllers/jogadorControllers/logout.php");
-    }
+if (!isset($_SESSION['usuario'])) {
+    header("location:../../controllers/jogadorControllers/logout.php");
+}
 ?>
 
 <!DOCTYPE html>
