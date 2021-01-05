@@ -142,7 +142,28 @@ function animate(now = 0) {
 function gameOver() {
   cancelAnimationFrame(requestId);
 
-  alert('você perdeu, otário');
+  var http = new XMLHttpRequest();
+  var url = "/minetetris/controllers/jogadorControllers/rt.php";
+  var dadosGame = new FormData();
+  dadosGame.append("tempo", account.time);
+  dadosGame.append("dificuldade", account.level);
+  dadosGame.append("pontuacao", account.score);
+  dadosGame.append("linhas_eliminadas", account.lines);
+  http.open("POST", url, true);
+  http.send(dadosGame);
+
+  let time = account.time.split(':');
+  console.log(time);
+
+  var text = "Game Over";
+  text += "\nTempo de partida: " + time[0] + "m";
+  text += " " + time[1] + "s";
+  text += "\nDificuldade: " + account.level;
+  text += "\nPontuação: " + account.score;
+  text += "\nLinhas Eliminadas: " + account.lines;
+  window.alert(text);
+
+  window.location.reload();
   
   sound.pause();
   finishSound.play();
