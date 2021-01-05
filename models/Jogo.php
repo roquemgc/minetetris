@@ -2,7 +2,6 @@
 
 final class Jogo
 {
-
     private $username;
     private $tempo;
     private $dificuldade;

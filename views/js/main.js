@@ -143,7 +143,7 @@ function gameOver() {
   cancelAnimationFrame(requestId);
 
   var http = new XMLHttpRequest();
-  var url = "/minetetris/controllers/jogadorControllers/rt.php";
+  var url = "/minetetris/controllers/jogoControllers/rt.php";
   var dadosGame = new FormData();
   dadosGame.append("tempo", account.time);
   dadosGame.append("dificuldade", account.level);

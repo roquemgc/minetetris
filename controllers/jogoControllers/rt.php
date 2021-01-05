@@ -12,7 +12,6 @@ session_start();
 
 
 try {
-    // $jogador = new Jogador($_SESSION["usuario"]);
     if (isset($_POST)) {
         fixPost();
         $username = $_SESSION["usuario"];

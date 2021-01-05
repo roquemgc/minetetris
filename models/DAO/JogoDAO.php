@@ -32,7 +32,6 @@ final class JogoDAO extends DAO
         $linhasEliminadas = $jogo->getLinhasEliminadas();
 
         $sql = "INSERT INTO jogo (username, tempo, dificuldade, pontuacao, linhas_eliminadas) VALUES ('$username', '$tempo', '$dificuldade', '$pontuacao', '$linhasEliminadas')";
-        // $sql = "INSERT INTO jogo (username, tempo, dificuldade, pontuacao, linhas_eliminadas) VALUES ('$username', '$tempo', '$dificuldade', '$pontuacao', '$linhasEliminadas')";
         $stmt = $conn->prepare($sql);
 
         try {
