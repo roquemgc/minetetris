@@ -1,0 +1,315 @@
+h2 {
+    text-align: center;
+    color     : #262626;
+    font-size : 1.7em;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    background-image     : url("../lib/img/blured_stone.jpg");
+    width   : 25%;
+    position: absolute;
+
+    border: 0.4em ridge #c5c5c5;
+    font-family: minecraft, sans-serif;
+}
+
+#start-container .modal-content .modal-body {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+}
+
+#start-container .modal-content .modal-body button {
+    height    : 100px;
+    width     : 200px;
+    margin-top: 15px;
+    font-size : 30px;
+}
+
+.rotate-board {
+    animation-name           : rotate;
+    animation-duration       : 3s;
+    animation-fill-mode      : both;
+    animation-timing-function: linear;
+}
+
+@keyframes rotate {
+    0% {
+        transform: translateY(0px) rotate(0deg)
+    }
+
+    4% {
+        transform: translateY(5px) rotate(0deg)
+    }
+
+    8% {
+        transform: translateY(10px) rotate(0deg)
+    }
+
+    12% {
+        transform: translateY(15px) rotate(0deg)
+    }
+
+    16% {
+        transform: translateY(20px) rotate(0deg)
+    }
+
+    20% {
+        transform: translateY(30px) rotate(45deg)
+    }
+
+    40% {
+        transform: translateY(30px) rotate(90deg)
+    }
+
+    50% {
+        transform: translateY(30px) rotate(112.5deg)
+    }
+
+    90% {
+        transform: translateY(30px) rotate(180deg)
+    }
+
+    100% {
+        transform: translateY(0px) rotate(180deg)
+    }
+}
+
+.reverse-rotate-board {
+    animation-name           : reverseRotate;
+    animation-duration       : 3s;
+    animation-fill-mode      : both;
+    animation-timing-function: linear;
+}
+
+@keyframes reverseRotate {
+    0% {
+        transform: translateY(0px) rotate(180deg)
+    }
+
+    4% {
+        transform: translateY(5px) rotate(180deg)
+    }
+
+    8% {
+        transform: translateY(10px) rotate(180deg)
+    }
+
+    12% {
+        transform: translateY(15px) rotate(180deg)
+    }
+
+    16% {
+        transform: translateY(20px) rotate(180deg)
+    }
+
+    20% {
+        transform: translateY(30px) rotate(135deg)
+    }
+
+    40% {
+        transform: translateY(30px) rotate(90deg)
+    }
+
+    50% {
+        transform: translateY(30px) rotate(67.5deg)
+    }
+
+    90% {
+        transform: translateY(30px) rotate(0deg)
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg)
+    }
+}
+
+main {
+    margin: 15px auto 75px;
+    display: flex;
+}
+
+main #control-container {
+    height: 90px;
+    width: 100px;
+    margin-right: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main #control-container #sound-speaker {
+    height: 50px;
+    width: 50px;
+
+    padding: 10px;
+
+    border: 1px solid rgb(118, 118, 118);
+    border-radius: 2px;
+}
+
+main #control-container button img {
+    height: 30px;
+    width: 30px;
+}
+
+#rolling-tetris {
+    width : 312px;
+    height: 550px;
+    margin: 0 auto;
+
+    display : flex;
+    position: relative;
+    overflow: hidden;
+
+    border: 0.5em ridge #c5c5c5;
+}
+
+#rolling-tetris img {
+    height  : auto;
+    width   : 100%;
+    position: absolute;
+    opacity : 0.4;
+}
+
+#rolling-tetris button#start-btn {
+    height : 70px;
+    width  : 80%;
+    margin : auto auto;
+    padding: 10px 15px 0;
+
+    z-index: 2;
+
+    color    : #f2f2f2;
+    font-size: 250%;
+
+    border          : 1px solid #98989a;
+    border-radius   : 2px;
+    background-image: url('../lib/img/stone.jpg');
+}
+
+#rolling-tetris button#start-btn:hover {
+    border: 2px solid #9d9d9d;
+}
+
+#rolling-tetris .game-board {
+    display: none;
+    z-index: 2;
+}
+
+#rolling-tetris .next {
+    display: none;
+}
+
+#ranking-player {
+    background-attachment: fixed;
+    background-size      : 5vw 5vh;
+
+    text-align: center;
+
+    max-height: 12em;
+    top       : 43em;
+    right     : 3.5em;
+    padding   : 5px 0;
+
+    resize  : none;
+    overflow: auto;
+}
+
+#ranking-player table {
+    width : 95%;
+    margin: 0 auto;
+
+    color: white;
+}
+
+#ranking-player tr th {
+    padding-top: 10px;
+    text-align : center;
+    border     : 1px solid white;
+}
+
+#ranking-player tr td {
+    border     : 1px solid white;
+    padding-top: 10px;
+}
+
+
+#game-atual {
+    background-attachment: fixed;
+    background-size      : 5vw 5vh;
+
+    top  : 22em;
+    right: 3.5em;
+}
+
+#game-atual p.dado-do-jogo {
+    color      : #ffffff;
+    font-size  : 1.3em;
+    margin-left: 0.5em;
+    margin-top : 0.75em;
+}
+
+
+#game-atual p.dado-do-jogo {
+    color      : #ffffff;
+    font-size  : 1.3em;
+    margin-left: 0.5em;
+    margin-top : 0.75em;
+}
+
+#game-atual span.dados-do-jogo {
+    color      : #ffef00;
+    font-weight: bold;
+}
+
+#game-atual span.dados-do-jogo {
+    color      : #ffef00;
+    font-weight: bold;
+}
+
+#menu {
+    background-attachment: fixed;
+    background-size      : 5vw 5vh;
+
+    top : 27em;
+    left: 3em;
+}
+
+#menu .menu-item {
+    color     : #ffffff;
+    font-size : 1.5em;
+    text-align: center;
+}
+
+#menu a:link,
+a:visited {
+    text-decoration: none;
+    color          : #ffffff;
+}
+
+#menu a:hover {
+    color          : #000000;
+}
+
+#menu a:active {
+    color: #cc0000;
+}
+
+.checkbox-keys {
+    margin-top: 5px;
+}
+
+.checkbox-title-keys {
+    display   : inherit;
+    margin-top: 3px;
+    font-size : 0.7em;
+}

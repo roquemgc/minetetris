@@ -1,0 +1,3 @@
+1. Executar o script contido em 'database.sql' no servidor do localhost
+2. No arquivo environment.php, insira as informações corretas do seu servidor
+    nas variáveis $username e $password
