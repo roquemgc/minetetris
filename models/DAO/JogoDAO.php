@@ -18,6 +18,28 @@ final class JogoDAO extends DAO
         return "Não implementado ainda";
     }
 
+
+    public static function selectAllGamePlayerToRanking($conn, $username)
+    {
+        if (!parent::isConnObj($conn)) {
+            throw new Exception("Parâmetro 'conn' não é um objeto da classe 'PDO'");
+        }
+
+        $sql = "SELECT pontuacao, dificuldade, tempo FROM jogo WHERE username='$username' ORDER BY pontuacao DESC, dificuldade DESC, tempo ASC;";
+        $ret = null;
+        try {
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $ret = [];
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                array_push($ret, $row);
+            }
+            echo json_encode($ret);
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
     public static function insert($conn, $jogo)
     {
 
