@@ -25,9 +25,10 @@
     <!-- Scripts para o modal -->
     <script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+
 </head>
 
-<body>
+<body onload="getLastAllGamePlayer()">
     <header>
         <figure>
             <a href="rt.php"><img src="../lib/img/minetetris.png" alt="Logo"></a>
@@ -83,7 +84,7 @@
 
     <section id="ranking-player">
         <h2>RANKING DAS SUAS PARTIDAS</h2>
-        <table>
+        <table id="tableRankingLastAllGameplayer">
             <thead>
                 <tr>
                     <th><span class="negrito">#</span></th>
@@ -93,12 +94,6 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>01</td>
-                    <td>758</td>
-                    <td>1</td>
-                    <td>10:38</td>
-                </tr>
             </tbody>
         </table>
     </section>
