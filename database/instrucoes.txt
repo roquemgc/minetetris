@@ -1,3 +1,10 @@
-1. Executar o script contido em 'database.sql' no servidor do localhost
-2. No arquivo environment.php, insira as informações corretas do seu servidor
-    nas variáveis $username e $password
+Alternativa 01:
+
+1. Executar o script contido em 'database.sql' no seu servidor do localhost.
+2. No arquivo environment.php, insira as informações corretas do seu servidor nas variáveis $username e $password.
+
+Alternativa 02:
+
+1. No arquivo 'CreateBDInPHP.php' insira as informações corretas do seu servidor nas variáveis $usuario_bd e $senha_bd.
+2. Executar o script contido em 'CreateBDInPHP.php' no seu servidor do localhost.
+3. No arquivo environment.php, insira as informações corretas do seu servidor nas variáveis $username e $password.
