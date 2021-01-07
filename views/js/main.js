@@ -241,14 +241,14 @@ function toggleButtonsActions() {
   // Alterna a função dos botões start e pause
   if(startBtn.hasAttribute('data-toggle')) {
     startBtn.removeAttribute('data-toggle');
-    startBtn.addEventListener('click', () => pause());
-    pauseBtn.addEventListener('click', () => pause());
+    startBtn.addEventListener('click', pause);
+    pauseBtn.addEventListener('click', pause);
 
   } else {
-    
     startBtn.setAttribute('data-toggle', 'modal');
-    startBtn.removeEventListener('click', () => pause());
-    pauseBtn.removeEventListener('click', () => pause());
+    startBtn.removeEventListener('click', pause);
+    pauseBtn.removeEventListener('click', pause);
+
   }
 }
 
