@@ -13,6 +13,7 @@ try {
     if (isset($_POST)) {
         fixPost();
         $username = $_SESSION["usuario"];
+        
         JogoDAO::selectAllGamePlayerToRanking(getNewDBConnection(), $username);
     }
 } catch (Exception $e) {

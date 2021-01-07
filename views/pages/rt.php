@@ -1,11 +1,11 @@
 <?php
-require_once '../../controllers/services/errors.php';
+    require_once '../../controllers/services/errors.php';
 
-session_start();
+    session_start();
 
-if (!isset($_SESSION['usuario'])) {
-    header("location:../../controllers/jogadorControllers/logout.php");
-}
+    if (!isset($_SESSION['usuario'])) {
+        header("location:../../controllers/jogadorControllers/logout.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -25,10 +25,9 @@ if (!isset($_SESSION['usuario'])) {
     <!-- Scripts para o modal -->
     <script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-
 </head>
 
-<body onload="getLastAllGamePlayer()">
+<body onload="getLastAllGamePlayer()" <?= getAlertForMessage(); ?>>
     <header>
         <figure>
             <a href="rt.php"><img src="../lib/img/minetetris.png" alt="Logo"></a>
@@ -67,18 +66,20 @@ if (!isset($_SESSION['usuario'])) {
                 </div>
             </div>
         </div>
+        <div id="control-container">
+            <button id="pause-btn" class="play-button">PAUSAR</button>
+            <button id="sound-speaker" class="sound-item"></button>
+        </div>
         <div id="rolling-tetris">
             <img id="rt-background" src="../lib/img/stone_background.jpg" alt="background RollingTetris">
             <button id="start-btn" type="button" data-toggle="modal" data-target="#myModal">
                 JOGAR
             </button>
 
+
+
             <canvas id="board" class="game-board"></canvas>
             <canvas id="next" class="next"></canvas>
-        </div>
-        <div id="control-container">
-            <button id="pause-btn" onclick="pause()" class="play-button">PAUSAR</button>
-            <span class="sound-item" id="sound-speaker"></span>
         </div>
     </main>
 
@@ -94,22 +95,20 @@ if (!isset($_SESSION['usuario'])) {
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr>
-                    <td>01</td>
-                    <td>758</td>
-                    <td>1</td>
-                    <td>10:38</td>
-                </tr> -->
             </tbody>
         </table>
     </section>
 
     <section id="game-atual">
         <h2>JOGO ATUAL</h2>
-        <p class="dado-do-jogo"><span class="negrito">TEMPO DA PARTIDA: </span><span class="dados-do-jogo" id="time">00:00</span></p>
-        <p class="dado-do-jogo"><span class="negrito">PONTUAÇÃO: </span><span class="dados-do-jogo" id="score">0</span></p>
-        <p class="dado-do-jogo"><span class="negrito">LINHAS ELIMIMINADAS: </span><span class="dados-do-jogo" id="lines">0</span></p>
-        <p class="dado-do-jogo"><span class="negrito">NÍVEL DE DIFICULDADE: </span><span class="dados-do-jogo" id="level">1</span></p>
+        <p class="dado-do-jogo"><span class="negrito">TEMPO DA PARTIDA: </span><span class="dados-do-jogo"
+                id="time">00:00</span></p>
+        <p class="dado-do-jogo"><span class="negrito">PONTUAÇÃO: </span><span class="dados-do-jogo"
+                id="score">0</span></p>
+        <p class="dado-do-jogo"><span class="negrito">LINHAS ELIMIMINADAS: </span><span class="dados-do-jogo"
+                id="lines">0</span></p> 
+        <p class="dado-do-jogo"><span class="negrito">NÍVEL DE DIFICULDADE: </span><span class="dados-do-jogo"
+                id="level">1</span></p>
     </section>
 
     <section id="menu">

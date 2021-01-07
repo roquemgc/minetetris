@@ -2,6 +2,7 @@ const canvas = document.getElementById('board');
 const ctx = canvas.getContext('2d');
 const canvasNext = document.getElementById('next');
 const ctxNext = canvasNext.getContext('2d');
+var index = 1;
 
 let accountValues = {
   time: '00:00',
@@ -13,7 +14,7 @@ let accountValues = {
 
 function updateAccount(key, value) {
   let element = document.getElementById(key);
-  if (element) {
+  if(element) {
     element.textContent = value;
   }
 }
@@ -30,6 +31,7 @@ let requestId = null;
 var games = [];
 let moves;
 
+
 defineMoves();
 
 function defineMoves() {
@@ -45,11 +47,11 @@ function defineMoves() {
 
 function toggleMoves() {
   // Verifica se o campo está girado
-  if (board.isSpinned) {
+  if(board.isSpinned) {
     moves[KEY.LEFT] = (p) => ({ ...p, x: p.x + 1 }),
-      moves[KEY.UP] = (p) => ({ ...p, y: p.y + 1 }),
-      moves[KEY.RIGHT] = (p) => ({ ...p, x: p.x - 1 }),
-      moves[KEY.DOWN] = (p) => board.rotate(p, ROTATION.RIGHT)
+    moves[KEY.UP] = (p) => ({ ...p, y: p.y + 1 }),
+    moves[KEY.RIGHT] = (p) => ({ ...p, x: p.x - 1 }),
+    moves[KEY.DOWN] = (p) => board.rotate(p, ROTATION.RIGHT)
   } else {
     defineMoves();
   }
@@ -70,29 +72,30 @@ function addEventListener() {
 }
 
 function handleKeyPress(event) {
-  if (event.keyCode === KEY.P) {
+  if(event.keyCode === KEY.P) {
     pause();
   }
-  if (event.keyCode === KEY.ESC) {
+  if(event.keyCode === KEY.ESC) {
     gameOver();
-  } else if (moves[event.keyCode]) {
+  } else if(moves[event.keyCode]) {
     event.preventDefault();
     // Recebe o novo evento
     let p = moves[event.keyCode](board.piece);
-    if (event.keyCode === KEY.SPACE) {
+    if(event.keyCode === KEY.SPACE) {
       // Hard drop
-      if (document.querySelector('#pause-btn').style.display === 'block') {
+      if(requestId) {
         colisionSound.play();
       } else {
+        pause();
         return;
       }
-
+      
       while (board.valid(p)) {
         board.piece.move(p);
         p = { ...board.piece, y: board.piece.y + 1 };
       }
       board.piece.hardDrop();
-    } else if (board.valid(p)) {
+    } else if(board.valid(p)) {
       board.piece.move(p);
     }
   }
@@ -113,22 +116,23 @@ function play(size) {
   board = new Board(ctx, ctxNext, size);
   resetGame();
   // Cancela a animação caso ainda tenha um jogo
-  if (requestId) {
+  if(requestId) {
     cancelAnimationFrame(requestId);
   }
 
   initTimer();
   animate();
-  toggleBoard();
-  toggleButtons();
+  toggleBoardDisplay();
+  toggleStartButtonDisplay();
+  toggleButtonsActions();
   backgroundSound.play();
 }
 
 function animate(now = 0) {
   speed.elapsed = now - speed.start;
-  if (speed.elapsed > speed.level) {
+  if(speed.elapsed > speed.level) {
     speed.start = now;
-    if (!board.drop()) {
+    if(!board.drop()) {
       gameOver();
       return;
     }
@@ -143,8 +147,11 @@ function animate(now = 0) {
 function gameOver() {
   cancelAnimationFrame(requestId);
 
+  sound.pause();
+  finishSound.play();
+
   let http = new XMLHttpRequest();
-  let url = "/minetetris/controllers/jogoControllers/rt.php";
+  let url = "/minetetris/controllers/jogoControllers/saveDataGame.php";
   let gameData = new FormData();
   gameData.append("tempo", account.time);
   gameData.append("dificuldade", account.level);
@@ -162,42 +169,42 @@ function gameOver() {
   text += "\nLinhas Eliminadas: " + account.lines;
 
   // var tableRankingLastGames = document.getElementById("tableRankingLastAllGameplayer");
-
-  getLastAllGamePlayer();
-  // var row = tableRankingLastGames.insertRow(1);
+  // deleteRowsTableLastAllGamePlayer();
+  // getLastAllGamePlayer();
+  // var row = tableRankingLastGames.insertRow(index);
+  // var idTable = row.insertCell(0);
   // var punctuationTable = row.insertCell(1);
   // var difficultyTable = row.insertCell(2);
   // var timeEndTable = row.insertCell(3);
+  // idTable.innerHTML = index;
   // punctuationTable.innerHTML = account.score;
   // difficultyTable.innerHTML = account.level;
   // timeEndTable.innerHTML = account.time;
 
+  window.location.reload();
   window.alert(text);
 
-  window.location.reload();
-
-  sound.pause();
-  finishSound.play();
-
   resetTimer();
-  toggleBoard();
-  toggleButtons();
+  toggleBoardDisplay();
+  toggleStartButtonDisplay();
+  toggleButtonsActions();
 }
 
 function pause() {
-  if (!requestId) {
+  if(!requestId) {
     initTimer();
-    toggleBoard();
-    toggleButtons();
+    toggleBoardDisplay();
+    toggleStartButtonDisplay();
     animate();
+
     backgroundSound.play();
 
     return;
   }
 
   pauseTimer();
-  toggleBoard();
-  toggleButtons();
+  toggleBoardDisplay();
+  toggleStartButtonDisplay();
 
   cancelAnimationFrame(requestId);
   requestId = null;
@@ -213,13 +220,13 @@ function timer() {
 
   seconds++;
 
-  if (seconds < 10) seconds = '0' + seconds;
+  if(seconds < 10) seconds = '0' + seconds;
 
-  if (seconds > 59) {
+  if(seconds > 59) {
     seconds = '00';
     minutes++;
 
-    if (minutes < 10) minutes = '0' + minutes;
+    if(minutes < 10) minutes = '0' + minutes;
   }
   account.time = `${minutes}:${seconds}`;
 }
@@ -235,19 +242,34 @@ function pauseTimer() {
 
 function resetTimer() {
   clearInterval(timerCall);
-  account.time = '00:00';
+  account.time = '00:00';   
 }
 
-function toggleButtons() {
-  // Alterna o estado dos botões start e pause
+function toggleStartButtonDisplay() {
+  // Alterna o estado do botão start
   let startBtn = document.querySelector('#start-btn');
   startBtn.style.display = startBtn.style.display === 'none' ? 'block' : 'none';
-
-  let pauseBtn = document.querySelector('#pause-btn');
-  pauseBtn.style.display = pauseBtn.style.display === 'block' ? 'none' : 'block';
 }
 
-function toggleBoard() {
+function toggleButtonsActions() {
+  let startBtn = document.querySelector('#start-btn');
+  let pauseBtn = document.querySelector("#pause-btn");
+
+  // Alterna a função dos botões start e pause
+  if(startBtn.hasAttribute('data-toggle')) {
+    startBtn.removeAttribute('data-toggle');
+    startBtn.addEventListener('click', pause);
+    pauseBtn.addEventListener('click', pause);
+
+  } else {
+    startBtn.setAttribute('data-toggle', 'modal');
+    startBtn.removeEventListener('click', pause);
+    pauseBtn.removeEventListener('click', pause);
+
+  }
+}
+
+function toggleBoardDisplay() {
   // Alterna o estado do board background e do board
   let backImg = document.querySelector('#rolling-tetris img');
   backImg.style.opacity = backImg.style.opacity === '1' ? '0.4' : '1';
@@ -256,46 +278,42 @@ function toggleBoard() {
   board.style.display = board.style.display === 'block' ? 'none' : 'block';
 }
 
-function deleteRowsTableLastAllGamePlayer() {
-
-  var tableRankingLastGames = document.getElementById("tableRankingLastAllGameplayer");
-
-  for (var x = 1; x < tableRankingLastGames.rows.length; x++) {
-
-    tableRankingLastGames.deleteRow(x);
-
-  }
-
-}
-
 function getLastAllGamePlayer() {
 
   let http = new XMLHttpRequest();
   let url = "/minetetris/controllers/jogoControllers/rankingLastAllGamePlayer.php";
-  http.open("POST", url, true); //POST NO LUGAR DE GET
+  http.open("POST", url, true);
   http.send();
   http.onload = function () {
 
-    games = JSON.parse(http.response);
+    try {
 
-    if (!games.length <= 0) {
+      games = JSON.parse(http.response);
 
-      var tableRankingLastGames = document.getElementById("tableRankingLastAllGameplayer");
-      var index = 1;
-      for (const x of games) {
+      if (!games.length <= 0) {
 
-        var row = tableRankingLastGames.insertRow(index);
-        var idTable = row.insertCell(0);
-        var punctuationTable = row.insertCell(1);
-        var difficultyTable = row.insertCell(2);
-        var timeEndTable = row.insertCell(3);
-        idTable.innerHTML = index;
-        punctuationTable.innerHTML = x.pontuacao;
-        difficultyTable.innerHTML = x.dificuldade;
-        timeEndTable.innerHTML = x.tempo;
+        var tableRankingLastGames = document.getElementById("tableRankingLastAllGameplayer");
 
-        index++;
+        for (const x of games) {
+
+          var row = tableRankingLastGames.insertRow(index);
+          var idTable = row.insertCell(0);
+          var punctuationTable = row.insertCell(1);
+          var difficultyTable = row.insertCell(2);
+          var timeEndTable = row.insertCell(3);
+          idTable.innerHTML = index;
+          punctuationTable.innerHTML = x.pontuacao;
+          difficultyTable.innerHTML = x.dificuldade;
+          timeEndTable.innerHTML = x.tempo;
+
+          index++;
+        }
+
       }
+
+    } catch (err) {
+
+      alert(err.message);
 
     }
 

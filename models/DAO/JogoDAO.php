@@ -25,8 +25,7 @@ final class JogoDAO extends DAO
             throw new Exception("Parâmetro 'conn' não é um objeto da classe 'PDO'");
         }
 
-        $sql = "SELECT pontuacao, dificuldade, tempo FROM jogo WHERE username='$username' ORDER BY pontuacao DESC, dificuldade DESC, tempo ASC;";
-        $ret = null;
+        $sql = "SELECT pontuacao, dificuldade, tempo FROM jogo WHERE username='$username' ORDER BY pontuacao DESC, dificuldade DESC, tempo ASC";
         try {
             $stmt = $conn->prepare($sql);
             $stmt->execute();
