@@ -8,13 +8,13 @@ require_once '..\services\errors.php';
 
 session_start();
 
-
 try {
+
     if (isset($_POST)) {
         fixPost();
         $username = $_SESSION["usuario"];
-        $jogo = new Jogo($username, $_POST['tempo'], $_POST['dificuldade'], $_POST['pontuacao'], $_POST['linhas_eliminadas']);
-        JogoDAO::insert(getNewDBConnection(), $jogo);
+        
+        JogoDAO::selectAllGamePlayerToRanking(getNewDBConnection(), $username);
     }
 } catch (Exception $e) {
 
