@@ -23,4 +23,4 @@ Bootstrap(3.4.1): https://getbootstrap.com/docs/3.4/.
 
 jQuery: https://jquery.com/download/.
 
-Playlist do YouTube: https://www.youtube.com/playlist?list=PLS6bmmMSWLXsb0oThZ0haVUJ-JOh6ktiR
+Playlist do YouTube: https://youtube.com/playlist?list=PLuJ_GHZ03Z9fgpKMrLrQZ80koP_PZ10Z4
